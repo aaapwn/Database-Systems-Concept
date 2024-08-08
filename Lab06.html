@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)https://dblearning.it.kmitl.ac.th/quiz/submission/85388 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <!-- Google font -->
+    <link href="./Lab06_files/css" rel="stylesheet" type="text/css">
+    <link href="./Lab06_files/css(1)" rel="stylesheet" type="text/css">
+    <!-- Css -->
+    <link rel="stylesheet" type="text/css" href="./Lab06_files/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./Lab06_files/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./Lab06_files/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="./Lab06_files/md-font.css">
+    <link rel="stylesheet" type="text/css" href="./Lab06_files/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="./Lab06_files/loading.css">
+    <link rel="stylesheet" type="text/css" href="./Lab06_files/style.css">
+
+        <link rel="stylesheet" href="./Lab06_files/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="./Lab06_files/vis.min.css">
+
+    <style>
+        .breadcrumb {
+            margin-bottom: 0px;
+            padding-top: 0px;
+        }
+        .breadcrumb > li > a {
+            margin-top: 1em;
+        }
+        .ps-container > .ps-scrollbar-x-rail > .ps-scrollbar-x,
+        .ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y  {   opacity: 1; }
+
+        .container{
+            width: 100%;
+        }
+    </style>
+        <style>
+        .erdiagram, .network, .col-xs-12{
+            height: 400px!important;
+        }
+        .answer_explanation{
+            border: 1px red solid;
+        }
+        .answer_explanation > th, .answer_explanation > td{
+            padding: 1em;
+        }
+        .answer_explanation > th{
+            background-color: red;
+            color: white;
+        }
+        p{color: black;}
+        h1{margin-top: 0;}
+        h4{color: black;}
+        .container{  width: 80%}
+        th {width: 10em;}
+        .panel{margin-bottom: 1em!important;}
+        table{width: 100%;}
+        .panel-warning{border-color: #f1c774}
+        .tooltip-inner {
+            white-space:nowrap;
+            max-width:none;
+        }
+        pre{
+            white-space: pre-wrap;       /* Since CSS 2.1 */
+            white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;
+        }
+        .monospace table, .error-code{
+            font-family: "Courier New", Courier, monospace!important;
+        }
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+    <title>
+                        Learning SQL -
+        
+    Quiz
+    </title>
+<style type="text/css" id="operaUserStyle"></style><style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
+<body id="page-top" style="" data-new-gr-c-s-check-loaded="14.1115.0" data-gr-ext-installed="">
+
+<!-- PAGE WRAP -->
+<div id="page-wrap">
+    <div class="overlayForm" style="display: none"></div>
+
+    <div class="top-nav">
+
+        <h4 class="sm black bold">    <ol class="breadcrumb">
+                    <li><a href="https://dblearning.it.kmitl.ac.th/class/70">DATABASE SYSTEM CONCEPT 2566</a></li>
+            <li><a href="https://dblearning.it.kmitl.ac.th/quiz/2289">Assignment: 2566-LAB06-SQL  JOIN</a></li>
+            <li><a href="https://dblearning.it.kmitl.ac.th/quiz/2289/submission?class=70">Submission</a></li>
+                <li class="active">#85388</li>
+    </ol>
+</h4>
+
+        <ul class="top-nav-list">
+            <li>
+                <a href="javascript:{}">
+                    <span id="clock">14:30:57</span>
+<script type="text/javascript">
+    var now = new Date(1690011039000);
+    function startInterval(){
+        setInterval('updateTime();', 1000);
+    }
+    startInterval();
+    function updateTime(){
+        var nowMS = now.getTime();
+        nowMS += 1000;
+        
+        now.setTime(nowMS);
+        var clock = document.getElementById('clock');
+        if(clock){
+            clock.innerHTML = now.toTimeString().split(" ",1);
+        }
+    }
+</script>                </a>
+            </li>
+                <li class="backpage">
+                    <a href="https://dblearning.it.kmitl.ac.th/quiz/2289/submission?class=70"><i class="icon md-close-1"></i></a>
+            </li>
+        </ul>
+
+    </div>
+
+        <section id="quiz-section" class="quiz-section" style="padding-top: 60px;">
+        <div class="container">
+            <br><br>
+            <div class="row">
+                <div class="col-md-6">
+                                        <div class="pull-right">
+                        <a class="btn btn-warning btn-comment-quiz" href="https://dblearning.it.kmitl.ac.th/quiz/submission/85388#" role="button">
+                            <i class="fa fa-comments"></i> Comment This Quiz
+                        </a>
+                    </div>
+                    
+                    <h1>Submission #85388</h1>
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>ID</th>
+                            <td>85388
+                                                        </td>
+                        </tr>
+                        <tr>
+                            <th>Quiz Name</th>
+                            <td>2566-LAB06-SQL  JOIN</td>
+                        </tr>
+                        <tr>
+                            <th>User</th>
+                            <td>it65070185 (นายภูวิศ นุ่นปาน)</td>
+                        </tr>
+                        <tr>
+                            <th>Score</th>
+                            <td>
+                                ???
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>
+                                ???
+
+                            </td>
+                        </tr>
+                                                <tr>
+                            <th>Started at</th>
+                            <td>2023-07-22 10:29:26</td>
+                        </tr>
+                        <tr>
+                            <th>Submitted at</th>
+                            <td>2023-07-22 12:47:08</td>
+                        </tr>
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="fill_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Fill In</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="choice_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Choice</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="matching_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Matching</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 ">
+                                <div class="box box-danger">
+                                    <div class="box-body"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                                        <canvas id="sql_chart" width="203" height="201" style="display: block; height: 149px; width: 151px;" class="chartjs-render-monitor"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">SQL</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="er_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Logical</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="design_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Conceptual</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="er_verification_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">ER Verification</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="panel-group" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-success hidden">
+                    <a role="button" data-toggle="collapse" href="https://dblearning.it.kmitl.ac.th/quiz/submission/85388#collapseFill" aria-expanded="true" aria-controls="collapseFill">
+                        <div class="panel-heading" role="tab" id="headingFill">
+                            <h4 class="panel-title">
+                                <i class="fa fa-file-text-o"></i> Fill In
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseFill" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFill">
+                        <div class="panel-body">
+                                                       No Data
+                                          </div>
+               </div>
+           </div>
+           <div class="panel panel-info hidden">
+               <a class="collapsed" role="button" data-toggle="collapse" href="https://dblearning.it.kmitl.ac.th/quiz/submission/85388#collapseChoice" aria-expanded="false" aria-controls="collapseChoice">
+                   <div class="panel-heading" role="tab" id="headingChoice">
+                       <h4 class="panel-title">
+                           </h4><h3 class="panel-title"><i class="fa fa-check-circle-o"></i> Choice</h3>
+                       
+                   </div>
+               </a>
+
+               <div id="collapseChoice" class="panel-collapse collapse  in" role="tabpanel" aria-labelledby="headingChoice">
+                   <div class="panel-body">
+                                                       No Data
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-warning hidden">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/85388#collapseMatching" aria-expanded="false" aria-controls="collapseMatching">
+                        <div class="panel-heading" role="tab" id="headingMatching">
+                            <h4 class="panel-title">
+                                <i class="fa fa-link"></i> Matching
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseMatching" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingMatching">
+                        <div class="panel-body">
+                                                            No Data
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger ">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/85388#collapseSQL" aria-expanded="false" aria-controls="collapseSQL">
+                        <div class="panel-heading" role="tab" id="headingSQL">
+                            <h4 class="panel-title">
+                                <i class="fa fa-database"></i> SQL
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseSQL" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSQL">
+                        <div class="panel-body">
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            871
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>จงเขียน Query ที่แสดงรหัสพนักงาน ชื่อ นามสกุล พร้อมกับรหัสแผนก และชื่อแผนกของพนักงานแต่ละ คน (<strong>ใช้</strong> <strong>USING clause)</strong><br>
+หมายเหตุ ถ้าต้องใช้ Table alias ให้ใช้ตัวอักษรแรกของชื่อตาราง เช่น ตาราง employees ใช้ e<br>
+<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างคำตอบเป็นเพียงบางส่วนเท่านั้น<br>
+**ผลลัพธ์ที่ได้อาจเรียงไม่เหมือนกับตัวอย่าง</strong></span>
+<table class="table table-striped" id="DataTables_Table_5">
+	<tbody>
+		<tr>
+			<td><strong>employee_id</strong></td>
+			<td><strong>first_name</strong></td>
+			<td><strong>last_name</strong></td>
+			<td><strong>department_id</strong></td>
+			<td><strong>department_name</strong></td>
+		</tr>
+		<tr>
+			<td>200</td>
+			<td>Jennifer</td>
+			<td>Whalen</td>
+			<td>10</td>
+			<td>Administration</td>
+		</tr>
+		<tr>
+			<td>201</td>
+			<td>Michael</td>
+			<td>Hartstein</td>
+			<td>20</td>
+			<td>Marketing</td>
+		</tr>
+		<tr>
+			<td>202</td>
+			<td>Pat</td>
+			<td>Fay</td>
+			<td>20</td>
+			<td>Marketing</td>
+		</tr>
+		<tr>
+			<td>114</td>
+			<td>Den</td>
+			<td>Raphaely</td>
+			<td>30</td>
+			<td>Purchasing</td>
+		</tr>
+		<tr>
+			<td>115</td>
+			<td>Alexander</td>
+			<td>Khoo</td>
+			<td>30</td>
+			<td>Purchasing</td>
+		</tr>
+	</tbody>
+</table>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618750</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> employee_id, first_name, last_name, department_id, d.department_name
+<span class="hljs-keyword">from</span> employees e
+<span class="hljs-keyword">join</span> departments d
+<span class="hljs-keyword">using</span> (department_id)</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            872
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>จงเขียน Query ที่แสดงรหัสพนักงาน ชื่อ นามสกุล พร้อมกับรหัสแผนก และชื่อแผนกของพนักงานแต่ละคน (<strong>ใช้ &nbsp;&nbsp;ON clause)</strong><br>
+หมายเหตุ ถ้าต้องใช้ Table alias ให้ใช้ตัวอักษรแรกของชื่อตาราง เช่น ตาราง employees ใช้ e<br>
+<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างคำตอบเป็นเพียงบางส่วนเท่านั้น<br>
+**ผลลัพธ์ที่ได้อาจเรียงไม่เหมือนกับตัวอย่าง</strong></span>
+
+<table class="table table-striped" id="DataTables_Table_6">
+	<tbody>
+		<tr>
+			<td><strong>employee_id</strong></td>
+			<td><strong>first_name</strong></td>
+			<td><strong>last_name</strong></td>
+			<td><strong>department_id</strong></td>
+			<td><strong>department_name</strong></td>
+		</tr>
+		<tr>
+			<td>200</td>
+			<td>Jennifer</td>
+			<td>Whalen</td>
+			<td>10</td>
+			<td>Administration</td>
+		</tr>
+		<tr>
+			<td>201</td>
+			<td>Michael</td>
+			<td>Hartstein</td>
+			<td>20</td>
+			<td>Marketing</td>
+		</tr>
+		<tr>
+			<td>202</td>
+			<td>Pat</td>
+			<td>Fay</td>
+			<td>20</td>
+			<td>Marketing</td>
+		</tr>
+		<tr>
+			<td>114</td>
+			<td>Den</td>
+			<td>Raphaely</td>
+			<td>30</td>
+			<td>Purchasing</td>
+		</tr>
+		<tr>
+			<td>115</td>
+			<td>Alexander</td>
+			<td>Khoo</td>
+			<td>30</td>
+			<td>Purchasing</td>
+		</tr>
+	</tbody>
+</table>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618781</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> employee_id, first_name, last_name, e.department_id, department_name
+<span class="hljs-keyword">from</span> employees e
+<span class="hljs-keyword">join</span> departments d
+<span class="hljs-keyword">on</span> (e.department_id = d.department_id)</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            873
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>จงเขียน Query ที่แสดงรหัสพนักงาน ชื่อ นามสกุล พร้อมกับรหัสแผนก และชื่อแผนกของพนักงานแต่ละ คน (<strong>ใช้ &nbsp;&nbsp;Equijoin)</strong><br>
+หมายเหตุ ถ้าต้องใช้ Table alias ให้ใช้ตัวอักษรแรกของชื่อตาราง เช่น ตาราง employees ใช้ e<br>
+<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างคำตอบเป็นเพียงบางส่วนเท่านั้น<br>
+**ผลลัพธ์ที่ได้อาจเรียงไม่เหมือนกับตัวอย่าง</strong></span>
+
+<table class="table table-striped" id="DataTables_Table_7">
+	<tbody>
+		<tr>
+			<td><strong>employee_id</strong></td>
+			<td><strong>first_name</strong></td>
+			<td><strong>last_name</strong></td>
+			<td><strong>department_id</strong></td>
+			<td><strong>department_name</strong></td>
+		</tr>
+		<tr>
+			<td>200</td>
+			<td>Jennifer</td>
+			<td>Whalen</td>
+			<td>10</td>
+			<td>Administration</td>
+		</tr>
+		<tr>
+			<td>201</td>
+			<td>Michael</td>
+			<td>Hartstein</td>
+			<td>20</td>
+			<td>Marketing</td>
+		</tr>
+		<tr>
+			<td>202</td>
+			<td>Pat</td>
+			<td>Fay</td>
+			<td>20</td>
+			<td>Marketing</td>
+		</tr>
+		<tr>
+			<td>114</td>
+			<td>Den</td>
+			<td>Raphaely</td>
+			<td>30</td>
+			<td>Purchasing</td>
+		</tr>
+		<tr>
+			<td>115</td>
+			<td>Alexander</td>
+			<td>Khoo</td>
+			<td>30</td>
+			<td>Purchasing</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618789</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> employee_id, first_name, last_name, e.department_id, d.department_name
+<span class="hljs-keyword">from</span> employees e, departments d
+<span class="hljs-keyword">where</span> e.department_id = d.department_id</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            876
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>จงเขียน Query ที่แสดงชื่อ นามสกุล รหัสพนักงานพร้อมกับชื่อ นามสกุล รหัสผู้จัดการของพนักงานแต่ละคน โดยให้ใส่ชื่อ คอลัมน์รหัสพนักงานเป็น Emp, ชื่อผู้จัดการเป็น MGR First Name,&nbsp;นามสกุลผู้จัดการเป็น&nbsp;MGR Last Name&nbsp;และรหัสผู้จัดการ เป็น Mgr&nbsp; (<strong>ใช้</strong> <strong>ON clause)</strong><br>
+หมายเหตุ ถ้าต้องใช้ Table alias ให้ใช้ตัวอักษรแรกของชื่อตาราง เช่น ตาราง employees ใช้ e&nbsp;, ตาราง manager ใช้ m<br>
+<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างคำตอบเป็นเพียงบางส่วนเท่านั้น<br>
+**ผลลัพธ์ที่ได้อาจเรียงไม่เหมือนกับตัวอย่าง</strong></span>
+
+<table class="table table-striped" id="DataTables_Table_8">
+	<tbody>
+		<tr>
+			<td><strong>first_name</strong></td>
+			<td><strong>last_name</strong></td>
+			<td><strong>Emp</strong></td>
+			<td><strong>MGR First Name</strong></td>
+			<td><strong>MGR Last Name</strong></td>
+			<td><strong>Mgr</strong></td>
+		</tr>
+		<tr>
+			<td>Neena</td>
+			<td>Kochhar</td>
+			<td>101</td>
+			<td>Steven</td>
+			<td>King</td>
+			<td>100</td>
+		</tr>
+		<tr>
+			<td>Lex</td>
+			<td>De Haan</td>
+			<td>102</td>
+			<td>Steven</td>
+			<td>King</td>
+			<td>100</td>
+		</tr>
+		<tr>
+			<td>Alexander</td>
+			<td>Hunold</td>
+			<td>103</td>
+			<td>Lex</td>
+			<td>De Haan</td>
+			<td>102</td>
+		</tr>
+		<tr>
+			<td>Bruce</td>
+			<td>Ernst</td>
+			<td>104</td>
+			<td>Alexander</td>
+			<td>Hunold</td>
+			<td>103</td>
+		</tr>
+		<tr>
+			<td>David</td>
+			<td>Austin</td>
+			<td>105</td>
+			<td>Alexander</td>
+			<td>Hunold</td>
+			<td>103</td>
+		</tr>
+	</tbody>
+</table>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618816</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> e.first_name, e.last_name, e.employee_id <span class="hljs-string">`Emp`</span>,
+	m.first_name <span class="hljs-string">`MGR First Name`</span>,
+	m.last_name <span class="hljs-string">`MGR Last Name`</span>,
+	m.employee_id <span class="hljs-string">`Mgr`</span>
+<span class="hljs-keyword">from</span> employees e
+<span class="hljs-keyword">join</span> employees m
+<span class="hljs-keyword">on</span> (e.manager_id = m.employee_id)</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            878
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>จงแสดงชื่อ นามสกุล และรหัสผู้จัดการของผู้จัดการทุกคน โดยตั้งชื่อคอลัมน์ดังนี้ MGR First Name, MGR Last Name, MGR และเรียงลำดับตามรหัสผู้จัดการ (โดยตัดแถวที่ซ้ำให้เหลือแถวเดียว) (<strong>ใช้</strong> <strong>ON clause</strong>)<br>
+หมายเหตุ ถ้าต้องใช้ Table alias ให้ใช้ตัวอักษรแรกของชื่อตาราง เช่น ตาราง employees ใช้ e, ตาราง manage ใช้ m<br>
+<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างคำตอบเป็นเพียงบางส่วนเท่านั้น<br>
+**ผลลัพธ์ที่ได้อาจเรียงไม่เหมือนกับตัวอย่าง</strong></span>
+
+<table class="table table-striped" id="DataTables_Table_0">
+	<tbody>
+		<tr>
+			<td><strong>MGR First Name</strong></td>
+			<td><strong>MGR Last Name</strong></td>
+			<td><strong>MGR</strong></td>
+		</tr>
+		<tr>
+			<td>Steven</td>
+			<td>King</td>
+			<td><em>NULL</em></td>
+		</tr>
+		<tr>
+			<td>Shanta</td>
+			<td>Vollman</td>
+			<td>100</td>
+		</tr>
+		<tr>
+			<td>Lex</td>
+			<td>De Haan</td>
+			<td>100</td>
+		</tr>
+		<tr>
+			<td>John</td>
+			<td>Russell</td>
+			<td>100</td>
+		</tr>
+		<tr>
+			<td>Alberto</td>
+			<td>Errazuriz</td>
+			<td>100</td>
+		</tr>
+	</tbody>
+</table>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618844</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> m.first_name <span class="hljs-string">`MGR First Name`</span>, m.last_name <span class="hljs-string">`MGR Last Name`</span>, m.manager_id <span class="hljs-string">`Mgr`</span>
+<span class="hljs-keyword">from</span> employees e
+<span class="hljs-keyword">join</span> employees m
+<span class="hljs-keyword">on</span> (e.manager_id = m.employee_id)
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-string">`Mgr`</span></code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            879
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>จงแสดงชื่อ นามสกุล วันที่เริ่มทำงานของพนักงานทุกคนที่เริ่มทำงานก่อนผู้จัดการของตนเอง พร้อมกับ ชื่อ นามสกุล วันที่เริ่มทำงานของผู้จัดการของพนักงานคนนั้นๆ (ตั้งชื่อคอลัมน์ของผู้จัดการคือ Mgr First Name, Mgr Last Name, Mgr Hired) (<strong>ใช้ ON Clause</strong>)<br>
+หมายเหตุ ถ้าต้องใช้ Table alias ให้ใช้ตัวอักษรแรกของชื่อตาราง เช่น ตาราง employees ใช้ e , ตาราง manager ใช้ m<br>
+<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างคำตอบเป็นเพียงบางส่วนเท่านั้น<br>
+**ผลลัพธ์ที่ได้อาจเรียงไม่เหมือนกับตัวอย่าง</strong></span>
+
+<table class="table table-striped" id="DataTables_Table_10">
+	<tbody>
+		<tr>
+			<td><strong>first_name</strong></td>
+			<td><strong>last_name</strong></td>
+			<td><strong>hire_date</strong></td>
+			<td><strong>Mgr First Name</strong></td>
+			<td><strong>Mgr Last Name</strong></td>
+			<td><strong>Mgr Hired</strong></td>
+		</tr>
+		<tr>
+			<td>Alexander</td>
+			<td>Hunold</td>
+			<td>1990-01-03</td>
+			<td>Lex</td>
+			<td>De Haan</td>
+			<td>1993-01-13</td>
+		</tr>
+		<tr>
+			<td>Daniel</td>
+			<td>Faviet</td>
+			<td>1994-08-16</td>
+			<td>Nancy</td>
+			<td>Greenberg</td>
+			<td>1994-08-17</td>
+		</tr>
+		<tr>
+			<td>James</td>
+			<td>Marlow</td>
+			<td>1997-02-16</td>
+			<td>Adam</td>
+			<td>Fripp</td>
+			<td>1997-04-10</td>
+		</tr>
+		<tr>
+			<td>Renske</td>
+			<td>Ladwig</td>
+			<td>1995-07-14</td>
+			<td>Shanta</td>
+			<td>Vollman</td>
+			<td>1997-10-10</td>
+		</tr>
+		<tr>
+			<td>Trenna</td>
+			<td>Rajs</td>
+			<td>1995-10-17</td>
+			<td>Kevin</td>
+			<td>Mourgos</td>
+			<td>1999-11-16</td>
+		</tr>
+	</tbody>
+</table>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618868</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> e.first_name, e.last_name, e.hire_date,
+	m.first_name <span class="hljs-string">`Mgr First Name`</span>,
+	m.last_name <span class="hljs-string">`Mgr Last Name`</span>,
+	m.hire_date <span class="hljs-string">`Mgr Hired`</span>
+<span class="hljs-keyword">from</span> employees e
+<span class="hljs-keyword">join</span> employees m
+<span class="hljs-keyword">on</span> (e.manager_id = m.employee_id)
+<span class="hljs-keyword">where</span> e.hire_date &lt; m.hire_date</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            880
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>จงแสดงชื่อ นามสกุล วันที่เริ่มทำงาน และเงินเดือนของพนักงานทุกคนที่เริ่มทำงานหลังจากพนักงานที่มี นามสกุลคือ Ernst (ใช้ <strong>ON clause</strong>)<br>
+หมายเหตุ ถ้าต้องใช้ Table alias ให้ใช้ตัวอักษรแรกของชื่อตาราง เช่น ตาราง employees ใช้ e, ตารางของพนักงาน Ernst ใช้ Ernst<br>
+<br>
+<strong><span style="color:#FF0000">*ตัวอย่างคำตอบเป็นเพียงบางส่วนเท่านั้น<br>
+**ผลลัพธ์ที่ได้อาจเรียงไม่เหมือนกับตัวอย่าง</span></strong>
+
+<table class="table table-striped" id="DataTables_Table_11">
+	<tbody>
+		<tr>
+			<td><strong>first_name</strong></td>
+			<td><strong>last_name</strong></td>
+			<td><strong>hire_date</strong></td>
+			<td><strong>salary</strong></td>
+		</tr>
+		<tr>
+			<td>Lex</td>
+			<td>De Haan</td>
+			<td>1993-01-13</td>
+			<td>17000.00</td>
+		</tr>
+		<tr>
+			<td>David</td>
+			<td>Austin</td>
+			<td>1997-06-25</td>
+			<td>4800.00</td>
+		</tr>
+		<tr>
+			<td>Valli</td>
+			<td>Pataballa</td>
+			<td>1998-02-05</td>
+			<td>4800.00</td>
+		</tr>
+		<tr>
+			<td>Diana</td>
+			<td>Lorentz</td>
+			<td>1999-02-07</td>
+			<td>4200.00</td>
+		</tr>
+		<tr>
+			<td>Nancy</td>
+			<td>Greenberg</td>
+			<td>1994-08-17</td>
+			<td>12000.00</td>
+		</tr>
+	</tbody>
+</table>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618918</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> e.first_name, e.last_name, e.hire_date, e.salary
+<span class="hljs-keyword">from</span> employees e
+<span class="hljs-keyword">join</span> employees Ernst
+<span class="hljs-keyword">on</span> (Ernst.last_name = <span class="hljs-string">'Ernst'</span>)
+<span class="hljs-keyword">where</span> e.hire_date &gt; Ernst.hire_date</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            1724
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>จงเขียน Query ที่แสดงรหัสที่ตั้ง ที่อยู่ เมือง และรัฐ/จังหวัด ของสถานที่ตั้งสำนักงานทั้งหมดที่อยู่ในทวีปยุโรป (<strong>ใช้ USING clause</strong>)<br>
+หมายเหตุ ถ้าต้องใช้ Table alias ให้ใช้ตัวอักษรแรกของชื่อตาราง เช่น ตาราง employees ใช้ e<br>
+<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างคำตอบเป็นเพียงบางส่วนเท่านั้น<br>
+**ผลลัพธ์ที่ได้อาจเรียงไม่เหมือนกับตัวอย่าง</strong></span>
+
+<table class="table table-striped" id="DataTables_Table_12">
+	<tbody>
+		<tr>
+			<td><strong>location_id</strong></td>
+			<td><strong>street_address</strong></td>
+			<td><strong>city</strong></td>
+			<td><strong>state_province</strong></td>
+		</tr>
+		<tr>
+			<td>2900</td>
+			<td>20 Rue des Corps-Saints</td>
+			<td>Geneva</td>
+			<td>Geneve</td>
+		</tr>
+		<tr>
+			<td>3000</td>
+			<td>Murtenstrasse 921</td>
+			<td>Bern</td>
+			<td>BE</td>
+		</tr>
+		<tr>
+			<td>2700</td>
+			<td>Schwanthalerstr. 7031</td>
+			<td>Munich</td>
+			<td>Bavaria</td>
+		</tr>
+		<tr>
+			<td>1000</td>
+			<td>1297 Via Cola di Rie</td>
+			<td>Roma</td>
+			<td><em>NULL</em></td>
+		</tr>
+		<tr>
+			<td>1100</td>
+			<td>93091 Calle della Testa</td>
+			<td>Venice</td>
+			<td><em>NULL</em></td>
+		</tr>
+	</tbody>
+</table>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618939</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> location_id, street_address, city, state_province
+<span class="hljs-keyword">from</span> locations l
+<span class="hljs-keyword">join</span> countries c
+<span class="hljs-keyword">using</span> (country_id)
+<span class="hljs-keyword">where</span> c.region_id = <span class="hljs-number">1</span></code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            1725
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>จงเขียน Query ที่แสดงรหัสแผนก ชื่อแผนก และ ที่อยู่ของแผนกทั้งหมดที่อยู่ในประเทศที่มีชื่อขึ้นต้นด้วยตัวอักษร U (<strong>ใช้ ON clause</strong>)<br>
+หมายเหตุ ถ้าต้องใช้ Table alias ให้ใช้ตัวอักษรแรกของชื่อตาราง เช่น ตาราง employees ใช้ e<br>
+<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างคำตอบเป็นเพียงบางส่วนเท่านั้น<br>
+**ผลลัพธ์ที่ได้อาจเรียงไม่เหมือนกับตัวอย่าง</strong></span>
+<table class="table table-striped" id="DataTables_Table_13">
+	<tbody>
+		<tr>
+			<td><strong>department_id</strong></td>
+			<td><strong>department_name</strong></td>
+			<td><strong>street_address</strong></td>
+		</tr>
+		<tr>
+			<td>40</td>
+			<td>Human Resources</td>
+			<td>8204 Arthur St</td>
+		</tr>
+		<tr>
+			<td>80</td>
+			<td>Sales</td>
+			<td>Magdalen Centre, The Oxford Science Park</td>
+		</tr>
+		<tr>
+			<td>60</td>
+			<td>IT</td>
+			<td>2014 Jabberwocky Rd</td>
+		</tr>
+		<tr>
+			<td>50</td>
+			<td>Shipping</td>
+			<td>2011 Interiors Blvd</td>
+		</tr>
+		<tr>
+			<td>10</td>
+			<td>Administration</td>
+			<td>2004 Charade Rd</td>
+		</tr>
+	</tbody>
+</table>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618961</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> department_id, department_name, street_address
+<span class="hljs-keyword">from</span> departments d
+<span class="hljs-keyword">join</span> locations l
+<span class="hljs-keyword">on</span> (d.location_id = l.location_id)
+<span class="hljs-keyword">join</span> countries c
+<span class="hljs-keyword">on</span> (l.country_id = c.country_id)
+<span class="hljs-keyword">where</span> c.country_name <span class="hljs-keyword">like</span> <span class="hljs-string">'U%'</span></code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger hidden">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/85388#collapseER" aria-expanded="false" aria-controls="collapseER">
+                        <div class="panel-heading" role="tab" id="headingER">
+                            <h4 class="panel-title">
+                                <i class="fa fa-database"></i> ER Mapping
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseER" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingER">
+                        <div class="panel-body">
+                                                            No Data
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger hidden">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/85388#collapseDesign" aria-expanded="false" aria-controls="collapseDesign">
+                        <div class="panel-heading" role="tab" id="headingDesign">
+                            <h4 class="panel-title">
+                                <i class="fa fa-database"></i> ER Design
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseDesign" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingDesign">
+                        <div class="panel-body">
+                                                            No Data
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger hidden">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/85388#collapseDesign" aria-expanded="false" aria-controls="collapseDesign">
+                        <div class="panel-heading" role="tab" id="headingDesign">
+                            <h4 class="panel-title">
+                                <i class="fa fa-database"></i> ER Verification
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseDesign" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingDesign">
+                        <div class="panel-body">
+                                                            No Data
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- FORM COMMENT QUIZ -->
+    <div class="form-checkout" style="top: 277.5px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <ul id="bar">
+                        <li class="form-quiz-header">Comment This Quiz</li>
+                    </ul>
+                    <span class="closeForm"><i class="icon md-close-1"></i></span>
+                    <div class="form-body">
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form method="POST" action="https://dblearning.it.kmitl.ac.th/quiz/submission/85388/comment" accept-charset="UTF-8" class="form-horizontal form-quiz"><input name="_token" type="hidden" value="FiZDRmiIh4lITFJs4pCaeVBbZxCn4n4pZyjLakxB">
+                                <div class="form-group">
+                                    <div class="col-sm-offset-1 col-sm-10">
+                                        <textarea id="comment" name="comment"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12" style="text-align: center;">
+                                        <button type="submit" class="btn btn-success btn-save-quiz">
+                                            <i class="fa fa-paper-plane"></i> Send
+                                        </button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END / FORM COMMENT QUIZ -->
+        <div class="loading hidden">
+        <div class="cssload-tetrominos">
+            <div class="cssload-tetromino cssload-box1"></div>
+            <div class="cssload-tetromino cssload-box2"></div>
+            <div class="cssload-tetromino cssload-box3"></div>
+            <div class="cssload-tetromino cssload-box4"></div>
+        </div>
+    </div>
+
+</div>
+<!-- END / PAGE WRAP -->
+
+<!-- Load jQuery -->
+<script type="text/javascript" src="./Lab06_files/jquery-1.11.0.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab06_files/bootstrap.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab06_files/jquery.owl.carousel.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab06_files/jquery.appear.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab06_files/perfect-scrollbar.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab06_files/toastr.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab06_files/imagesloaded.pkgd.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab06_files/scripts.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab06_files/raven.min.js.ดาวน์โหลด" crossorigin="anonymous"></script>
+<script>
+    //SENTRY LOG
+    $(document).ready(function(){
+        Raven.config('https://9f1aa240bf7741128f6d9b6171e494f0@sentry.io/289929').install();
+        Raven.setUserContext({
+            username: 'it65070185',
+            name: 'นายภูวิศ นุ่นปาน'
+        });
+    });
+</script>
+
+    <script type="text/javascript" src="./Lab06_files/jquery.hotkeys.js.ดาวน์โหลด"></script>
+    <script src="./Lab06_files/datatables.min.js.ดาวน์โหลด"></script>
+    <script src="./Lab06_files/Chart.min.js.ดาวน์โหลด"></script>
+    <script src="./Lab06_files/highlight.pack.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab06_files/vis.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab06_files/deep-diff-0.3.4.min.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab06_files/jscolor.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab06_files/typo.js.ดาวน์โหลด"></script>
+    <script src="./Lab06_files/color.js.ดาวน์โหลด"></script>
+    <script src="./Lab06_files/EventHelpers.js.ดาวน์โหลด"></script>
+    <script src="./Lab06_files/DragDropHelpers.js.ดาวน์โหลด"></script>
+    <script src="./Lab06_files/permissionForm.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab06_files/jsencrypt.min.js.ดาวน์โหลด"></script>
+    <script src="./Lab06_files/erdiagram.js.ดาวน์โหลด"></script>
+
+    <shoulddetectajax class="hidden">false</shoulddetectajax>
+    <script>
+        var child;
+        $('.open-er-logical').click(function () {
+            graph = $(this).attr('value');
+            child = window.open('https://dblearning.it.kmitl.ac.th/tool/logical_er');
+        });
+        $( document ).ready(function() {
+            $.each($('.erdiagram'), function (index, item) {
+                var enableExport = false;
+                if($(item).hasClass('erdiagram-enable-export')){
+                    enableExport = true;
+                }
+                var graph = JSON.parse($(item).html());
+                $(item).html('');
+                $(item).removeClass('hidden');
+                new ERDiagram('#'+$(item).attr('id'), {
+                    graph: graph,
+                    editable: false,
+                    isShowMenu: false,
+                    enableExport: enableExport,
+                });
+            });
+
+        });
+                $('.btn-comment-quiz').on('click', function() {
+            //editChapterOpen($(this).attr('quiz'));
+            $('.form-checkout, .overlayForm').fadeIn(400);
+            $(window).trigger('resize');
+            return false;
+        });
+        $('.closeForm').on('click', function() {
+            $('.form-checkout, .overlayForm').fadeOut(400);
+        });
+            </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+        $('[data-toggle="tooltip"]').tooltip();
+        var navbarHeight = $('.top-nav').outerHeight();
+        $('.quiz-section').css('padding-top', navbarHeight);
+        $(function () {
+            var chartIds = [
+                                'fill_chart',
+                                'choice_chart',
+                                'matching_chart',
+                                'sql_chart',
+                                'er_chart',
+                                'design_chart',
+                                'er_verification_chart',
+                            ];
+            var chartLabels = ["Fill In","Choice","Matching","SQL","Logical","Conceptual","ER Verification"];
+            var chartDatas = [
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 9],
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0],
+                                    ];
+            var chartColors =  [
+                                        'rgba(255, 99, 132, 0.8)',
+                                        'rgba(54, 162, 235, 0.8)',
+                                        'rgba(255, 206, 86, 0.8)',
+                                        'rgba(75, 192, 192, 0.8)',
+                                        'rgba(194, 66, 244, 0.8)',
+                                        'rgba(247, 255, 17, 0.8)',
+                                        'rgba(77, 204, 38, 0.8)',
+                                    ];
+            var chartList = {};
+            for(var i = 0; i < chartIds.length; i++){
+                chartList[chartIds[i]] = new Chart($("#"+chartIds[i]), {
+                type: 'doughnut',
+                    data: {
+                        labels: [chartLabels[i], ""],
+                        datasets: [{
+                            label: '# of '+chartLabels[i],
+                            data: [chartDatas[i][0], chartDatas[i][1]-chartDatas[i][0]],
+                            backgroundColor: [
+                                chartColors[i],
+                                'rgba(169, 169, 169, 0)'
+                            ],
+                            borderColor: [
+                                chartColors[i],
+                                'rgba(169, 169, 169, 0.3)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        legend: {
+                            display: false
+                        },
+                        elements: {
+                            center: {
+                                // the longest text that could appear in the center
+                                maxText: '100%',
+                                text: (chartDatas[i][0] * 100 / chartDatas[i][1]).toFixed(1) + '%',
+                                fontColor: chartColors[i],
+                                fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                                fontStyle: 'normal',
+                                // fontSize: 12,
+                                // if a fontSize is NOT specified, we will scale (within the below limits) maxText to take up the maximum space in the center
+                                // if these are not specified either, we default to 1 and 256
+                                minFontSize: 1,
+                                maxFontSize: 15,
+                            }
+                        }}
+                });
+            }});
+        // write text plugin
+        Chart.pluginService.register({
+            afterUpdate: function (chart) {
+                if (chart.config.options.elements.center) {
+                    var helpers = Chart.helpers;
+                    var centerConfig = chart.config.options.elements.center;
+                    var globalConfig = Chart.defaults.global;
+                    var ctx = chart.chart.ctx;
+
+                    var fontStyle = helpers.getValueOrDefault(centerConfig.fontStyle, globalConfig.defaultFontStyle);
+                    var fontFamily = helpers.getValueOrDefault(centerConfig.fontFamily, globalConfig.defaultFontFamily);
+
+                    if (centerConfig.fontSize)
+                        var fontSize = centerConfig.fontSize;
+                    // figure out the best font size, if one is not specified
+                    else {
+                        ctx.save();
+                        var fontSize = helpers.getValueOrDefault(centerConfig.minFontSize, 1);
+                        var maxFontSize = helpers.getValueOrDefault(centerConfig.maxFontSize, 256);
+                        var maxText = helpers.getValueOrDefault(centerConfig.maxText, centerConfig.text);
+
+                        do {
+                            ctx.font = helpers.fontString(fontSize, fontStyle, fontFamily);
+                            var textWidth = ctx.measureText(maxText).width;
+
+                            // check if it fits, is within configured limits and that we are not simply toggling back and forth
+                            if (textWidth < chart.innerRadius * 2 && fontSize < maxFontSize)
+                                fontSize += 1;
+                            else {
+                                // reverse last step
+                                fontSize -= 1;
+                                break;
+                            }
+                        } while (true)
+                        ctx.restore();
+                    }
+
+                    // save properties
+                    chart.center = {
+                        font: helpers.fontString(fontSize, fontStyle, fontFamily),
+                        fillStyle: helpers.getValueOrDefault(centerConfig.fontColor, globalConfig.defaultFontColor)
+                    };
+                }
+            },
+            afterDraw: function (chart) {
+                if (chart.center) {
+                    var centerConfig = chart.config.options.elements.center;
+                    var ctx = chart.chart.ctx;
+
+                    ctx.save();
+                    ctx.font = chart.center.font;
+                    ctx.fillStyle = chart.center.fillStyle;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    var centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
+                    var centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
+                    ctx.fillText(centerConfig.text, centerX, centerY);
+                    ctx.restore();
+                }
+            }
+        });
+    </script>
+
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+  div.grammarly-desktop-integration {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+  }
+
+  div.grammarly-desktop-integration:before {
+    content: attr(data-content);
+  }
+</style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>

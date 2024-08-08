@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)https://dblearning.it.kmitl.ac.th/quiz/submission/88227 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <!-- Google font -->
+    <link href="./Lab09_files/css" rel="stylesheet" type="text/css">
+    <link href="./Lab09_files/css(1)" rel="stylesheet" type="text/css">
+    <!-- Css -->
+    <link rel="stylesheet" type="text/css" href="./Lab09_files/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./Lab09_files/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./Lab09_files/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="./Lab09_files/md-font.css">
+    <link rel="stylesheet" type="text/css" href="./Lab09_files/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="./Lab09_files/loading.css">
+    <link rel="stylesheet" type="text/css" href="./Lab09_files/style.css">
+
+        <link rel="stylesheet" href="./Lab09_files/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="./Lab09_files/vis.min.css">
+
+    <style>
+        .breadcrumb {
+            margin-bottom: 0px;
+            padding-top: 0px;
+        }
+        .breadcrumb > li > a {
+            margin-top: 1em;
+        }
+        .ps-container > .ps-scrollbar-x-rail > .ps-scrollbar-x,
+        .ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y  {   opacity: 1; }
+
+        .container{
+            width: 100%;
+        }
+    </style>
+        <style>
+        .erdiagram, .network, .col-xs-12{
+            height: 400px!important;
+        }
+        .answer_explanation{
+            border: 1px red solid;
+        }
+        .answer_explanation > th, .answer_explanation > td{
+            padding: 1em;
+        }
+        .answer_explanation > th{
+            background-color: red;
+            color: white;
+        }
+        p{color: black;}
+        h1{margin-top: 0;}
+        h4{color: black;}
+        .container{  width: 80%}
+        th {width: 10em;}
+        .panel{margin-bottom: 1em!important;}
+        table{width: 100%;}
+        .panel-warning{border-color: #f1c774}
+        .tooltip-inner {
+            white-space:nowrap;
+            max-width:none;
+        }
+        pre{
+            white-space: pre-wrap;       /* Since CSS 2.1 */
+            white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;
+        }
+        .monospace table, .error-code{
+            font-family: "Courier New", Courier, monospace!important;
+        }
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+
+    <title>
+                        Learning SQL -
+        
+    Quiz
+    </title>
+    <script>alert("ลอกเพื่อนมาครับ")</script>
+<style type="text/css" id="operaUserStyle"></style><style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style type="text/css">:root zeus-ad, :root topadblock, :root span[id^="ezoic-pub-ad-placeholder-"], :root guj-ad, :root gpt-ad, :root div[id^="zergnet-widget"], :root div[id^="yandex_ad"], :root div[id^="vuukle-ad-"], :root div[id^="sticky_ad_"], :root div[id^="rc-widget-"], :root div[id^="optidigital-adslot"], :root div[id^="gpt_ad_"], :root div[id^="ezoic-pub-ad-"], :root div[id^="div-gpt-"], :root div[id^="dfp-ad-"], :root div[id^="advads_ad_"], :root div[id^="adspot-"], :root div[id^="ads300_250-widget-"], :root div[id^="ads300_100-widget-"], :root div[id^="ads250_250-widget-"], :root div[id^="adrotate_widgets-"], :root div[id^="_vdo_ads_player_ai_"], :root div[id*="ScriptRoot"], :root div[id*="MarketGid"], :root div[data-native_ad], :root div[data-mini-ad-unit], :root div[data-insertion], :root div[data-id-advertdfpconf], :root div[data-google-query-id], :root hl-adsense, :root div[data-contentexchange-widget], :root div[data-content="Advertisement"], :root div[data-alias="300x250 Ad 2"], :root div[data-alias="300x250 Ad 1"], :root div[data-adzone], :root div[data-adunit-path], :root div[data-ad-wrapper], :root div[data-ad-targeting], :root div[data-ad-placeholder], :root div[class^="native-ad-"], :root div[data-dfp-id], :root div[class^="kiwi-ad-wrapper"], :root div[class^="Adstyled__AdWrapper-"], :root div[aria-label="Ads"], :root display-ads, :root display-ad-component, :root bottomadblock, :root atf-ad-slot, :root aside[id^="adrotate_widgets-"], :root article.ad, :root ark-top-ad, :root app-advertisement, :root app-ad, :root amp-fx-flying-carpet, :root amp-embed[type="taboola"], :root amp-connatix-player, :root amp-ad-custom, :root amp-ad, :root a[onmousedown^="this.href='https://paid.outbrain.com/network/redir?"][target="_blank"] + .ob_source, :root citrus-ad-wrapper, :root a[onmousedown^="this.href='https://paid.outbrain.com/network/redir?"][target="_blank"], :root a[onmousedown^="this.href='http://paid.outbrain.com/network/redir?"][target="_blank"] + .ob_source, :root a[href^="https://yogacomplyfuel.com/"], :root a[href^="https://www.sugarinstant.com/?partner_id="], :root a[href^="https://www.purevpn.com/"][href*="&utm_source=aff-"], :root a[href^="https://www.privateinternetaccess.com/"] > img, :root a[href^="https://www.onlineusershielder.com/"], :root a[href^="https://www.nutaku.net/signup/landing/"], :root a[href^="https://www.nudeidols.com/cams/"], :root a[href^="https://www.mypornstarcams.com/landing/click/"], :root a[href^="https://www.kingsoffetish.com/tour?partner_id="], :root a[href^="https://www.infowarsstore.com/"] > img, :root a[href^="https://www.highcpmrevenuenetwork.com/"], :root a[href^="https://www.googleadservices.com/pagead/aclk?"], :root a[href^="https://www.goldenfrog.com/vyprvpn?offer_id="][href*="&aff_id="], :root a[href^="https://www.get-express-vpn.com/offer/"], :root a[href^="https://www.financeads.net/tc.php?"], :root a[href^="https://www.brazzersnetwork.com/landing/"], :root div[class^="Display_displayAd"], :root a[href^="https://www.sheetmusicplus.com/?aff_id="], :root a[href^="https://www.bang.com/?aff="], :root [data-template-type="nativead"], :root a[href^="https://www.adultempire.com/"][href*="?partner_id="], :root a[href^="https://webroutetrk.com/"], :root a[href^="https://twinrdsyn.com/"], :root a[href^="https://tsartech.g2afse.com/"], :root [href^="https://www.mypatriotsupply.com/"] > img, :root a[href^="https://trk.softonixs.xyz/"], :root a[href^="https://trk.nfl-online-streams.club/"], :root a[href^="https://tracking.avapartner.com/"], :root a[href^="https://track.wg-aff.com"], :root a[href^="https://track.afcpatrk.com/"], :root a[href^="https://torguard.net/aff.php"] > img, :root div[data-adname], :root a[href^="https://thechleads.pro/"], :root [data-role="tile-ads-module"], :root a[href^="https://adsrv4k.com/"], :root a[href^="https://go.xlviirdr.com"], :root a[href^="https://thaudray.com/"], :root a[href^="https://www.5mno3.com/"], :root a[href^="https://taghaugh.com/"], :root a[href^="https://click.candyoffers.com/"], :root [href^="https://zstacklife.com/"] img, :root a[href^="https://t.aslnk.link/"], :root a[href^="https://t.adating.link/"], :root a[href^="https://go.trackitalltheway.com/"], :root [href^="https://track.fiverr.com/visit/"] > img, :root a[href^="https://syndication.exoclick.com/"], :root a[href^="https://syndication.dynsrvtbg.com/"], :root a[href^="https://streamate.com/landing/click/"], :root a[href^="https://ad.doubleclick.net/"], :root a[href^="https://static.fleshlight.com/images/banners/"], :root a[href^="https://sTaRtGAMing.net/tienda/"], :root [data-adblockkey], :root a[href^="https://sTARtgamIng.net/tienda/"], :root a[href^="https://aweptjmp.com/"], :root a[href^="https://s.zlinkc.com/"], :root a[href^="https://www.mrskin.com/account/"], :root a[href^="https://s.optzsrv.com/"], :root a[data-obtrack^="http://paid.outbrain.com/network/redir?"], :root a[href^="https://reinstandpointdumbest.com/"], :root a[href^="https://go.strpjmp.com/"], :root a[href^="https://refpa4903566.top/"], :root a[href^="https://pubads.g.doubleclick.net/"], :root a[href^="https://prf.hn/click/"][href*="/camref:"] > img, :root a[href^="https://serve.awmdelivery.com/"], :root a[href^="https://prf.hn/click/"][href*="/adref:"] > img, :root a[href^="https://pb-track.com/"], :root a[href^="https://paid.outbrain.com/network/redir?"], :root ps-connatix-module, :root div[id^="ad_position_"], :root a[href^="https://ovb.im/"], :root div[id^="ad-div-"], :root a[href^="https://newbinotracs.com/"], :root a[href^="https://natour.naughtyamerica.com/track/"], :root [href^="https://stvkr.com/"], :root a[href^="https://mediaserver.entainpartners.com/renderBanner.do?"], :root [href^="https://www.herbanomic.com/"] > img, :root a[href^="https://maymooth-stopic.com/"], :root a[href^="https://loboclick.com"], :root .nya-slot[style], :root a[href^="https://a.bestcontentweb.top/"], :root a[href^="https://lobimax.com/"], :root a[href^="https://lead1.pl/"], :root a[href^="https://refpa.top/"], :root a[href^="https://landing.brazzersnetwork.com/"], :root a[href^="https://safesurfingtoday.com/"][href*="?skip="], :root a[href^="https://ads.leovegas.com/redirect.aspx?"], :root a[href^="https://land.brazzersnetwork.com/landing/"], :root a[href^="https://track.adform.net/"], :root [data-css-class="dfp-inarticle"], :root .card-captioned.crd > .crd--cnt > .s2nPlayer, :root a[href^="https://go.tmrjmp.com"], :root a[href^="https://l.hyenadata.com/"], :root a[href^="https://juicyads.in/"], :root a[href^="https://mediaserver.gvcaffiliates.com/renderBanner.do?"], :root a[href^="https://join.dreamsexworld.com/"], :root a[href^="https://itubego.com/video-downloader/?affid="], :root a[href^="https://iqbroker.com/"][href*="?aff="], :root a[href^="https://incisivetrk.cvtr.io/click?"], :root [data-revive-zoneid], :root a[href^="https://googleads.g.doubleclick.net/pcs/click"], :root a[href^="https://clk.wrenchsound.store/"], :root a[href^="https://go.zybrdr.com"], :root [href^="http://join.michelle-austin.com/"], :root [class^="tile-picker__CitrusBannerContainer-sc-"], :root a[href^="https://go.xxxiijmp.com"], :root a[href^="https://go.xtbaffiliates.com/"], :root a[href^="https://ismlks.com/"], :root a[href^="//a.bestcontentfare.top/"], :root [href^="https://www.mypillow.com/"] > img, :root a[href^="https://azpresearch.club/"], :root a[href^="https://go.xlirdr.com"], :root a[href^="https://go.skinstrip.net"][href*="?campaignId="], :root a[href^="https://go.markets.com/visit/?bta="], :root a[href^="https://billing.purevpn.com/aff.php"] > img, :root a[href^="https://go.hpyrdr.com/"], :root a[href^="https://go.goaserv.com/"], :root a[href^="https://go.dmzjmp.com"], :root a[href^="https://twinrdsrv.com/"], :root a[href^="https://go.admjmp.com/"], :root [href^="https://kingered-banctours.com/"], :root a[href^="https://get.surfshark.net/aff_c?"][href*="&aff_id="] > img, :root a-ad, :root a[href^="https://affiliate.rusvpn.com/click.php?"], :root a[href^="https://geniusdexchange.com/"], :root a[href^="https://frameworkdeserve.com/"], :root a[href^="https://flirtandsweets.life/"], :root a[href^="https://www.mrskin.com/tour"], :root a[href^="https://financeads.net/tc.php?"], :root div[data-native-ad], :root a[href^="https://engine.trackingdesks.com/"], :root [href^="https://totlnkcl.com/"], :root a[href^="https://www.adskeeper.com"], :root a[data-redirect^="https://paid.outbrain.com/network/redir?"], :root [href^="https://www.reimageplus.com/"], :root a[href^="https://engine.phn.doublepimp.com/"], :root a[href^="https://engine.blueistheneworanges.com/"], :root a[href^="https://dl-protect.net/"], :root [href="//jjgirls.com/sex/ChaturbateCams"], :root a[href^="https://datingoffers30.info/"], :root a[href^="https://clixtrac.com/"], :root a[href^="https://click.linksynergy.com/fs-bin/"] > img, :root ad-shield-ads, :root a[href^="https://sTartGAMinG.net/tienda/"], :root AD-TRIPLE-BOX, :root a[href^="https://click.hoolig.app/"], :root a[href^="https://track.totalav.com/"], :root img[src^="https://images.purevpnaffiliates.com"], :root a[href^="https://porntubemate.com/"], :root a[href^="http://www.gfrevenge.com/landing/"], :root a[href^="https://clickadilla.com/"], :root a[href^="https://click.dtiserv2.com/"], :root a[href^="https://go.xlvirdr.com"], :root a[href^="http://www.iyalc.com/"], :root a[href^="https://claring-loccelkin.com/"], :root [class^="s2nPlayer"], :root a[href^="https://chaturbate.jjgirls.com/?track="], :root a[href^="https://chaturbate.com/in/?track="], :root a[href^="https://chaturbate.com/in/?tour="], :root a[href^="https://cams.imagetwist.com/in/?track="], :root a[href^="https://go.gldrdr.com/"], :root a[href^="https://buqkrzbrucz.com/"], :root a[href^="https://affcpatrk.com/"], :root a[href^="https://bongacams2.com/track?"], :root a[href^="https://www.sheetmusicplus.com/"][href*="?aff_id="], :root a[href^="https://bngpt.com/"], :root a[href^="https://bluedelivery.pro/"], :root a[href^="https://black77854.com/"], :root a[href^="https://bc.game/"], :root a[href^="https://ndt5.net/"], :root a[href^="https://batheunits.com/"], :root a[target="_blank"][onmousedown="this.href^='http://paid.outbrain.com/network/redir?"], :root a[href^="https://banners.livepartners.com/"], :root a[href^="//whulsaux.com/"], :root a[href^="https://m.do.co/c/"] > img, :root [href="https://masstortfinancing.com"] img, :root a[href^="https://bongacams10.com/track?"], :root a[href^="https://albionsoftwares.com/"], :root a[href^="https://t.hrtye.com/"], :root a[href^="https://go.etoro.com/"] > img, :root a[href^="https://www.adxsrve.com/"], :root a[href^="https://convertmb.com/"], :root a[href^="https://join.sexworld3d.com/track/"], :root a[href^="https://intenseaffiliates.com/redirect/"], :root a[href^="https://ads.ad4game.com/"], :root [id^="google_ads_iframe"], :root a[href^="https://syndication.optimizesrv.com/"], :root a[href^="https://affpa.top/"], :root a[href^="https://adnetwrk.com/"], :root a[href^="https://adjoincomprise.com/"], :root [href^="http://misslinkvocation.com/"], :root a[href^="https://adclick.g.doubleclick.net/"], :root a[href^="https://www.bet365.com/"][href*="affiliate="], :root [href^="https://r.kraken.com/"], :root a[href^="https://mmwebhandler.aff-online.com/"], :root a[href^="https://go.nordvpn.net/aff"] > img, :root [href^="http://clicks.totemcash.com/"], :root a[href^="https://misspkl.com/"], :root a[href^="https://ad.zanox.com/ppc/"] > img, :root a[href^="https://ad.kubiccomps.icu/"], :root a[href^="https://a2.adform.net/"], :root a[href^="https://iactrivago.ampxdirect.com/"], :root a[href^="https://a.medfoodhome.com/"], :root a[href^="https://adultfriendfinder.com/go/"], :root a[href^="https://a.bestcontentoperation.top/"], :root [data-m-ad-id], :root a[href^="https://a-ads.com/"], :root a[href^="https://join.virtualtaboo.com/track/"], :root a[href^="https://StarTGAminG.net/tienda/"], :root a[href^="https://cpmspace.com/"], :root [href^="https://freecourseweb.com/"] > .sitefriend, :root a[href^="https://prf.hn/click/"][href*="/creativeref:"] > img, :root a[href^="http://www.adultempire.com/unlimited/promo?"][href*="&partner_id="], :root a[href^="https://1betandgonow.com/"], :root [href="https://ourgoldguy.com/contact/"] img, :root a[href^="https://brightadnetwork.com/"], :root [href^="https://www.avantlink.com/click.php"] img, :root a[href^="http://www.onwebcam.com/random?t_link="], :root a[href^="http://www.mrskin.com/tour"], :root a[href^="https://agacelebir.com/"], :root a[href^="https://spygasm.com/track?"], :root a[href^="http://d2.zedo.com/"], :root a[href^="http://www.friendlyduck.com/AF_"], :root a[href^="http://trk.globwo.online/"], :root a[href^="http://traffic.tc-clicks.com/"], :root a[href^="http://tour.mrskin.com/"], :root a[href^="https://funkydaters.com/"], :root [id^="ad_sky"], :root a[href^="http://https://www.get-express-vpn.com/offer/"], :root div[id^="google_dfp_"], :root a[href^="http://googleads.g.doubleclick.net/pcs/click"], :root [href^="http://go.cm-trk2.com/"], :root a[href^="http://click.payserve.com/"], :root a[href^="https://porngames.adult/?SID="], :root a[href^="https://landing1.brazzersnetwork.com"], :root #slashboxes > .deals-rail, :root [href^="http://globsads.com/"], :root [href^="https://www.brighteonstore.com/products/"] img, :root a[href^="http://bc.vc/?r="], :root a[href^="https://mityneedn.com/"], :root [href^="http://homemoviestube.com/"], :root a[href^="http://ad.doubleclick.net/"], :root a[href^="//zunsoach.com/"], :root a[href^="http://static.fleshlight.com/images/banners/"], :root a[href^="https://a.adtng.com/"], :root a[href^="//pubads.g.doubleclick.net/"], :root a[href^="https://femglobal.app/"], :root a[href^="//go.eabids.com/"], :root a[data-url^="http://paid.outbrain.com/network/redir?"] + .author, :root [href^="https://join.playboyplus.com/track/"], :root a[href^="//ardslediana.com/"], :root [data-d-ad-id], :root a[href*=".engine.adglare.net/"], :root [href^="https://awbbjmp.com/"], :root a[href^="https://tracker.loropartners.com/"], :root #kt_player > a[target="_blank"], :root a[href*=".cfm?fp="][href*="&maxads="], :root [data-ad-width], :root a[href^="http://bodelen.com/"], :root a[data-oburl^="https://paid.outbrain.com/network/redir?"], :root [href^="https://cpa.10kfreesilver.com/"], :root a[href^="https://a.bestcontentfood.top/"], :root a[href^="http://wct.link/"], :root [href^="https://goldforyourfuture.com/clk.trk"] img, :root [href^="https://infinitytrk.com/"], :root [onclick^="location.href='http://www.reimageplus.com"], :root [id^="section-ad-banner"], :root a[href^="https://go.julrdr.com/"], :root .trc_rbox_div .syndicatedItemUB, :root [href^="https://zone.gotrackier.com/"], :root a[href^="https://visit-website.com/"], :root [href^="https://detachedbates.com/"], :root [href^="https://www.targetingpartner.com/"], :root a[href^="https://fourwhenstatistics.com/"], :root [href^="https://www.restoro.com/"], :root a[href^="https://join.virtuallust3d.com/"], :root .section-subheader > .section-hotel-prices-header, :root [href^="https://go.affiliatexe.com/"], :root [href^="https://www.hostg.xyz/"] > img, :root [href^="https://ilovemyfreedoms.com/landing-"], :root a[href^="https://staRTgaming.net/tienda/"], :root a[href^="https://STaRtgAmInG.net/tienda/"], :root a[href^="http://adultfriendfinder.com/go/"], :root a[href^="https://fastestvpn.com/lifetime-special-deal?a_aid="], :root a[href^="https://tour.mrskin.com/"], :root div[id^="ad-position-"], :root a[href^="http://affiliate.glbtracker.com/"], :root a[href^="https://leg.xyz/?track="], :root div[id^="crt-"][style], :root a[href^="http://adultgames.xxx/"], :root [href^="https://shiftnetwork.infusionsoft.com/go/"] > img, :root a[onmousedown^="this.href='http://paid.outbrain.com/network/redir?"][target="_blank"], :root [href^="https://secure.bmtmicro.com/servlets/"], :root a[href^="https://losingoldfry.com/"], :root .scroll-fixable.rail-right > .deals-rail, :root [href^="https://routewebtk.com/"], :root a[href^="https://oackoubs.com/"], :root a[href^="https://ak.psaltauw.net/"], :root a[href^="https://go.cmtaffiliates.com/"], :root [data-name="adaptiveConstructorAd"], :root [href^="https://optimizedelite.com/"] > img, :root a[href^="https://awptjmp.com/"], :root a[href^="https://go.goasrv.com/"], :root [href^="http://mypillow.com/"] > img, :root a[href^="http://bongacams.com/track?"], :root a[href^="https://fleshlight.sjv.io/"], :root [data-ad-manager-id], :root a[href^="https://promo-bc.com/"], :root a[href^="https://clicks.pipaffiliates.com/"], :root [href^="https://noqreport.com/"] > img, :root a[href^="https://www.highperformancecpmgate.com/"], :root a[href^="https://t.grtyi.com/"], :root [href^="https://mylead.global/stl/"] > img, :root [href^="https://mypatriotsupply.com/"] > img, :root [data-freestar-ad], :root a[href^="https://fc.lc/ref/"], :root .vid-present > .van_vid_carousel__padding, :root span[data-ez-ph-id], :root [href^="https://track.aftrk1.com/"], :root div[id^="adngin-"], :root [data-rc-widget], :root a[href^="https://go.xxxijmp.com"], :root [href^="https://istlnkcl.com/"], :root [href^="https://go.xlrdr.com"], :root [href^="https://go.4rabettraff.com/"], :root a[href^="https://tm-offers.gamingadult.com/"], :root [href^="https://charmingdatings.life/"], :root [href^="https://glersakr.com/"], :root ins.adsbygoogle, :root a[href^="https://1startfiledownload1.com/"], :root .trc_rbox_border_elm .syndicatedItem, :root a[href^="http://www.onclickmega.com/jump/next.php?"], :root a[href^="https://italarizege.xyz/"], :root a[href^="https://wittered-mainging.com/"], :root [href^="https://engine.gettopple.com/"], :root [data-id^="div-gpt-ad"], :root a[href^="https://k2s.cc/pr/"], :root [href^="https://affect3dnetwork.com/track/"], :root a[href^="https://camfapr.com/landing/click/"], :root [href="//sexcams.plus/"], :root a[href^="https://go.currency.com/"], :root [href^="http://www.mypillow.com/"] > img, :root div[id^="div-ads-"], :root [href^="https://rapidgator.net/article/premium/ref/"], :root [href^="https://join3.bannedsextapes.com"], :root div[data-spotim-slot], :root [href^="https://antiagingbed.com/discount/"] > img, :root a[href^="https://go.247traffic.com/"], :root [href^="https://join.girlsoutwest.com/"], :root [href^="http://trafficare.net/"], :root a[href^="https://tc.tradetracker.net/"] > img, :root a[href^="https://adserver.adreactor.com/"], :root [href^="http://join.shemalesfromhell.com/"], :root [id^="ad_slider"], :root #searchResultsList > div > div[onclick$="'inline.ad'});"], :root [data-adbridg-ad-class], :root a[href^="http://www.adultdvdempire.com/?partner_id="][href*="&utm_"], :root [href^="http://join.shemale.xxx/"], :root a[href^="https://ads.betfair.com/redirect.aspx?"], :root [href^="http://www.fleshlightgirls.com/"], :root [href^="http://join.trannies-fuck.com/"], :root .trc_rbox .syndicatedItem, :root a[href^="http://cam4com.go2cloud.org/aff_c?"], :root a[href^="https://thefacux.com/"], :root a[href^="https://ads.planetwin365affiliate.com/redirect.aspx?"], :root [href^="http://join.rodneymoore.com/"], :root [href^="https://shrugartisticelder.com"], :root a[href^="https://staRTgamIng.net/tienda/"], :root div[id^="lazyad-"], :root a[href^="http://com-1.pro/"], :root [name^="google_ads_iframe"], :root [href="https://www.masstortfinancing.com/"] > img, :root .ob_container .item-container-obpd, :root [id^="div-gpt-ad"], :root [href^="https://mypillow.com/"] > img, :root [href^="https://ad.admitad.com/"], :root [data-testid="ad_testID"], :root a[href^="https://u.expresstech.io/"], :root a[href^="https://www.geekbuying.com/dynamic-ads/"], :root a[href^="https://lnkxt.bannerator.com/"], :root [href="https://jdrucker.com/gold"] > img, :root [href^="https://v.investologic.co.uk/"], :root [href^="https://mystore.com/"] > img, :root ADS-RIGHT, :root [href^="https://cipledecline.buzz/"], :root a[href^="https://go.xxxjmp.com"], :root #leader-companion > a[href], :root [data-desktop-ad-id], :root [href^="https://wct.link/"], :root div[recirculation-ad-container], :root [href^="https://traffserve.com/"], :root a[href^="https://track.ultravpn.com/"], :root [href^="https://goldcometals.com/clk.trk"], :root a[href^="https://go.hpyjmp.com"], :root [data-mobile-ad-id], :root a[href^="http://tc.tradetracker.net/"] > img, :root a[href^="http://affiliates.thrixxx.com/"], :root [data-ad-name], :root [data-ez-name], :root a[data-widget-outbrain-redirect^="http://paid.outbrain.com/network/redir?"], :root [data-dynamic-ads], :root a[href^="http://go.xtbaffiliates.com/"], :root a[href^="https://consali.com/"], :root .grid > .container > #aside-promotion, :root DFP-AD, :root .trc_related_container div[data-item-syndicated="true"], :root a[href^="https://www.liquidfire.mobi/"], :root [href^="https://click2cvs.com/"], :root a[href^="https://startgAming.net/tienda/"], :root [href^="https://safer-redirection.com"], :root [onclick*="content.ad/"], :root AMP-AD, :root [data-ad-cls], :root [id^="ad-wrap-"], :root div[id^="taboola-stream-"], :root [href^="https://go.astutelinks.com/"], :root [class^="amp-ad-"], :root [href^="https://affiliate.fastcomet.com/"] > img, :root [class^="adDisplay-module"], :root AD-SLOT, :root a[href^="https://go.xlviiirdr.com"], :root [href^="http://join.shemalepornstar.com/"], :root a[href^="http://partners.etoro.com/"], :root [data-advadstrackid], :root [href^="https://trackfin.asia/"], :root .plistaList > .plista_widget_underArticle_item[data-type="pet"], :root .ob_dual_right > .ob_ads_header ~ .odb_div, :root .trc_rbox_div .syndicatedItem, :root div[data-adunit], :root app-large-ad, :root [href^="https://turtlebids.irauctions.com/"] img, :root [data-ad-module], :root .plistaList > .itemLinkPET, :root [href^="https://gmxvmvptfm.com/"], :root a[href^="https://bs.serving-sys.com"], :root [href^="http://residenceseeingstanding.com/"], :root a[href*="//lkstrck2.com/"], :root a[href^="https://traffdaq.com/"], :root [class^="div-gpt-ad"], :root a[href^="https://refpazkjixes.top/"], :root #mgb-container > #mgb, :root [href^="https://www.cloudways.com/en/?id"], :root a[href^="https://trk.sportsflix4k.club/"], :root a[href^="https://go.xlivrdr.com"], :root a[href^="https://cam4com.go2cloud.org/"], :root a[href^="http://li.blogtrottr.com/click?"] { display: none !important; }</style></head>
+<body id="page-top" style="" data-new-gr-c-s-check-loaded="14.1119.0" data-gr-ext-installed="">
+
+<!-- PAGE WRAP -->
+<div id="page-wrap">
+    <div class="overlayForm" style="display: none"></div>
+
+    <div class="top-nav">
+
+        <h4 class="sm black bold">    <ol class="breadcrumb">
+                    <li><a href="https://dblearning.it.kmitl.ac.th/class/70">DATABASE SYSTEM CONCEPT 2566</a></li>
+            <li><a href="https://dblearning.it.kmitl.ac.th/quiz/2307">Assignment: 2566-LAB09-SQL  SUBQUERIES</a></li>
+            <li><a href="https://dblearning.it.kmitl.ac.th/quiz/2307/submission?class=70">Submission</a></li>
+                <li class="active">#88227</li>
+    </ol>
+</h4>
+
+        <ul class="top-nav-list">
+            <li>
+                <a href="javascript:{}">
+                    <span id="clock">23:19:05</span>
+<script type="text/javascript">
+    var now = new Date(1691943192000);
+    function startInterval(){
+        setInterval('updateTime();', 1000);
+    }
+    startInterval();
+    function updateTime(){
+        var nowMS = now.getTime();
+        nowMS += 1000;
+        
+        now.setTime(nowMS);
+        var clock = document.getElementById('clock');
+        if(clock){
+            clock.innerHTML = now.toTimeString().split(" ",1);
+        }
+    }
+</script>                </a>
+            </li>
+                <li class="backpage">
+                    <a href="https://dblearning.it.kmitl.ac.th/quiz/2307/submission?class=70"><i class="icon md-close-1"></i></a>
+            </li>
+        </ul>
+
+    </div>
+
+        <section id="quiz-section" class="quiz-section" style="padding-top: 60px;">
+        <div class="container">
+            <br><br>
+            <div class="row">
+                <div class="col-md-6">
+                                        <div class="pull-right">
+                        <a class="btn btn-warning btn-comment-quiz" href="https://dblearning.it.kmitl.ac.th/quiz/submission/88227#" role="button">
+                            <i class="fa fa-comments"></i> Comment This Quiz
+                        </a>
+                    </div>
+                    
+                    <h1>Submission #88227</h1>
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>ID</th>
+                            <td>88227
+                                                        </td>
+                        </tr>
+                        <tr>
+                            <th>Quiz Name</th>
+                            <td>2566-LAB09-SQL  SUBQUERIES</td>
+                        </tr>
+                        <tr>
+                            <th>User</th>
+                            <td>it65070185 (นายภูวิศ นุ่นปาน)</td>
+                        </tr>
+                        <tr>
+                            <th>Score</th>
+                            <td>
+                                ???
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>
+                                ???
+
+                            </td>
+                        </tr>
+                                                <tr>
+                            <th>Started at</th>
+                            <td>2023-08-13 22:57:41</td>
+                        </tr>
+                        <tr>
+                            <th>Submitted at</th>
+                            <td>2023-08-13 23:13:10</td>
+                        </tr>
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="fill_chart" style="display: block; height: 0px; width: 0px;" height="0" width="0" class="chartjs-render-monitor"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Fill In</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="choice_chart" style="display: block; height: 0px; width: 0px;" height="0" width="0" class="chartjs-render-monitor"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Choice</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="matching_chart" style="display: block; height: 0px; width: 0px;" height="0" width="0" class="chartjs-render-monitor"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Matching</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 ">
+                                <div class="box box-danger">
+                                    <div class="box-body"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                                        <canvas id="sql_chart" style="display: block; height: 150px; width: 174px;" width="208" height="180" class="chartjs-render-monitor"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">SQL</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="er_chart" style="display: block; height: 0px; width: 0px;" height="0" width="0" class="chartjs-render-monitor"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Logical</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="design_chart" style="display: block; height: 0px; width: 0px;" height="0" width="0" class="chartjs-render-monitor"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Conceptual</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="er_verification_chart" style="display: block; height: 0px; width: 0px;" height="0" width="0" class="chartjs-render-monitor"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">ER Verification</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="panel-group" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-success hidden">
+                    <a role="button" data-toggle="collapse" href="https://dblearning.it.kmitl.ac.th/quiz/submission/88227#collapseFill" aria-expanded="true" aria-controls="collapseFill">
+                        <div class="panel-heading" role="tab" id="headingFill">
+                            <h4 class="panel-title">
+                                <i class="fa fa-file-text-o"></i> Fill In
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseFill" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFill">
+                        <div class="panel-body">
+                                                       No Data
+                                          </div>
+               </div>
+           </div>
+           <div class="panel panel-info hidden">
+               <a class="collapsed" role="button" data-toggle="collapse" href="https://dblearning.it.kmitl.ac.th/quiz/submission/88227#collapseChoice" aria-expanded="false" aria-controls="collapseChoice">
+                   <div class="panel-heading" role="tab" id="headingChoice">
+                       <h4 class="panel-title">
+                           </h4><h3 class="panel-title"><i class="fa fa-check-circle-o"></i> Choice</h3>
+                       
+                   </div>
+               </a>
+
+               <div id="collapseChoice" class="panel-collapse collapse  in" role="tabpanel" aria-labelledby="headingChoice">
+                   <div class="panel-body">
+                                                       No Data
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-warning hidden">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/88227#collapseMatching" aria-expanded="false" aria-controls="collapseMatching">
+                        <div class="panel-heading" role="tab" id="headingMatching">
+                            <h4 class="panel-title">
+                                <i class="fa fa-link"></i> Matching
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseMatching" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingMatching">
+                        <div class="panel-body">
+                                                            No Data
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger ">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/88227#collapseSQL" aria-expanded="false" aria-controls="collapseSQL">
+                        <div class="panel-heading" role="tab" id="headingSQL">
+                            <h4 class="panel-title">
+                                <i class="fa fa-database"></i> SQL
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseSQL" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSQL">
+                        <div class="panel-body">
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            933
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>แสดงชื่อ นามสกุล และวันที่รับเข้าทำงานของพนักงานที่รับเข้าทำงานวันเดียวกับพนักงานที่นามสกุลคือ&nbsp; Baer และไม่ต้องแสดงข้อมูลของนามสกุล Baer (ใช้ subquery)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #647640</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> first_name, last_name, hire_date
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> hire_date = (<span class="hljs-keyword">select</span> hire_date
+				   <span class="hljs-keyword">from</span> employees
+				   <span class="hljs-keyword">where</span> last_name = <span class="hljs-string">'Baer'</span>)
+<span class="hljs-keyword">and</span> last_name != <span class="hljs-string">'Baer'</span>;</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            934
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><strong>แสดงรหัสพนักงาน ชื่อ นามสกุลและเงินเดือนของพนักงานทุกคน<u>ที่ได้รับเงินเดือนสูงกว่าค่าเฉลี่ยเงินเดือน</u> และ<u>เรียงลำดับผลลัพธ์ด้วยเงินเดือนจากมากไปน้อย</u> &nbsp;</strong>(ใช้ subquery)<br>
+<img src="./Lab09_files/topic-_69_1522672683566_5Jb072APEi.png" style="height:89px; width:543px"><br>
+<strong>………………………………</strong><br>
+<img src="./Lab09_files/topic-_69_1522672707542_yhRCLICzSS.png" style="height:45px; width:548px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #647652</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> employee_id, first_name, last_name, salary
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> salary &gt; all (<span class="hljs-keyword">select</span> <span class="hljs-keyword">avg</span>(salary)
+					<span class="hljs-keyword">from</span> employees)
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> salary <span class="hljs-keyword">desc</span>;</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            935
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><strong>แสดงรหัสแผนก ชื่อ นามสกุล และรหัสงานของพนักงานทุกคนทำงานอยู่ในแผนกชื่อ Executive (ใช้ subquery)</strong><br>
+<img src="./Lab09_files/topic-_69_1522672726319_gHjvLfrnfO.png" style="height:39px; width:510px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #647683</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> department_id, first_name, last_name, job_id
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> department_id <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> department_id
+						<span class="hljs-keyword">from</span> employees
+						<span class="hljs-keyword">where</span> department_id = <span class="hljs-number">90</span>);</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            936
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>แสดงข้อมูลพนักงานที่ได้รับเงินเดือนมากกว่าเงินเดือนของ IT Programmer (คือ JOB_ID เป็น IT_PROG) ทุกคน และต้องไม่ใช่ IT Programmer (ใช้ subquery)<br>
+<img src="./Lab09_files/topic-_258_1618482884321_GBSxDilABP.png" style="height:316px; width:700px"><br>
+&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #647699</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> *
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> salary &gt; all (<span class="hljs-keyword">select</span> salary
+					<span class="hljs-keyword">from</span> employees
+					<span class="hljs-keyword">where</span> job_id =<span class="hljs-string">'IT_PROG'</span>)
+<span class="hljs-keyword">and</span>  job_id !=<span class="hljs-string">'IT_PROG'</span>;</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            937
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>แสดงรหัสพนักงาน ชื่อและนามสกุลพนักงาน รหัสแผนก ของพนักงานที่ทำงานในเมืองที่มีชื่อเมืองขึ้นต้นด้วยอักษร T (ใช้ subquery)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #647721</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> employee_id, first_name, last_name, department_id
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> department_id <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> department_id
+					   <span class="hljs-keyword">from</span> departments
+						<span class="hljs-keyword">join</span> locations
+						<span class="hljs-keyword">using</span> (location_id)
+					   <span class="hljs-keyword">where</span> city <span class="hljs-keyword">like</span> <span class="hljs-string">'T%'</span>);</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            938
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>แสดงชื่อ นามสกุล และรหัสแผนกของพนักงาน ที่ได้รับเงินเดือนน้อยกว่าค่าเฉลี่ยเงินเดือนของแผนกรหัส 60 เรียงลำดับด้วยรหัสแผนกจากน้อยไปมาก (ใช้ subquery)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #647741</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> first_name, last_name, department_id
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> salary &lt; (<span class="hljs-keyword">select</span> <span class="hljs-keyword">avg</span>(salary)
+				<span class="hljs-keyword">from</span> employees
+				<span class="hljs-keyword">where</span> department_id = <span class="hljs-number">60</span>)
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> department_id <span class="hljs-keyword">asc</span>;</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            940
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>แสดงชื่อ นามสกุล และรหัสแผนกของพนักงาน ที่ได้รับเงินเดือนเท่ากับเงินเดือนสูงสุดของแผนกรหัส 50 โดยไม่ต้องแสดงพนักงานของแผนกรหัส 50 เรียงลำดับด้วยชื่อพนักงานจาก A-Z (ใช้ subquery)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #647756</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> first_name, last_name, department_id
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> salary = (<span class="hljs-keyword">select</span> <span class="hljs-keyword">max</span>(salary)
+				<span class="hljs-keyword">from</span> employees
+				<span class="hljs-keyword">where</span> department_id = <span class="hljs-number">50</span>)
+<span class="hljs-keyword">and</span> department_id != <span class="hljs-number">50</span>
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> first_name <span class="hljs-keyword">asc</span>;</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            941
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>แสดงรหัสพนักงาน ชื่อและนามสกุลพนักงาน และรหัสผู้จัดการของพนักกงานของคนนั้นๆ โดยแสดงเฉพาะพนักงานที่ไม่ใช่ผู้จัดการ (ใช้ subquery)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #647774</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> employee_id, first_name, last_name, manager_id
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> employee_id <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> manager_id
+					 <span class="hljs-keyword">from</span> employees
+					 <span class="hljs-keyword">where</span> manager_id <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>);</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            942
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>แสดงชือ นามสกุลพนักงาน เงินเดือน วันที่รับเข้าทำงาน รหัสแผนก ที่เข้าทำงานหลังพนักงานทุกคนในแผนกรหัส 30 &nbsp;และไม่ต้องแสดงข้อมูลพนักงานในแผนกรหัส 30 เรียงลำดับข้อมูลด้วยวันที่รับเข้าทำงานจากอดีตมาล่าสุด (ใช้ subquery)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #647791</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> first_name, last_name, salary, hire_date, department_id
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> hire_date &gt; all (<span class="hljs-keyword">select</span> hire_date
+				   <span class="hljs-keyword">from</span> employees
+				   <span class="hljs-keyword">where</span> department_id = <span class="hljs-number">30</span>)
+<span class="hljs-keyword">and</span> department_id != <span class="hljs-number">30</span>
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> hire_date <span class="hljs-keyword">asc</span>;</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            943
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>แสดงรหัสพนักงาน ชื่อนามสกุลพนักงาน รหัสงานและเงินเดือน ที่ได้รับเงินเดือนน้อยกว่าเงินเดือนของพนักงานที่มีรหัสงานเป็น FI_ACCOUNT บางคน และไม่ต้องแสดงพนักงานที่มีรหัสงาน FI_ACCOUNT (ใช้ subquery)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #647807</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> employee_id, first_name, last_name, job_id, salary
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> salary &lt; <span class="hljs-keyword">any</span> (<span class="hljs-keyword">select</span> salary
+					<span class="hljs-keyword">from</span> employees
+					<span class="hljs-keyword">where</span> job_id = <span class="hljs-string">'FI_ACCOUNT'</span>)
+<span class="hljs-keyword">and</span> job_id != <span class="hljs-string">'FI_ACCOUNT '</span>;</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            944
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>แสดงรหัสแผนกและจำนวนคนในแผนกเดียวกัน(ตั้งชื่อเป็นคอลัมน์ number of employees) เฉพาะกลุ่มที่มีจำนวนคนในแผนกมากกว่าจำนวนคนในแผนกรหัส 60 (ใช้ subquery)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #647816</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> department_id, <span class="hljs-keyword">count</span>(employee_id) <span class="hljs-string">`number of employees`</span>
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> department_id
+<span class="hljs-keyword">having</span> <span class="hljs-keyword">count</span>(employee_id) &gt; (<span class="hljs-keyword">select</span> <span class="hljs-keyword">count</span>(employee_id)
+							<span class="hljs-keyword">from</span> employees
+							<span class="hljs-keyword">where</span> department_id = <span class="hljs-number">60</span>);</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            945
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>แสดงรหัสงานและค่าเงินเดือนสูงสุดในรหัสงานเดียวกันของพนักงาน เฉพาะกลุ่มที่มีค่าเงินเดือนสูงสุดในรหัสงานน้อยกว่าค่าเงินเดือนสูงสุดในรหัสงาน HR_REP (ใช้ subquery)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #647832</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> job_id, <span class="hljs-keyword">max</span>(salary)
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> job_id
+<span class="hljs-keyword">having</span> <span class="hljs-keyword">max</span>(salary) &lt; (<span class="hljs-keyword">select</span> <span class="hljs-keyword">max</span>(salary)
+					  <span class="hljs-keyword">from</span> employees
+					  <span class="hljs-keyword">where</span> job_id = <span class="hljs-string">'HR_REP'</span>);</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger hidden">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/88227#collapseER" aria-expanded="false" aria-controls="collapseER">
+                        <div class="panel-heading" role="tab" id="headingER">
+                            <h4 class="panel-title">
+                                <i class="fa fa-database"></i> ER Mapping
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseER" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingER">
+                        <div class="panel-body">
+                                                            No Data
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger hidden">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/88227#collapseDesign" aria-expanded="false" aria-controls="collapseDesign">
+                        <div class="panel-heading" role="tab" id="headingDesign">
+                            <h4 class="panel-title">
+                                <i class="fa fa-database"></i> ER Design
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseDesign" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingDesign">
+                        <div class="panel-body">
+                                                            No Data
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger hidden">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/88227#collapseDesign" aria-expanded="false" aria-controls="collapseDesign">
+                        <div class="panel-heading" role="tab" id="headingDesign">
+                            <h4 class="panel-title">
+                                <i class="fa fa-database"></i> ER Verification
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseDesign" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingDesign">
+                        <div class="panel-body">
+                                                            No Data
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- FORM COMMENT QUIZ -->
+    <div class="form-checkout" style="top: 317px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <ul id="bar">
+                        <li class="form-quiz-header">Comment This Quiz</li>
+                    </ul>
+                    <span class="closeForm"><i class="icon md-close-1"></i></span>
+                    <div class="form-body">
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form method="POST" action="https://dblearning.it.kmitl.ac.th/quiz/submission/88227/comment" accept-charset="UTF-8" class="form-horizontal form-quiz"><input name="_token" type="hidden" value="l6rKJN9snjPiNKoc0pDbKglAAjxhlVFAHrgBSpAz">
+                                <div class="form-group">
+                                    <div class="col-sm-offset-1 col-sm-10">
+                                        <textarea id="comment" name="comment"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12" style="text-align: center;">
+                                        <button type="submit" class="btn btn-success btn-save-quiz">
+                                            <i class="fa fa-paper-plane"></i> Send
+                                        </button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END / FORM COMMENT QUIZ -->
+        <div class="loading hidden">
+        <div class="cssload-tetrominos">
+            <div class="cssload-tetromino cssload-box1"></div>
+            <div class="cssload-tetromino cssload-box2"></div>
+            <div class="cssload-tetromino cssload-box3"></div>
+            <div class="cssload-tetromino cssload-box4"></div>
+        </div>
+    </div>
+
+</div>
+<!-- END / PAGE WRAP -->
+
+<!-- Load jQuery -->
+<script type="text/javascript" src="./Lab09_files/jquery-1.11.0.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab09_files/bootstrap.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab09_files/jquery.owl.carousel.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab09_files/jquery.appear.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab09_files/perfect-scrollbar.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab09_files/toastr.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab09_files/imagesloaded.pkgd.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab09_files/scripts.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab09_files/raven.min.js.ดาวน์โหลด" crossorigin="anonymous"></script>
+<script>
+
+    // helper function to set cookies
+    function setCookie(cname, cvalue, seconds) {
+        var d = new Date();
+        d.setTime(d.getTime() + (seconds * 1000));
+        var expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    // helper function to get a cookie
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    $(document).ready(function(){
+        // Do not allow multiple call center tabs
+        let url = window.location.href
+        if (url.includes("/attempt/sql")) {
+            $(window).on('beforeunload onbeforeunload', function(){
+                document.cookie = 'ic_window_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            });
+
+            function validateCallCenterTab() {
+                var win_id_cookie_duration = 10; // in seconds
+
+                if (!window.name) {
+                    window.name = Math.random().toString();
+                }
+                if (!getCookie('ic_window_id') || window.name === getCookie('ic_window_id')) {
+                    // This means they are using just one tab. Set/clobber the cookie to prolong the tab's validity.
+                    setCookie('ic_window_id', window.name, win_id_cookie_duration);
+                } else if (getCookie('ic_window_id') !== window.name) {
+                    // this means another browser tab is open, alert them to close the tabs until there is only one remaining
+                    var message = 'คุณไม่สามารถเปิดเว็บไซต์นี้ได้หลายแท็บขณะกำลังตอบคำถาม กรุณาปิดแท็บนี้และถ้าคุณพบปัญหาให้รีเฟรชแท็บที่กำลังตอบคำถามอยู่';
+                    alert(message)
+                    window.close();
+                    $('html').html(message);
+                    clearInterval(callCenterInterval);
+                    throw 'Multiple call center tabs error. Program terminating.';
+                }
+            }
+
+            callCenterInterval = setInterval(validateCallCenterTab, 3000);
+        }
+
+        //SENTRY LOG
+        Raven.config('https://9f1aa240bf7741128f6d9b6171e494f0@sentry.io/289929').install();
+        Raven.setUserContext({
+            username: 'it65070185',
+            name: 'นายภูวิศ นุ่นปาน'
+        });
+    });
+</script>
+
+    <script type="text/javascript" src="./Lab09_files/jquery.hotkeys.js.ดาวน์โหลด"></script>
+    <script src="./Lab09_files/datatables.min.js.ดาวน์โหลด"></script>
+    <script src="./Lab09_files/Chart.min.js.ดาวน์โหลด"></script>
+    <script src="./Lab09_files/highlight.pack.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab09_files/vis.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab09_files/deep-diff-0.3.4.min.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab09_files/jscolor.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab09_files/typo.js.ดาวน์โหลด"></script>
+    <script src="./Lab09_files/color.js.ดาวน์โหลด"></script>
+    <script src="./Lab09_files/EventHelpers.js.ดาวน์โหลด"></script>
+    <script src="./Lab09_files/DragDropHelpers.js.ดาวน์โหลด"></script>
+    <script src="./Lab09_files/permissionForm.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab09_files/jsencrypt.min.js.ดาวน์โหลด"></script>
+    <script src="./Lab09_files/erdiagram.js.ดาวน์โหลด"></script>
+
+    <shoulddetectajax class="hidden">false</shoulddetectajax>
+    <script>
+        var child;
+        $('.open-er-logical').click(function () {
+            graph = $(this).attr('value');
+            child = window.open('https://dblearning.it.kmitl.ac.th/tool/logical_er');
+        });
+        $( document ).ready(function() {
+            $.each($('.erdiagram'), function (index, item) {
+                var enableExport = false;
+                if($(item).hasClass('erdiagram-enable-export')){
+                    enableExport = true;
+                }
+                var graph = JSON.parse($(item).html());
+                $(item).html('');
+                $(item).removeClass('hidden');
+                new ERDiagram('#'+$(item).attr('id'), {
+                    graph: graph,
+                    editable: false,
+                    isShowMenu: false,
+                    enableExport: enableExport,
+                });
+            });
+
+        });
+                $('.btn-comment-quiz').on('click', function() {
+            //editChapterOpen($(this).attr('quiz'));
+            $('.form-checkout, .overlayForm').fadeIn(400);
+            $(window).trigger('resize');
+            return false;
+        });
+        $('.closeForm').on('click', function() {
+            $('.form-checkout, .overlayForm').fadeOut(400);
+        });
+            </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+        $('[data-toggle="tooltip"]').tooltip();
+        var navbarHeight = $('.top-nav').outerHeight();
+        $('.quiz-section').css('padding-top', navbarHeight);
+        $(function () {
+            var chartIds = [
+                                'fill_chart',
+                                'choice_chart',
+                                'matching_chart',
+                                'sql_chart',
+                                'er_chart',
+                                'design_chart',
+                                'er_verification_chart',
+                            ];
+            var chartLabels = ["Fill In","Choice","Matching","SQL","Logical","Conceptual","ER Verification"];
+            var chartDatas = [
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 12],
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0],
+                                    ];
+            var chartColors =  [
+                                        'rgba(255, 99, 132, 0.8)',
+                                        'rgba(54, 162, 235, 0.8)',
+                                        'rgba(255, 206, 86, 0.8)',
+                                        'rgba(75, 192, 192, 0.8)',
+                                        'rgba(194, 66, 244, 0.8)',
+                                        'rgba(247, 255, 17, 0.8)',
+                                        'rgba(77, 204, 38, 0.8)',
+                                    ];
+            var chartList = {};
+            for(var i = 0; i < chartIds.length; i++){
+                chartList[chartIds[i]] = new Chart($("#"+chartIds[i]), {
+                type: 'doughnut',
+                    data: {
+                        labels: [chartLabels[i], ""],
+                        datasets: [{
+                            label: '# of '+chartLabels[i],
+                            data: [chartDatas[i][0], chartDatas[i][1]-chartDatas[i][0]],
+                            backgroundColor: [
+                                chartColors[i],
+                                'rgba(169, 169, 169, 0)'
+                            ],
+                            borderColor: [
+                                chartColors[i],
+                                'rgba(169, 169, 169, 0.3)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        legend: {
+                            display: false
+                        },
+                        elements: {
+                            center: {
+                                // the longest text that could appear in the center
+                                maxText: '100%',
+                                text: (chartDatas[i][0] * 100 / chartDatas[i][1]).toFixed(1) + '%',
+                                fontColor: chartColors[i],
+                                fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                                fontStyle: 'normal',
+                                // fontSize: 12,
+                                // if a fontSize is NOT specified, we will scale (within the below limits) maxText to take up the maximum space in the center
+                                // if these are not specified either, we default to 1 and 256
+                                minFontSize: 1,
+                                maxFontSize: 15,
+                            }
+                        }}
+                });
+            }});
+        // write text plugin
+        Chart.pluginService.register({
+            afterUpdate: function (chart) {
+                if (chart.config.options.elements.center) {
+                    var helpers = Chart.helpers;
+                    var centerConfig = chart.config.options.elements.center;
+                    var globalConfig = Chart.defaults.global;
+                    var ctx = chart.chart.ctx;
+
+                    var fontStyle = helpers.getValueOrDefault(centerConfig.fontStyle, globalConfig.defaultFontStyle);
+                    var fontFamily = helpers.getValueOrDefault(centerConfig.fontFamily, globalConfig.defaultFontFamily);
+
+                    if (centerConfig.fontSize)
+                        var fontSize = centerConfig.fontSize;
+                    // figure out the best font size, if one is not specified
+                    else {
+                        ctx.save();
+                        var fontSize = helpers.getValueOrDefault(centerConfig.minFontSize, 1);
+                        var maxFontSize = helpers.getValueOrDefault(centerConfig.maxFontSize, 256);
+                        var maxText = helpers.getValueOrDefault(centerConfig.maxText, centerConfig.text);
+
+                        do {
+                            ctx.font = helpers.fontString(fontSize, fontStyle, fontFamily);
+                            var textWidth = ctx.measureText(maxText).width;
+
+                            // check if it fits, is within configured limits and that we are not simply toggling back and forth
+                            if (textWidth < chart.innerRadius * 2 && fontSize < maxFontSize)
+                                fontSize += 1;
+                            else {
+                                // reverse last step
+                                fontSize -= 1;
+                                break;
+                            }
+                        } while (true)
+                        ctx.restore();
+                    }
+
+                    // save properties
+                    chart.center = {
+                        font: helpers.fontString(fontSize, fontStyle, fontFamily),
+                        fillStyle: helpers.getValueOrDefault(centerConfig.fontColor, globalConfig.defaultFontColor)
+                    };
+                }
+            },
+            afterDraw: function (chart) {
+                if (chart.center) {
+                    var centerConfig = chart.config.options.elements.center;
+                    var ctx = chart.chart.ctx;
+
+                    ctx.save();
+                    ctx.font = chart.center.font;
+                    ctx.fillStyle = chart.center.fillStyle;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    var centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
+                    var centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
+                    ctx.fillText(centerConfig.text, centerX, centerY);
+                    ctx.restore();
+                }
+            }
+        });
+    </script>
+
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+  div.grammarly-desktop-integration {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+  }
+
+  div.grammarly-desktop-integration:before {
+    content: attr(data-content);
+  }
+</style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>

@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)https://dblearning.it.kmitl.ac.th/quiz/submission/83319 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <!-- Google font -->
+    <link href="./Lab01_files/css" rel="stylesheet" type="text/css">
+    <link href="./Lab01_files/css(1)" rel="stylesheet" type="text/css">
+    <!-- Css -->
+    <link rel="stylesheet" type="text/css" href="./Lab01_files/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./Lab01_files/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./Lab01_files/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="./Lab01_files/md-font.css">
+    <link rel="stylesheet" type="text/css" href="./Lab01_files/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="./Lab01_files/loading.css">
+    <link rel="stylesheet" type="text/css" href="./Lab01_files/style.css">
+
+        <link rel="stylesheet" href="./Lab01_files/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="./Lab01_files/vis.min.css">
+
+    <style>
+        .breadcrumb {
+            margin-bottom: 0px;
+            padding-top: 0px;
+        }
+        .breadcrumb > li > a {
+            margin-top: 1em;
+        }
+        .ps-container > .ps-scrollbar-x-rail > .ps-scrollbar-x,
+        .ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y  {   opacity: 1; }
+
+        .container{
+            width: 100%;
+        }
+    </style>
+        <style>
+        .erdiagram, .network, .col-xs-12{
+            height: 400px!important;
+        }
+        .answer_explanation{
+            border: 1px red solid;
+        }
+        .answer_explanation > th, .answer_explanation > td{
+            padding: 1em;
+        }
+        .answer_explanation > th{
+            background-color: red;
+            color: white;
+        }
+        p{color: black;}
+        h1{margin-top: 0;}
+        h4{color: black;}
+        .container{  width: 80%}
+        th {width: 10em;}
+        .panel{margin-bottom: 1em!important;}
+        table{width: 100%;}
+        .panel-warning{border-color: #f1c774}
+        .tooltip-inner {
+            white-space:nowrap;
+            max-width:none;
+        }
+        pre{
+            white-space: pre-wrap;       /* Since CSS 2.1 */
+            white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;
+        }
+        .monospace table, .error-code{
+            font-family: "Courier New", Courier, monospace!important;
+        }
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+    <title>
+                        Learning SQL -
+        
+    Quiz
+    </title>
+<style type="text/css" id="operaUserStyle"></style><style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
+<body id="page-top" style="" data-new-gr-c-s-check-loaded="14.1114.0" data-gr-ext-installed="">
+
+<!-- PAGE WRAP -->
+<div id="page-wrap">
+    <div class="overlayForm" style="display: none"></div>
+
+    <div class="top-nav">
+
+        <h4 class="sm black bold">    <ol class="breadcrumb">
+                    <li><a href="https://dblearning.it.kmitl.ac.th/class/70">DATABASE SYSTEM CONCEPT 2566</a></li>
+            <li><a href="https://dblearning.it.kmitl.ac.th/quiz/2274">Assignment: 2566-LAB01-DDL-Creating and managing tables</a></li>
+            <li><a href="https://dblearning.it.kmitl.ac.th/quiz/2274/submission?class=70">Submission</a></li>
+                <li class="active">#83319</li>
+    </ol>
+</h4>
+
+        <ul class="top-nav-list">
+            <li>
+                <a href="javascript:{}">
+                    <span id="clock">11:17:41</span>
+<script type="text/javascript">
+    var now = new Date(1688789823000);
+    function startInterval(){
+        setInterval('updateTime();', 1000);
+    }
+    startInterval();
+    function updateTime(){
+        var nowMS = now.getTime();
+        nowMS += 1000;
+        
+        now.setTime(nowMS);
+        var clock = document.getElementById('clock');
+        if(clock){
+            clock.innerHTML = now.toTimeString().split(" ",1);
+        }
+    }
+</script>                </a>
+            </li>
+                <li class="backpage">
+                    <a href="https://dblearning.it.kmitl.ac.th/quiz/2274/submission?class=70"><i class="icon md-close-1"></i></a>
+            </li>
+        </ul>
+
+    </div>
+
+        <section id="quiz-section" class="quiz-section" style="padding-top: 60px;">
+        <div class="container">
+            <br><br>
+            <div class="row">
+                <div class="col-md-6">
+                                        <div class="pull-right">
+                        <a class="btn btn-warning btn-comment-quiz" href="https://dblearning.it.kmitl.ac.th/quiz/submission/83319#" role="button">
+                            <i class="fa fa-comments"></i> Comment This Quiz
+                        </a>
+                    </div>
+                    
+                    <h1>Submission #83319</h1>
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>ID</th>
+                            <td>83319
+                                                        </td>
+                        </tr>
+                        <tr>
+                            <th>Quiz Name</th>
+                            <td>2566-LAB01-DDL-Creating and managing tables</td>
+                        </tr>
+                        <tr>
+                            <th>User</th>
+                            <td>it65070185 (นายภูวิศ นุ่นปาน)</td>
+                        </tr>
+                        <tr>
+                            <th>Score</th>
+                            <td>
+                                ???
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>
+                                ???
+
+                            </td>
+                        </tr>
+                                                <tr>
+                            <th>Started at</th>
+                            <td>2023-07-05 11:07:26</td>
+                        </tr>
+                        <tr>
+                            <th>Submitted at</th>
+                            <td>2023-07-05 13:46:32</td>
+                        </tr>
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="fill_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Fill In</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="choice_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Choice</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="matching_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Matching</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 ">
+                                <div class="box box-danger">
+                                    <div class="box-body"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                                        <canvas id="sql_chart" width="199" height="225" style="display: block; height: 150px; width: 133px;" class="chartjs-render-monitor"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">SQL</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="er_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Logical</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="design_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Conceptual</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="er_verification_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">ER Verification</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="panel-group" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-success hidden">
+                    <a role="button" data-toggle="collapse" href="https://dblearning.it.kmitl.ac.th/quiz/submission/83319#collapseFill" aria-expanded="true" aria-controls="collapseFill">
+                        <div class="panel-heading" role="tab" id="headingFill">
+                            <h4 class="panel-title">
+                                <i class="fa fa-file-text-o"></i> Fill In
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseFill" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFill">
+                        <div class="panel-body">
+                                                       No Data
+                                          </div>
+               </div>
+           </div>
+           <div class="panel panel-info hidden">
+               <a class="collapsed" role="button" data-toggle="collapse" href="https://dblearning.it.kmitl.ac.th/quiz/submission/83319#collapseChoice" aria-expanded="false" aria-controls="collapseChoice">
+                   <div class="panel-heading" role="tab" id="headingChoice">
+                       <h4 class="panel-title">
+                           </h4><h3 class="panel-title"><i class="fa fa-check-circle-o"></i> Choice</h3>
+                       
+                   </div>
+               </a>
+
+               <div id="collapseChoice" class="panel-collapse collapse  in" role="tabpanel" aria-labelledby="headingChoice">
+                   <div class="panel-body">
+                                                       No Data
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-warning hidden">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/83319#collapseMatching" aria-expanded="false" aria-controls="collapseMatching">
+                        <div class="panel-heading" role="tab" id="headingMatching">
+                            <h4 class="panel-title">
+                                <i class="fa fa-link"></i> Matching
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseMatching" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingMatching">
+                        <div class="panel-body">
+                                                            No Data
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger ">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/83319#collapseSQL" aria-expanded="false" aria-controls="collapseSQL">
+                        <div class="panel-heading" role="tab" id="headingSQL">
+                            <h4 class="panel-title">
+                                <i class="fa fa-database"></i> SQL
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseSQL" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSQL">
+                        <div class="panel-body">
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            235
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><p>จงเขียน SQL statement เพื่อแก้ไขขนาดของข้อมูล (Length) ของ category&nbsp; เป็น 25<br>
+&nbsp;</p>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #599818</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> title
+<span class="hljs-keyword">modify</span> <span class="hljs-keyword">category</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">25</span>);</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            238
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><p>ลบคอลัมน์ status ออกจากตาราง title_copy &nbsp;และแสดงคำสั่งเพื่อดูโครงสร้างหลังจากการลบคอลัมน์<br>
+&nbsp;</p>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #600113</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> title_copy
+<span class="hljs-keyword">drop</span> <span class="hljs-keyword">status</span>;
+<span class="hljs-keyword">describe</span> title_copy;</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            239
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><p>ลบตาราง title_copy</p>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #600114</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">table</span> title_copy;</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            240
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><p>เปลี่ยนชื่อตาราง title&nbsp;เป็น movie_master</p>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #600116</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">rename</span> <span class="hljs-keyword">table</span> title <span class="hljs-keyword">to</span> movie_master;</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            1549
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><strong>จงเขียน SQL statement เพื่อลบคอลัมน์ RATING</strong><br>
+&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #600117</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> title
+<span class="hljs-keyword">drop</span> rating;</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            1550
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><strong>จงเขียน SQL statement เพื่อแก้ไขชนิดข้อมูล ของ status เป็น char 50 ตัวอักษร</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #600118</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> title_copy
+<span class="hljs-keyword">modify</span> <span class="hljs-keyword">status</span> <span class="hljs-built_in">char</span>(<span class="hljs-number">50</span>)</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            232
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><span style="font-size:14px">จงสร้างตารางชื่อ &nbsp;STAFF ซึ่งมีโครงสร้างดังต่อไปนี้&nbsp;</span>
+<table border="1" cellpadding="1" cellspacing="1" style="width:500px">
+	<tbody>
+		<tr>
+			<td><strong>Column name</strong></td>
+			<td><strong>Data Type</strong></td>
+			<td><strong>Length</strong></td>
+		</tr>
+		<tr>
+			<td>&nbsp;staff_id</td>
+			<td>&nbsp;int</td>
+			<td>&nbsp;5</td>
+		</tr>
+		<tr>
+			<td>&nbsp;first_name</td>
+			<td>&nbsp;varchar</td>
+			<td>&nbsp;25</td>
+		</tr>
+		<tr>
+			<td>&nbsp;last_name</td>
+			<td>&nbsp;varchar</td>
+			<td>&nbsp;25</td>
+		</tr>
+		<tr>
+			<td>&nbsp;address</td>
+			<td>&nbsp;varchar</td>
+			<td>&nbsp;150</td>
+		</tr>
+	</tbody>
+</table>
+<span style="font-size:14px"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #600120</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> staff (
+	staff_id <span class="hljs-built_in">int</span>(<span class="hljs-number">5</span>),
+  	first_name <span class="hljs-built_in">varchar</span>(<span class="hljs-number">25</span>),
+  	last_name <span class="hljs-built_in">varchar</span>(<span class="hljs-number">25</span>),
+  	address <span class="hljs-built_in">varchar</span>(<span class="hljs-number">150</span>)
+);</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger hidden">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/83319#collapseER" aria-expanded="false" aria-controls="collapseER">
+                        <div class="panel-heading" role="tab" id="headingER">
+                            <h4 class="panel-title">
+                                <i class="fa fa-database"></i> ER Mapping
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseER" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingER">
+                        <div class="panel-body">
+                                                            No Data
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger hidden">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/83319#collapseDesign" aria-expanded="false" aria-controls="collapseDesign">
+                        <div class="panel-heading" role="tab" id="headingDesign">
+                            <h4 class="panel-title">
+                                <i class="fa fa-database"></i> ER Design
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseDesign" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingDesign">
+                        <div class="panel-body">
+                                                            No Data
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger hidden">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/83319#collapseDesign" aria-expanded="false" aria-controls="collapseDesign">
+                        <div class="panel-heading" role="tab" id="headingDesign">
+                            <h4 class="panel-title">
+                                <i class="fa fa-database"></i> ER Verification
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseDesign" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingDesign">
+                        <div class="panel-body">
+                                                            No Data
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- FORM COMMENT QUIZ -->
+    <div class="form-checkout" style="top: 226px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <ul id="bar">
+                        <li class="form-quiz-header">Comment This Quiz</li>
+                    </ul>
+                    <span class="closeForm"><i class="icon md-close-1"></i></span>
+                    <div class="form-body">
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form method="POST" action="https://dblearning.it.kmitl.ac.th/quiz/submission/83319/comment" accept-charset="UTF-8" class="form-horizontal form-quiz"><input name="_token" type="hidden" value="9pQxeI6XgtfC88XHxL4YfninT6M1m262insHX9Vh">
+                                <div class="form-group">
+                                    <div class="col-sm-offset-1 col-sm-10">
+                                        <textarea id="comment" name="comment"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12" style="text-align: center;">
+                                        <button type="submit" class="btn btn-success btn-save-quiz">
+                                            <i class="fa fa-paper-plane"></i> Send
+                                        </button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END / FORM COMMENT QUIZ -->
+        <div class="loading hidden">
+        <div class="cssload-tetrominos">
+            <div class="cssload-tetromino cssload-box1"></div>
+            <div class="cssload-tetromino cssload-box2"></div>
+            <div class="cssload-tetromino cssload-box3"></div>
+            <div class="cssload-tetromino cssload-box4"></div>
+        </div>
+    </div>
+
+</div>
+<!-- END / PAGE WRAP -->
+
+<!-- Load jQuery -->
+<script type="text/javascript" src="./Lab01_files/jquery-1.11.0.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab01_files/bootstrap.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab01_files/jquery.owl.carousel.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab01_files/jquery.appear.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab01_files/perfect-scrollbar.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab01_files/toastr.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab01_files/imagesloaded.pkgd.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab01_files/scripts.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab01_files/raven.min.js.ดาวน์โหลด" crossorigin="anonymous"></script>
+<script>
+    //SENTRY LOG
+    $(document).ready(function(){
+        Raven.config('https://9f1aa240bf7741128f6d9b6171e494f0@sentry.io/289929').install();
+        Raven.setUserContext({
+            username: 'it65070185',
+            name: 'นายภูวิศ นุ่นปาน'
+        });
+    });
+</script>
+
+    <script type="text/javascript" src="./Lab01_files/jquery.hotkeys.js.ดาวน์โหลด"></script>
+    <script src="./Lab01_files/datatables.min.js.ดาวน์โหลด"></script>
+    <script src="./Lab01_files/Chart.min.js.ดาวน์โหลด"></script>
+    <script src="./Lab01_files/highlight.pack.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab01_files/vis.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab01_files/deep-diff-0.3.4.min.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab01_files/jscolor.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab01_files/typo.js.ดาวน์โหลด"></script>
+    <script src="./Lab01_files/color.js.ดาวน์โหลด"></script>
+    <script src="./Lab01_files/EventHelpers.js.ดาวน์โหลด"></script>
+    <script src="./Lab01_files/DragDropHelpers.js.ดาวน์โหลด"></script>
+    <script src="./Lab01_files/permissionForm.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab01_files/jsencrypt.min.js.ดาวน์โหลด"></script>
+    <script src="./Lab01_files/erdiagram.js.ดาวน์โหลด"></script>
+
+    <shoulddetectajax class="hidden">false</shoulddetectajax>
+    <script>
+        var child;
+        $('.open-er-logical').click(function () {
+            graph = $(this).attr('value');
+            child = window.open('https://dblearning.it.kmitl.ac.th/tool/logical_er');
+        });
+        $( document ).ready(function() {
+            $.each($('.erdiagram'), function (index, item) {
+                var enableExport = false;
+                if($(item).hasClass('erdiagram-enable-export')){
+                    enableExport = true;
+                }
+                var graph = JSON.parse($(item).html());
+                $(item).html('');
+                $(item).removeClass('hidden');
+                new ERDiagram('#'+$(item).attr('id'), {
+                    graph: graph,
+                    editable: false,
+                    isShowMenu: false,
+                    enableExport: enableExport,
+                });
+            });
+
+        });
+                $('.btn-comment-quiz').on('click', function() {
+            //editChapterOpen($(this).attr('quiz'));
+            $('.form-checkout, .overlayForm').fadeIn(400);
+            $(window).trigger('resize');
+            return false;
+        });
+        $('.closeForm').on('click', function() {
+            $('.form-checkout, .overlayForm').fadeOut(400);
+        });
+            </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+        $('[data-toggle="tooltip"]').tooltip();
+        var navbarHeight = $('.top-nav').outerHeight();
+        $('.quiz-section').css('padding-top', navbarHeight);
+        $(function () {
+            var chartIds = [
+                                'fill_chart',
+                                'choice_chart',
+                                'matching_chart',
+                                'sql_chart',
+                                'er_chart',
+                                'design_chart',
+                                'er_verification_chart',
+                            ];
+            var chartLabels = ["Fill In","Choice","Matching","SQL","Logical","Conceptual","ER Verification"];
+            var chartDatas = [
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 7],
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0],
+                                    ];
+            var chartColors =  [
+                                        'rgba(255, 99, 132, 0.8)',
+                                        'rgba(54, 162, 235, 0.8)',
+                                        'rgba(255, 206, 86, 0.8)',
+                                        'rgba(75, 192, 192, 0.8)',
+                                        'rgba(194, 66, 244, 0.8)',
+                                        'rgba(247, 255, 17, 0.8)',
+                                        'rgba(77, 204, 38, 0.8)',
+                                    ];
+            var chartList = {};
+            for(var i = 0; i < chartIds.length; i++){
+                chartList[chartIds[i]] = new Chart($("#"+chartIds[i]), {
+                type: 'doughnut',
+                    data: {
+                        labels: [chartLabels[i], ""],
+                        datasets: [{
+                            label: '# of '+chartLabels[i],
+                            data: [chartDatas[i][0], chartDatas[i][1]-chartDatas[i][0]],
+                            backgroundColor: [
+                                chartColors[i],
+                                'rgba(169, 169, 169, 0)'
+                            ],
+                            borderColor: [
+                                chartColors[i],
+                                'rgba(169, 169, 169, 0.3)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        legend: {
+                            display: false
+                        },
+                        elements: {
+                            center: {
+                                // the longest text that could appear in the center
+                                maxText: '100%',
+                                text: (chartDatas[i][0] * 100 / chartDatas[i][1]).toFixed(1) + '%',
+                                fontColor: chartColors[i],
+                                fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                                fontStyle: 'normal',
+                                // fontSize: 12,
+                                // if a fontSize is NOT specified, we will scale (within the below limits) maxText to take up the maximum space in the center
+                                // if these are not specified either, we default to 1 and 256
+                                minFontSize: 1,
+                                maxFontSize: 15,
+                            }
+                        }}
+                });
+            }});
+        // write text plugin
+        Chart.pluginService.register({
+            afterUpdate: function (chart) {
+                if (chart.config.options.elements.center) {
+                    var helpers = Chart.helpers;
+                    var centerConfig = chart.config.options.elements.center;
+                    var globalConfig = Chart.defaults.global;
+                    var ctx = chart.chart.ctx;
+
+                    var fontStyle = helpers.getValueOrDefault(centerConfig.fontStyle, globalConfig.defaultFontStyle);
+                    var fontFamily = helpers.getValueOrDefault(centerConfig.fontFamily, globalConfig.defaultFontFamily);
+
+                    if (centerConfig.fontSize)
+                        var fontSize = centerConfig.fontSize;
+                    // figure out the best font size, if one is not specified
+                    else {
+                        ctx.save();
+                        var fontSize = helpers.getValueOrDefault(centerConfig.minFontSize, 1);
+                        var maxFontSize = helpers.getValueOrDefault(centerConfig.maxFontSize, 256);
+                        var maxText = helpers.getValueOrDefault(centerConfig.maxText, centerConfig.text);
+
+                        do {
+                            ctx.font = helpers.fontString(fontSize, fontStyle, fontFamily);
+                            var textWidth = ctx.measureText(maxText).width;
+
+                            // check if it fits, is within configured limits and that we are not simply toggling back and forth
+                            if (textWidth < chart.innerRadius * 2 && fontSize < maxFontSize)
+                                fontSize += 1;
+                            else {
+                                // reverse last step
+                                fontSize -= 1;
+                                break;
+                            }
+                        } while (true)
+                        ctx.restore();
+                    }
+
+                    // save properties
+                    chart.center = {
+                        font: helpers.fontString(fontSize, fontStyle, fontFamily),
+                        fillStyle: helpers.getValueOrDefault(centerConfig.fontColor, globalConfig.defaultFontColor)
+                    };
+                }
+            },
+            afterDraw: function (chart) {
+                if (chart.center) {
+                    var centerConfig = chart.config.options.elements.center;
+                    var ctx = chart.chart.ctx;
+
+                    ctx.save();
+                    ctx.font = chart.center.font;
+                    ctx.fillStyle = chart.center.fillStyle;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    var centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
+                    var centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
+                    ctx.fillText(centerConfig.text, centerX, centerY);
+                    ctx.restore();
+                }
+            }
+        });
+    </script>
+
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+  div.grammarly-desktop-integration {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+  }
+
+  div.grammarly-desktop-integration:before {
+    content: attr(data-content);
+  }
+</style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>

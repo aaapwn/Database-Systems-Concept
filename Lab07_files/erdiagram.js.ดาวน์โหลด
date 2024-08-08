@@ -1,0 +1,1585 @@
+/**
+ * Created by tanasab
+ */
+const makeMeMultiSelect = (container, network, nodes) => {
+    const NO_CLICK = 0;
+    const RIGHT_CLICK = 3;
+
+    // Disable default right-click dropdown menu
+    container[0].oncontextmenu = () => false;
+
+    // State
+
+    let drag = false, DOMRect = {};
+
+    // Selector
+
+    const canvasify = (DOMx, DOMy) => {
+        const { x, y } = network.DOMtoCanvas({ x: DOMx, y: DOMy });
+        return [x, y];
+    };
+
+    const correctRange = (start, end) =>
+        start < end ? [start, end] : [end, start];
+
+    const selectFromDOMRect = () => {
+        const [sX, sY] = canvasify(DOMRect.startX, DOMRect.startY);
+        const [eX, eY] = canvasify(DOMRect.endX, DOMRect.endY);
+        const [startX, endX] = correctRange(sX, eX);
+        const [startY, endY] = correctRange(sY, eY);
+        let selectedNodes = nodes.get().reduce(
+            (selected, { id }) => {
+                const { x, y } = network.getPositions(id)[id];
+                return (startX <= x && x <= endX && startY <= y && y <= endY) ?
+                    selected.concat(id) : selected;
+            }, []
+        );
+        network.selectNodes(selectedNodes);
+    }
+    const getCoords = (elem) => { // crossbrowser version
+        var box = elem.getBoundingClientRect();
+
+        var body = document.body;
+        var docEl = document.documentElement;
+
+        var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+        var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
+
+        var clientTop = docEl.clientTop || body.clientTop || 0;
+        var clientLeft = docEl.clientLeft || body.clientLeft || 0;
+
+        var top  = box.top +  scrollTop - clientTop;
+        var left = box.left + scrollLeft - clientLeft;
+
+        return { top: Math.round(top), left: Math.round(left) };
+    }
+
+    // Listeners
+    container.off("mousedown");
+    container.off("mousemove");
+    container.off("mouseup");
+    container.on("mousedown", function({ which, pageX, pageY }) {
+        // When mousedown, save the initial rectangle state
+        var coord = getCoords(container[0])
+        if(which === RIGHT_CLICK) {
+            Object.assign(DOMRect, {
+                startX: pageX - coord.left,
+                startY: pageY - coord.top,
+                endX: pageX - coord.left,
+                endY: pageY - coord.top
+            });
+            drag = true;
+        }
+    });
+
+    container.on("mousemove", function({ which, pageX, pageY }) {
+        // Make selection rectangle disappear when accidently mouseupped outside 'container'
+        var coord = getCoords(container[0]);
+        if(which === NO_CLICK && drag) {
+            drag = false;
+            network.redraw();
+        }
+        // When mousemove, update the rectangle state
+        else if(drag) {
+            Object.assign(DOMRect, {
+                endX: pageX - coord.left,
+                endY: pageY - coord.top
+            });
+            network.redraw();
+        }
+    });
+
+    container.on("mouseup", function({ which }) {
+        // When mouseup, select the nodes in the rectangle
+        if(which === RIGHT_CLICK) {
+            drag = false;
+            network.redraw();
+            selectFromDOMRect();
+        }
+    });
+
+    // Drawer
+
+    network.on('afterDrawing', ctx => {
+        if(drag) {
+            const [startX, startY] = canvasify(DOMRect.startX, DOMRect.startY);
+            const [endX, endY] = canvasify(DOMRect.endX, DOMRect.endY);
+
+            ctx.setLineDash([5]);
+            ctx.strokeStyle = 'rgba(78, 146, 237, 0.75)';
+            ctx.strokeRect(startX, startY, endX - startX, endY - startY);
+            ctx.setLineDash([]);
+            ctx.fillStyle = 'rgba(151, 194, 252, 0.45)';
+            ctx.fillRect(startX, startY, endX - startX, endY - startY);
+        }
+    });
+}; // end makeMeMultiSelect
+
+class ERDiagram {
+    constructor(diagramSelector, options) {
+        var that = this;
+        this.version = '1.7.5';
+        this.date = new Date();
+        this.revision = [];
+        this.revisionIndex = 0;
+        this.selectedTable = null;
+        this.selectedAttribute = null;
+        this.selectedRelationship = null;
+        this.selectedSubtype = null;
+        this.connectedTable = [];
+        this.tableRelationCount = 2;
+        this.nodes = new vis.DataSet([]);
+        this.edges = new vis.DataSet([]);
+        this.shouldProcessDataset = true;
+        this.shouldDrawHtmlTable = true;
+        this.pointer = {canvas:{x: 0, y:0}};
+        this.selectedMenuComponent = '';
+        this.renderCallback = (options && options['renderCallback']) ? options['renderCallback'] : function () {};
+        this.saveCallback = (options && options['saveCallback']) ? options['saveCallback'] : null;
+        this.question = (options && options['question']) ? options['question'] : null;
+        this.user = (options && options['user']) ? options['user'] : 'anonymous';
+        this.logger = [];
+        this._shouldSave = true;
+        this.shouldSaveForced = null;
+        this.saveRevision();
+        this.timeout = null;
+        this.diagramSelector = diagramSelector;
+        this.editable = (options && (typeof options['editable'] !== 'undefined')) ? options['editable'] : true;
+        that.enableExport = (options && (typeof options['enableExport'] !== 'undefined')) ? options['enableExport'] : true;
+        this.isShowMenu = (options && (typeof options['isShowMenu'] !== 'undefined')) ? options['isShowMenu'] : true;
+        this.export = false;
+        this.menu = {
+            top: diagramSelector + ' .menu-top',
+            container: diagramSelector + ' .graph-menu-container',
+            table: diagramSelector + ' .table-div',
+            attribute: diagramSelector + ' .attribute-div',
+            relationship: diagramSelector + ' .relationship-div',
+            subtype: diagramSelector + ' .subtype-div',
+            relationshipTable: diagramSelector + ' .table-body-relation'
+        };
+        this.button = {
+            updateTable : diagramSelector + ' .btn-update-table',
+            deleteTable : diagramSelector + ' .btn-delete-table',
+            updateAttribute : diagramSelector + ' .btn-update-attribute',
+            deleteAttribute : diagramSelector + ' .btn-delete-attribute',
+            updateRelationship : diagramSelector + ' .btn-update-relationship',
+            deleteRelationship : diagramSelector + ' .btn-delete-relationship',
+            addRelationTable : diagramSelector + ' .btn-add-relation-table',
+            updateSubtype : diagramSelector + ' .btn-update-subtype',
+            deleteSubtype : diagramSelector + ' .btn-delete-subtype',
+            exportGraphToimage: diagramSelector + ' .btn-export-graph',
+            toggleFullScreen: diagramSelector + ' .btn-fullscreen',
+            undo: diagramSelector + ' .btn-undo',
+            redo: diagramSelector + ' .btn-redo',
+            download: diagramSelector + ' .btn-download',
+            upload: diagramSelector + ' .btn-upload',
+            showQuestion: diagramSelector + ' .btn-show-question',
+            saveGraph: diagramSelector + ' .btn-save-graph',
+            saveGraphExit: diagramSelector + ' .btn-save-exit-graph',
+        };
+        this.input = {
+            backgroundColor : diagramSelector + ' #backgroundColor',
+            labelColor: diagramSelector + ' #labelColor',
+            tableName: diagramSelector + ' #tableName',
+            attributeName: diagramSelector + ' #attributeName',
+            attributeType: diagramSelector + ' #attributeType',
+            referenceTableName: diagramSelector + ' #referenceTableName',
+            subtypeType: diagramSelector + ' #subtypeType',
+            tableType: diagramSelector + ' #tableType',
+            relationshipName: diagramSelector + ' #relationshipName',
+            relationshipType: diagramSelector + ' #relationshipType',
+            file: diagramSelector + ' .input-file',
+        };
+
+        //encrypt
+        var crypt = new JSEncrypt();
+        crypt.setKey('-----BEGIN PUBLIC KEY-----\n' +
+            'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCAUG5WC9D6fG67RfQqu2FPnfK/\n' +
+            'mBt6/zuVvQWUgcGWayHdHnNHya4kApvZqKtzvR9SAUY581T/JM9tI8e/JC7uHngi\n' +
+            'hjVUydlG8s2i6W1nAc1y7gO2WSKgrHYeCWC4o5A5OE4ZQ1TtGuRSL788du+pw6T3\n' +
+            'VKGYRIYHPobmOLbomQIDAQAB\n' +
+            '-----END PUBLIC KEY-----'); //You can use also setPrivateKey and setPublicKey, they are both alias to setKey
+
+        //Eventhough the methods are called setPublicKey and setPrivateKey, remember
+        //that they are only alias to setKey, so you can pass them both a private or
+        //a public openssl key, just remember that setting a public key allows you to only encrypt.
+        var datetime = (new Date()).toISOString().substring(0, 19).replace('T', ' ');
+        var text = this.version+"|"+datetime+"|"+this.user;
+        // Encrypt the data with the public key.
+        this.encrypted = crypt.encrypt(text);
+        this.logger.push(this.encrypted);
+        this.logger = [...new Set(this.logger)]
+        var scriptpath = this.retrieveScripURL('erdiagram');
+        $.get( scriptpath+"diagram-template.html")
+            .done(function( data ) {
+                data = data.replace('version_number', that.version);
+                $(that.diagramSelector).html(data);
+                if (!that.saveCallback) {
+                    $(that.button.saveGraph).addClass('hidden');
+                    $(that.button.saveGraphExit).addClass('hidden');
+                }
+                if(!that.question){
+                    $(that.button.showQuestion).addClass('hidden');
+                }else{
+                    $("#dialog-question").html(that.question.description);
+                    $("#dialog-question").dialog({width: '600px'});
+                }
+
+                var iconDrag = $('.icon-drag li');
+                iconDrag.on('dragend', function(e) {
+                    var networkPosition = $(that.diagramSelector).find('.network').offset();
+                    var networkWidth = $(that.diagramSelector).find('.network').width();
+                    var networkHeight = $(that.diagramSelector).find('.network').height();
+                    var x = e.originalEvent.clientX-networkPosition.left;
+                    var y = e.originalEvent.clientY-networkPosition.top;
+                    if(x <= 0 || y < 0 || x > networkWidth || y > networkHeight){
+                        return;
+                    }
+                    var position = that.network.DOMtoCanvas({x,y});
+                    var nodeId = that.guid();
+                    var node = that.generateNode(nodeId, 'Untitled', this.id, '#97C2FC', '#000000', position);
+                    that.shouldSave = true;
+                    that.nodes.add(node);
+                    that.showMenu();
+                    that.nodeClicked(node.id);
+                });
+                if(!that.isShowMenu || !that.editable){
+                    $(that.diagramSelector + ' .menu-top').addClass('hidden');
+                    $(that.diagramSelector + ' .icon-menu-container').parent().addClass('hidden');
+                    $(that.diagramSelector + ' .graph-menu-container').parent().addClass('hidden');
+                    $(that.diagramSelector + ' .network').parent().removeClass('col-xs-7');
+                    $(that.diagramSelector + ' .network').parent().addClass('col-xs-12');
+                    if(that.enableExport){
+                        $(that.diagramSelector + ' .menu-top-toggle').removeClass('hidden');
+                    }
+                }
+                $('.jscolor').colorPicker({
+                    renderCallback: function($elm, toggled) {
+                        that.saveAll();
+                    },
+                }); // that's it
+                if(options['schemaStructure']){
+                    that.drawFromSchema(options['schemaStructure']);
+                }else{
+                    that.draw();
+                }
+                if(options.graph){
+                    that.setGraph(options.graph, true);
+                }
+                iconDrag.click(function () {
+                    $('.icon-list li').not(this).removeClass('active')
+                    $(this).toggleClass('active');
+                    if($(this).hasClass('active')){
+                        that.selectedMenuComponent = this.id;
+                    }
+                });
+                $('.icon-line li').click(function () {
+                    $('.icon-list li').not(this).removeClass('active')
+                    $(this).toggleClass('active');
+                    if($(this).hasClass('active')) {
+                        that.selectedMenuComponent = this.id;
+                        that.network.addEdgeMode();
+                    }
+                });
+                var excludeSaveButton = ['exportGraphToimage', 'toggleFullScreen', 'undo', 'redo', 'download', 'upload'];
+                for(var key in that.button){
+                    if(excludeSaveButton.indexOf(key) === -1){
+                        $(that.button[key]).click(function () {
+                            that.shouldSave = true;
+                            that.saveRevision();
+                        });
+                    }
+                }
+                $(that.button.toggleFullScreen).click(function () {
+                    that.toggleFullScreen();
+                });
+                $(that.button.updateTable).click(function () {
+                    if(that.selectedTable) {
+                        var id = that.selectedTable.id;
+                        var name = $(that.input.tableName).val();
+                        var type = $(that.input.tableType).val();
+                        that.updateTable(id, {
+                            name: name,
+                            type: type,
+                            backgroundColor: that.backgroundColor,
+                            labelColor: that.labelColor
+                        });
+                    }
+                });
+                $(that.button.deleteTable).click(function () {
+                    var result = confirm("Confirm Delete?");
+                    if (result) {
+                        if(that.selectedTable){
+                            var id = that.selectedTable.id;
+                            that.deleteTable(id);
+                        }
+                    }
+
+                });
+                $(that.button.updateSubtype).click(function () {
+                    if(that.selectedSubtype) {
+                        var id = that.selectedSubtype.id;
+                        var type = $(that.input.subtypeType).val();
+                        that.updateSubtype(id, {
+                            name: name,
+                            type: type,
+                            backgroundColor: that.backgroundColor,
+                            labelColor: that.labelColor
+                        });
+                    }
+                });
+                $(that.button.deleteSubtype).click(function () {
+                    var result = confirm("Confirm Delete?");
+                    if (result) {
+                        if (that.selectedSubtype) {
+                            var id = that.selectedSubtype.id;
+                            that.deleteSubtype(id);
+                        }
+                    }
+                });
+                $(that.button.updateAttribute).click(function () {
+                    if(that.selectedAttribute) {
+                        var id = that.selectedAttribute.id;
+                        var name = $(that.input.attributeName).val();
+                        var type = $(that.input.attributeType).val();
+                        that.updateAttribute(id, {
+                            name: name,
+                            type: type,
+                            backgroundColor: that.backgroundColor,
+                            labelColor: that.labelColor
+                        });
+                    }
+                });
+                $(that.button.deleteAttribute).click(function () {
+                    var result = confirm("Confirm Delete?");
+                    if (result) {
+                        if (that.selectedAttribute) {
+                            var id = that.selectedAttribute.id;
+                            that.deleteAttribute(id);
+                        }
+                    }
+                });
+                $(that.button.updateRelationship).click(function () {
+                    if(that.selectedRelationship) {
+                        var id = that.selectedRelationship.id;
+                        var name = $(that.input.relationshipName).val();
+                        var type = $(that.input.relationshipType).val();
+                        that.updateRelationship(id, {
+                            name: name,
+                            type: type,
+                            backgroundColor: that.backgroundColor,
+                            labelColor: that.labelColor
+                        });
+                    }
+                });
+                $(that.button.deleteRelationship).click(function () {
+                    var result = confirm("Confirm Delete?");
+                    if (result) {
+                        if (that.selectedRelationship) {
+                            var id = that.selectedRelationship.id;
+                            that.deleteRelationship(id);
+                        }
+                    }
+                });
+                $(that.button.addRelationTable).click(function () {
+                    var tableNodes = that.nodes.whereIn('type', ["entity-strong", "entity-weak"]);
+                    //
+                    if(tableNodes.length == 0){
+                        alert('Please add at least 1 entity');
+                        return;
+                    }
+                    that.tableRelationCount += 1;
+                    that.drawHtmlSelectTable();
+                    $(that.button.updateRelationship).click();
+                });
+
+                //live update every second
+                setInterval(function (){
+                    that.bindAutoSave();
+                }, 1000);
+
+                $(that.button.exportGraphToimage).click(function () {
+                    that.export = true;
+                    var canvas = $(that.diagramSelector).find('canvas');
+                    var size = {width: canvas.width(), height: canvas.height()};
+                    canvas.width(screen.width);
+                    canvas.height(screen.height);
+                    $('.loading').removeClass('hidden');
+                    setTimeout(function() {
+                        that.imageData(function(image){
+                            var link = document.createElement('a');
+                            link.download = 'conceptual.png';
+                            link.href = image;
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                            canvas.width(size.width);
+                            canvas.height(size.height);
+                            $('.loading').addClass('hidden');
+
+                        });
+                    }, 2000);
+
+                });
+                $(that.button.undo).click(function () {
+                    that.undo();
+                });
+                $(that.button.redo).click(function () {
+                    that.redo();
+                });
+                $(that.button.download).click(function () {
+                    that.download();
+                });
+                $(that.button.upload).click(function () {
+                    $(that.input.file).click();
+                });
+                $(that.input.file).change(function (e) {
+                    that.upload(e);
+                });
+                $(that.button.saveGraph).click(function () {
+                    that.saveGraph({exit: false});
+                });
+                $(that.button.saveGraphExit).click(function () {
+                    that.saveGraph({exit: true});
+                });
+                $(that.button.showQuestion).click(function () {
+                    $( "#dialog-question" ).dialog("open");
+                });
+                if(that.isShowMenu && that.editable) {
+                    $(document).bind('keydown', 'ctrl+s', function () {
+                        that.saveGraph({exit: false});
+                        return false;
+                    });
+                    $(document).bind('keydown', 'ctrl+z', function () {
+                        that.undo();
+                        return false;
+                    });
+                    $(document).bind('keydown', 'ctrl+y', function () {
+                        that.redo();
+                        return false;
+                    });
+                    $(document).bind('keydown', 'ctrl+o', function () {
+                        that.download();
+                        return false;
+                    });
+                    $(document).bind('keydown', 'ctrl+i', function () {
+                        $(that.input.file).click();
+                        return false;
+                    });
+                    $(document).bind('keydown', 'ctrl+p', function () {
+                        $(that.button.exportGraphToimage).click();
+                    });
+                    $(document).bind('keydown', 'ctrl+q', function () {
+                        $("#dialog-question").dialog("open");
+                    });
+                    $(document).bind('keydown', 'del', function () {
+                        var result = confirm("Confirm Delete?");
+                        if (result) {
+                            let selectedNodes = that.network.getSelectedNodes();
+                            try {
+                                if(selectedNodes.length > 0){
+                                    that.nodes.remove(selectedNodes);
+                                    that.removeOrphanEdge();
+                                }
+                            }catch (e){
+                                console.log(e);
+                            }
+                        }
+                    });
+                }
+            });
+        if (document.addEventListener) {
+            this.exitFullScreenHandler = this.exitFullScreen.bind(this);
+            document.addEventListener('webkitfullscreenchange', this.exitFullScreenHandler, false);
+            document.addEventListener('mozfullscreenchange', this.exitFullScreenHandler, false);
+            document.addEventListener('fullscreenchange', this.exitFullScreenHandler, false);
+            document.addEventListener('MSFullscreenChange', this.exitFullScreenHandler, false);
+        }
+    }
+
+    extendNetwork( __network ) {
+        __network.getEdgeById = function ( id ) {
+            return __network.edgesHandler.body.edges[ id ];
+        }
+    }
+
+    bindAutoSave(){
+        var that = this;
+
+        var inputElm = $('.graph-menu-container').find('input').not('bound');
+        inputElm.on('keyup',function (e){
+            if (that.timeout !== null) {
+                clearTimeout(that.timeout);
+            }
+            that.timeout = setTimeout(function () {
+                that.shouldSaveForced = false;
+                $(that.button.updateTable).click();
+                $(that.button.updateAttribute).click();
+                $(that.button.updateRelationship).click();
+                that.shouldSaveForced = null;
+            }, 500);
+
+        });
+        inputElm.addClass('bound');
+        $('.btn-remove-relation').click(function (e) {
+            $(that.button.updateRelationship).click();
+        })
+        var selectElm = $('.graph-menu-container').find('select').not('bound');
+        selectElm.on('change', function (e){
+            that.shouldSaveForced = false;
+            $(that.button.updateTable).click();
+            $(that.button.updateAttribute).click();
+            $(that.button.updateSubtype).click();
+            $(that.button.updateRelationship).click();
+            that.shouldSaveForced = null;
+        });
+        selectElm.addClass('bound');
+    }
+
+    saveAll(){
+        $(this.button.updateTable).click();
+        $(this.button.updateAttribute).click();
+        $(this.button.updateSubtype).click();
+        $(this.button.updateRelationship).click();
+
+    }
+
+    get backgroundColor(){
+        return $(this.input.backgroundColor).val();
+    }
+
+    get shouldSave(){
+        if(this.shouldSaveForced !== null){
+            return this.shouldSaveForced;
+        }
+        return this._shouldSave;
+    }
+
+    set shouldSave(status){
+        this._shouldSave = status;
+    }
+
+    get labelColor() {
+        return $(this.input.labelColor).val();
+    }
+
+    get maxNodeId(){
+        if(this.nodes.length > 0){
+            return this.nodes.max('id').id;
+        }
+        return 0;
+    }
+
+    get graphData() {
+        return {nodes: this.nodes.get(), edges: this.edges.get(), logger: this.logger};
+    }
+
+    imageData(callback) {
+        var options = {offset: {x:0,y:0},
+            duration: 100,
+            easingFunction: 'easeInOutQuad'
+        };
+        this.network.fit({animation:options});
+        this.export = true;
+        this.exportCallback = callback;
+    }
+
+    drawFromSchema(schemaStructure){
+        var that = this;
+        if(schemaStructure.table){
+            this.nodes.clear();
+            this.edges.clear();
+            var tableKey = {};
+            var tableCount = 0;
+            var nodeId = 1;
+            var backgroundColor = '#97C2FC';
+            var labelColor = '#000';
+            var node;
+            $.each(schemaStructure['table'], function(tableName,tableSchema) {
+                tableKey[tableName] = nodeId;
+                node = that.generateNode(nodeId, tableName, 'entity-strong', '#97C2FC', '#000000');
+                that.nodes.add(node);
+                nodeId++;
+                tableCount++;
+            });
+            $.each(schemaStructure['table'], function(tableName,tableSchema){
+                $.each(tableSchema['attributes'], function(columnName, columnSchema){
+                    var type = columnSchema.PK ? 'attribute-primary' : 'attribute-normal';
+                    if(!columnSchema.reference) {
+                        node = that.generateNode(nodeId, columnName, type, backgroundColor, labelColor);
+                        that.nodes.add(node);
+                        that.edges.add({from: tableKey[tableName], to: nodeId, length: 110});
+                    }else{
+                        var reference = columnSchema.reference;
+                        if(reference.type.indexOf('identify') > 0){
+                            node = that.generateNode(nodeId, reference.constraint_name ? reference.constraint_name : 'Undefined', 'relationship-identify', backgroundColor, labelColor);
+                        }else{
+                            node = that.generateNode(nodeId, reference.constraint_name ? reference.constraint_name : 'Undefined', 'relationship-normal', backgroundColor, labelColor);
+                        }
+                        that.nodes.add(node);
+                        var refType = reference.type.split('_');
+                        var refLabel = [refType[4] == 'one' ? '1': 'N', refType[2] == 'one' ? '1': 'N'];
+                        var refParticipation = [refType[1] == 'mandatory' ? 'mandatory': 'optional', refType[3] == 'mandatory' ? 'mandatory': 'optional'];
+                        var smooth = false;
+                        if(tableKey[tableName] == tableKey[reference.table]){
+                            var smooth = true;
+                        }
+                        var edge = {from: tableKey[tableName], type: refParticipation[0], to: nodeId, label: refLabel[0], length: 200, font: {align: 'top', size: 20}, smooth: smooth};
+                        that.edges.add(edge);
+                        var edge = {from: tableKey[reference.table], type: refParticipation[1], to: nodeId, label: refLabel[1], length: 200, font: {align: 'top', size: 20}, smooth: smooth};
+                        that.edges.add(edge);
+                    }
+                    nodeId++;
+                });
+            });
+            this.drawHtmlSelectTable();
+        }
+        this.draw();
+
+        this.nodes.forEach(function (item) {
+            item.physics = true;
+            that.nodes.update(item);
+        });
+        var delayInMilliseconds = 2000; //2 second
+
+        setTimeout(function() {
+            //your code to be executed after 2 second
+            if(that.network) {
+                that.network.storePositions();
+            }
+            that.nodes.forEach(function (item) {
+                item.physics = false;
+                that.nodes.update(item);
+            });
+        }, delayInMilliseconds);
+
+
+    }
+
+
+    draw(){
+        // create a network
+        var that = this;
+        var container = $(this.diagramSelector).find('.network')[0];
+        var data = {
+            nodes: this.nodes,
+            edges: this.edges
+        };
+        var options = {
+            nodes: {
+                labelHighlightBold: false,
+                fixed: false
+            },
+            interaction:{hover:true, multiselect: true},
+            manipulation: {
+                addNode: false,
+                addEdge: function (data, callback) {
+                    callback(data);
+                    that.network.addEdgeMode();
+                },
+                initiallyActive: true,
+                enabled: this.editable
+            },
+            edges: {
+                smooth: false
+            },
+            physics: {
+                enabled: true,
+                barnesHut: {
+                    avoidOverlap: 0.5
+                },
+                minVelocity: 1
+            }
+        };
+        this.network = new vis.Network(container, data, options);
+        makeMeMultiSelect($(this.diagramSelector).find('.network'), this.network, this.nodes);
+        if(!this.editable){
+            this.nodes.forEach(function (node) {
+                node.physics = false;
+                node.fixed = true;
+                that.nodes.update(node);
+            });
+        }else{
+            this.nodes.forEach(function (node) {
+                node.physics = false;
+                node.fixed = false;
+                that.nodes.update(node);
+            });
+        }
+        this.network.storePositions();
+        this.saveRevision();
+        this.network.on('resize', function (size) {
+            that.imageData(function () {
+                
+            });
+        });
+        this.network.on('dragEnd', function ($e) {
+            that.network.storePositions();
+            that.shouldSave = true;
+            that.saveRevision();
+        });
+        this.nodes.on('*', function (event, properties, senderId) {
+            if(!that.shouldProcessDataset){
+                return;
+            }
+            if(event === 'remove') {
+                that.hideMenu();
+            }
+            if(event === 'add' && that.selectedMenuComponent) {
+                that.shouldSave = true;
+                var oldNode = that.nodes.get(properties.items[0]);
+                var node = that.generateNode(oldNode.id, 'Untitled', that.selectedMenuComponent, '#97C2FC', '#000000', {x: oldNode.x, y: oldNode.y});
+                if(that.selectedMenuComponent){
+                    that.selectedMenuComponent = '';
+                    that.nodes.remove(oldNode);
+                    that.nodes.add(node);
+                }
+                that.showMenu();
+                that.nodeClicked(node.id);
+            }
+            that.renderCallback();
+            that.saveRevision();
+        });
+        this.edges.on('*', function (event, properties, senderId) {
+            if(!that.shouldProcessDataset){
+                return;
+            }
+            that.shouldProcessDataset = false;
+            var edge = that.edges.get(properties.items[0]);
+            if(edge){
+                if(!edge.type){
+                    edge = {id: edge.id, from: edge.from, to: edge.to, type: 'optional', length: 200, font: {align: 'top', size: 20}};
+                    that.edges.update(edge);
+                }
+                var fromNode = that.nodes.get(edge.from);
+                var toNode = that.nodes.get(edge.to);
+                array = [['attribute', 'entity'], ['attribute', 'relationship'],  ['relationship', 'entity']];
+                for(let i = 0; i<array.length;i++){
+                    if(fromNode.type.indexOf(array[i][0]) !== -1 && toNode.type.indexOf(array[i][1]) !== -1){
+                        var temp = edge.to;
+                        edge.to = edge.from;
+                        edge.from = temp;
+                        that.edges.update(edge);
+                    }
+                }
+                fromNode = that.nodes.get(edge.from);
+                toNode = that.nodes.get(edge.to);
+                for(var type in {'entity': '', 'attribute':'', 'relationship':'', 'subtype':''}){
+                    if(fromNode.type.indexOf(type) !== -1 && toNode.type.indexOf(type) !== -1){
+                        that.edges.remove(edge.id);
+                        that.shouldProcessDataset = true;
+                        that.selectedMenuComponent = '';
+                        return;
+                    }
+                }
+                var match = [['subtype', 'attribute'], ['subtype', 'relationship']];
+                for(let i = 0; i<match.length;i++){
+                    if((fromNode.type.indexOf(match[i][0]) !== -1 && toNode.type.indexOf(match[i][1]) !== -1) ||
+                        fromNode.type.indexOf(match[i][1]) !== -1 && toNode.type.indexOf(match[i][0]) !== -1){
+                        that.edges.remove(edge.id);
+                        that.selectedMenuComponent = '';
+                        that.shouldProcessDataset = true;
+                        return;
+                    }
+                }
+                var array = [['from', 'to'], ['to', 'from']];
+                for(let i = 0; i<array.length;i++){
+                    if(that.edges.where(array[i][0], toNode.id).where(array[i][1], fromNode.id).length > 1 && toNode.type.indexOf('relationship') === -1){
+                        that.edges.remove(edge.id);
+                        that.selectedMenuComponent = '';
+                        that.shouldProcessDataset = true;
+                        return;
+                    }
+                }
+                if(event === 'add'){
+                    var selectedMenuComponent = $('.icon-list .active').attr('id');
+                    if(selectedMenuComponent === "optional" || selectedMenuComponent === "mandatory" || selectedMenuComponent === "subtype") {
+                        that.selectedMenuComponent = selectedMenuComponent;
+                    }
+                    if(toNode.type.indexOf('relationship') !== -1){
+                        edge = {id: edge.id, from: edge.from, to: edge.to, type: 'optional', label: '1', length: 200, font: {align: 'top', size: 20}};
+                        that.edges.update(edge);
+                    }
+                    if(that.selectedMenuComponent === 'subtype') {
+                        edge = {id: edge.id, from: edge.from, to: edge.to, type: 'subtype'};
+                        that.edges.update(edge);
+                    }
+                    else if(that.selectedMenuComponent === 'mandatory') {
+                        edge = {id: edge.id, from: edge.from, to: edge.to, type: 'mandatory'};
+                        that.edges.update(edge);
+                    }
+                    that.selectedMenuComponent = '';
+                }
+                edge = that.edges.get(edge.id);
+
+                // allowed only optional line (normal)
+                if(toNode.type.indexOf('attribute') !== -1 && edge.type.indexOf('optional') === -1 ){
+                    that.edges.remove(edge.id);
+                    that.selectedMenuComponent = '';
+                    that.shouldProcessDataset = true;
+                    return;
+                }
+                if(fromNode.type.indexOf('entity') !== -1 && toNode.type.indexOf('subtype') !== -1 &&
+                    edge.type.indexOf('subtype') !== -1 ){
+                    var temp = edge.to;
+                    edge.to = edge.from;
+                    edge.from = temp;
+                    that.edges.update(edge);
+                }else if(fromNode.type.indexOf('subtype') !== -1 && toNode.type.indexOf('entity') !== -1 &&
+                    edge.type.indexOf('subtype') === -1 ){
+                    var temp = edge.to;
+                    edge.to = edge.from;
+                    edge.from = temp;
+                    that.edges.update(edge);
+                }
+                fromNode = that.nodes.get(edge.from);
+                toNode = that.nodes.get(edge.to);
+                if(fromNode.type.indexOf('entity') !== -1 && toNode.type.indexOf('relationship') !== -1){
+                    var connectEdges = that.edges.where('from', fromNode.id).where('to', toNode.id);
+                    if(connectEdges.length > 1){
+                        connectEdges.forEach(function (item) {
+                            item.smooth = true;
+                            that.edges.update(item);
+                        });
+                    }else{
+                        connectEdges.forEach(function (item) {
+                            item.smooth = false;
+                            that.edges.update(item);
+                        });
+                    }
+                    that.resetBeforeClick();
+                    that.nodeClicked(toNode.id);
+                }
+            }
+            that.shouldProcessDataset = true;
+            that.renderCallback();
+            that.saveRevision();
+        });
+        this.renderCallback();
+        this.network.on('animationFinished', function() {
+            //export image
+            if(that.export){
+                var canvas = $(that.diagramSelector).find('canvas')[0];
+                var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
+
+                that.export = false;
+                that.exportCallback(image);
+            }
+        });
+        this.network.on('click', function ($e) {
+            var selections = that.network.getSelection();
+            var selectedMenuComponent = $('.icon-list .active').attr('id');
+            var isSelectedEdgeMenuComponent = false;
+            if(selectedMenuComponent === "optional" || selectedMenuComponent === "mandatory" || selectedMenuComponent === "subtype") {
+                isSelectedEdgeMenuComponent = true;
+            }
+            if(selections.nodes.length + selections.edges.length === 0){
+                if($('.icon-list .active').attr('id')){
+                    that.selectedMenuComponent = selectedMenuComponent;
+                    if(!isSelectedEdgeMenuComponent){
+                        var node = that.generateNode(that.uuidv4(), 'Untitled', that.selectedMenuComponent, '#97C2FC', '#000000', {x: $e.pointer.canvas.x, y: $e.pointer.canvas.y});
+                        that.nodes.add(node)
+                    }
+                }
+            }else{
+                $('.icon-list li').removeClass('active');
+            }
+
+            if(that.editable && that.isShowMenu) {
+                //reset value
+                that.resetBeforeClick();
+                that.pointer = $e.pointer;
+                for(var key in that.input){
+                    if(key !== 'backgroundColor' && key !== 'labelColor'){
+                        $(that.input[key]).val('');
+                    }
+                }
+                if ($e.nodes.length === 0) {
+                    that.hideMenu();
+                } else {
+                    that.nodeClicked($e.nodes[0]);
+                    that.showMenu();
+                }
+            }
+        });
+        this.network.on('beforeDrawing', function (ctx) {
+            var screenHeight = $(window).height();
+            var topMenuHeight = $(that.menu.top).outerHeight();
+            var oldHeight = $(that.diagramSelector).find('.network').parent().height();
+            if(oldHeight !== screenHeight-topMenuHeight){
+                //resize
+                $(that.diagramSelector).find('.network').parent().height(screenHeight-topMenuHeight);
+                $(that.menu.container).css('height', screenHeight-topMenuHeight);
+                $(that.menu.container).css('max-height', screenHeight-topMenuHeight);
+            }
+            that.removeOrphanEdge();
+
+        });
+        this.network.on('afterDrawing', function (ctx) {
+            if(!that.fullscreen){
+                that.previousSize = {width: $(that.diagramSelector).width(), height: $(that.diagramSelector).height()};
+            }
+        });
+    }
+    resetBeforeClick(){
+        this.selectedTable = null;
+        this.selectedAttribute = null;
+        this.selectedRelationship = null;
+        this.connectedTable = [];
+        this.tableRelationCount = 2;
+    }
+
+    hideMenu(){
+        var menu = $(this.menu.container);
+        menu.addClass('hidden');
+    }
+    showMenu(){
+        var menu = $(this.menu.container);
+        menu.removeClass('hidden');
+    }
+
+    nodeClicked(id) {
+        var node = this.nodes.where("id", id).get()[0];
+        $(this.input.backgroundColor).val(node.backgroundColor);
+        $(this.input.labelColor).val(node.labelColor);
+        var color = new CustomColor();
+        $(this.input.backgroundColor).css('background-color', node.backgroundColor);
+        $(this.input.backgroundColor).css('color', color.getContrastHex(node.backgroundColor));
+        $(this.input.labelColor).css('background-color', node.labelColor);
+        $(this.input.labelColor).css('color', color.getContrastHex(node.labelColor));
+        if (node.type.indexOf('entity') !== -1) {
+            this.tableNodeSelected(node);
+        } else if (node.type.indexOf('relationship') !== -1 ) {
+            this.relationshipNodeSelected(node);
+        } else if(node.type.indexOf('attribute') !== -1 ) {
+            this.attributeNodeSelected(node);
+        } else if(node.type.indexOf('subtype') !== -1 ) {
+            this.subtypeNodeSelected(node);
+        }
+        this.drawHtmlSelectTable();
+    }
+
+    tableNodeSelected(node) {
+        this.selectedTable = node;
+        $(this.input.tableName).val(node.name);
+        $(this.input.tableType).val(node.type);
+        $(this.menu.table+','+this.menu.attribute+','+this.menu.relationship).removeClass('hidden');
+        $(this.menu.attribute+','+this.menu.relationship+','+this.menu.subtype).addClass('hidden');
+        $(this.button.updateTable+','+this.button.deleteTable).removeClass('hidden');
+    }
+
+    attributeNodeSelected(node) {
+        this.selectedAttribute = node;
+        try {
+            var parentNode = this.nodes.get(this.edges.where('to', node.id).get()[0].from);
+            if(parentNode.type.indexOf('relationship') !== -1){
+                this.selectedRelationship = parentNode;
+            }else{
+                this.selectedTable = parentNode;
+            }
+        }
+        catch(err) {
+            /* no parent node */
+        }
+
+        $(this.input.attributeName).val(node.name);
+        $(this.input.attributeType).val(node.type);
+        $(this.button.updateAttribute).removeClass('hidden');
+        $(this.button.deleteAttribute).removeClass('hidden');
+        $(this.menu.attribute).removeClass('hidden');
+        $(this.menu.table+','+this.menu.relationship+','+this.menu.subtype).addClass('hidden');
+    }
+    guid() {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
+    }
+    subtypeNodeSelected(node) {
+        this.selectedSubtype = node;
+
+        $(this.input.subtypeType).val(node.type);
+        $(this.button.updateSubtype).removeClass('hidden');
+        $(this.button.deleteSubtype).removeClass('hidden');
+        $(this.menu.subtype).removeClass('hidden');
+        $(this.menu.table+','+this.menu.relationship+','+this.menu.attribute).addClass('hidden');
+    }
+
+    relationshipNodeSelected(node) {
+        this.selectedRelationship = node;
+        var connectedTable = this.edges.where('to', node.id).get();
+        this.connectedTable = [];
+
+        for(var i = 0; i<connectedTable.length;i++){
+            var table = this.nodes.get(connectedTable[i].from);
+            this.connectedTable.push(table);
+        }
+        this.tableRelationCount = connectedTable.length;
+        $(this.button.updateRelationship+','+this.button.deleteRelationship).removeClass('hidden');
+        $(this.menu.table+','+this.menu.attribute+','+this.menu.subtype).addClass('hidden');
+        $(this.menu.relationship).removeClass('hidden');
+    }
+    uuidv4() {
+        return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+            (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        );
+    }
+    generateNode(id, name, type, backgroundColor, labelColor, position) {
+        var node = {id: id, name: name, physics: false, type: type, backgroundColor: backgroundColor, labelColor: labelColor};
+        if(position){
+            node.x = position.x;
+            node.y = position.y;
+        }
+        var temp, svg, url;
+        if(type.indexOf('entity') !== -1){
+            temp = {font:{size:30, color: labelColor}, color: backgroundColor, label: name, shape: 'box', margin: {top: 15, bottom: 15, left: 15, right: 15}, widthConstraint: {minimum: 111}};
+            $.extend( true, node, temp );
+            node.name = node.name.toUpperCase();
+            node.label = node.name.toUpperCase();
+        }
+        else if(type.indexOf('relationship') !== -1){
+            node.name = node.name.toLowerCase();
+            temp = {shape: 'diamond', size: 40, color: backgroundColor};
+            $.extend( true, node, temp );
+        }
+        else if(type === 'subtype-overlap'){
+            temp = {font:{size:30, color: labelColor}, color: backgroundColor, label: ' o ', shape: 'circle', margin: {top: 15, bottom: 15, left: 15, right: 15}};
+            $.extend( true, node, temp );
+        }
+        else if(type === 'subtype-disjoint'){
+            temp = {font:{size:30, color: labelColor}, color: backgroundColor, label: ' d ', shape: 'circle', margin: {top: 15, bottom: 15, left: 15, right: 15}};
+            $.extend( true, node, temp );
+        }
+        else if(type === 'attribute-derived'){
+            var color = new CustomColor();
+            var bg = color.hexToRgb(backgroundColor);
+            var newbg = color.rgbaToHex(bg.r, bg.g, bg.b, 0.5);
+            temp = {label: name,  shape: 'ellipse', font:{size:20, color: labelColor}, color: {background: newbg, border: backgroundColor}, borderWidth: 2, shapeProperties:{borderDashes:[5,5]}, widthConstraint: {minimum: 111}};
+            $.extend( true, node, temp );
+        }
+        else{
+            temp = {label: name,  shape: 'ellipse', font:{size:20, color: labelColor}, color: backgroundColor, widthConstraint: {minimum: 111}};
+            $.extend( true, node, temp );
+        }
+        if(type.indexOf('attribute') !== -1){
+            node.name = node.name.toLowerCase();
+            node.label = node.name.toLowerCase();
+        }
+        return node;
+    }
+
+    updateTable(id, options){
+        if(!id){
+            alert('Missing entity id!');
+            return;
+        }
+        var oldNode = this.nodes.where('id', id).get()[0];
+        if(oldNode){
+            if(!options['type']){
+                options['type'] = oldNode.type
+            }
+
+            if(!options['name']){
+                options['name'] = oldNode.name.toUpperCase()
+            }else{
+                options['name']= options['name'].toUpperCase();
+            }
+            options['backgroundColor'] = (options['backgroundColor']) ? options['backgroundColor'] : oldNode.backgroundColor;
+            options['labelColor'] = (options['labelColor']) ? options['labelColor'] : oldNode.labelColor;
+
+            try {
+                oldNode.label = '';
+                this.nodes.update(oldNode);
+                this.nodes.update(this.generateNode(id, options['name'], options['type'], options['backgroundColor'], options['labelColor']));
+            }
+            catch (err) {console.log(err);}
+        }else{
+            console.log("Can't find node id"+id)
+        }
+    }
+
+    deleteTable(id) {
+        try {
+            this.nodes.remove({id: id});
+            this.removeOrphanEdge();
+        }
+        catch (err) {console.log(err);}
+    }
+
+    updateSubtype(id, options){
+        if(!id){
+            alert('Missing subtype id!');
+            return;
+        }
+        var oldNode = this.nodes.where('id', id).get()[0];
+        if(oldNode){
+            if(!options['type']){
+                if(oldNode){
+                    options['type'] = oldNode.type;
+                }else{
+                    options['type'] = 'subtype-disjoint';
+                }
+            }
+
+            options['backgroundColor'] = (options['backgroundColor']) ? options['backgroundColor'] : oldNode.backgroundColor;
+            options['labelColor'] = (options['labelColor']) ? options['labelColor'] : oldNode.labelColor;
+
+            try {
+                this.nodes.update(this.generateNode(id, options['name'], options['type'], options['backgroundColor'], options['labelColor']));
+            }
+            catch (err) {console.log(err);}
+        }else{
+            console.log("Can't find node id"+id)
+        }
+    }
+
+    deleteSubtype(id) {
+        try {
+            this.nodes.remove(id);
+            this.removeOrphanEdge();
+        }catch (err) {console.log(err);}
+    }
+
+    updateAttribute(id, options) {
+        var oldNode = this.nodes.get(id);
+        if(oldNode){
+            if(!options['name']){
+                options['name'] = oldNode.name;
+            }else{
+                options['name'] = options['name'].toLowerCase();
+            }
+            if(!options['type']){
+                options['type'] = oldNode.type;
+            }
+
+            options.position = {x: oldNode.x, y: oldNode.y};
+            var node = this.generateNode(id, options['name'], options['type'], options['backgroundColor'], options['labelColor'], options['position']);
+            if(!node.label){
+                node.label = '';
+            }
+            this.nodes.remove(node);
+            this.nodes.add(node);
+            this.showMenu();
+        }else{
+            console.log("Can't find node id"+id)
+        }
+    }
+
+    deleteAttribute(id) {
+        this.nodes.remove(id);
+        this.removeOrphanEdge();
+    }
+
+    updateRelationship(id, options) {
+        var node = this.nodes.get(id);
+        if(node){
+            var that = this;
+            if(!options['name']){
+                options['name'] = node.name;
+            }else{
+                options['name'] = options['name'].toLowerCase();
+            }
+            if(!options['type']){
+                options['type'] = node.type;
+            }
+            node.name = options['name'];
+            node.type = options['type'];
+            node.color = options['backgroundColor'];
+            node.labelColor = options['labelColor'];
+            this.nodes.update(node);
+
+            var oldEdges = [];
+            this.edges.where('to', id).forEach(function (item) {
+                oldEdges.push(item.id);
+            });
+            var connectedTable = $(this.menu.relationshipTable).find('.table-name');
+            if(connectedTable.length === 0){
+                return ;
+            }
+            var tables = [];
+            $.each(connectedTable, function(index, select) {
+                var table = that.nodes.where('name', select.value).get()[0];
+                tables.push(table);
+            });
+            var relation = $(this.menu.relationshipTable).find('.table-relation');
+            var relationElm = $(this.menu.relationshipTable).find('.table-relation-type');
+            var newEdge = [];
+            $.each(relation, function(index, select) {
+                var value = select.value;
+                var type = $(relationElm[index]).val();
+                var edge = {from: tables[index].id, type: type, to: id, label: value, length: 200, font: {align: 'top', size: 20}};
+                newEdge.push(edge);
+            });
+            this.edges.remove(oldEdges);
+            this.shouldProcessDataset = false;
+            this.edges.add(newEdge);
+            for(let i = 0; i<newEdge.length; i++){
+                var connectEdges = that.edges.where('from', newEdge[i].from).where('to', newEdge[i].to);
+                if(connectEdges.length > 1){
+                    connectEdges.forEach(function (item) {
+                        item.smooth = true;
+                        that.edges.update(item);
+                    });
+                }else{
+                    connectEdges.forEach(function (item) {
+                        item.smooth = false;
+                        that.edges.update(item);
+                    });
+                }
+            }
+            this.shouldProcessDataset = true;
+            //this.nodeClicked(id);
+        }else{
+            console.log("Can't find node id"+id)
+        }
+    }
+
+    deleteRelationship(id) {
+        this.nodes.remove(id);
+        this.removeOrphanEdge();
+    }
+
+    drawHtmlSelectTable(){
+        if(!this.shouldDrawHtmlTable){
+            return;
+        }
+        var tableNodes = this.nodes.whereIn('type', ["entity-strong", "entity-weak"]);
+
+        var relationTable = $(this.menu.relationshipTable);
+        relationTable.html('');
+        var selectTableHtml = $('<select class="form-control input-sm table-name"></select>');
+        tableNodes.forEach(function(item) {
+            selectTableHtml
+                .append($("<option></option>")
+                    .attr("value",item.name)
+                    .text(item.name));
+        });
+        $(this.input.attributeType).change();
+        var selectRelationHtml = $('<select class="form-control input-sm table-relation">');
+        $.each(["1", "N"], function(key, value) {
+            selectRelationHtml
+                .append($("<option></option>")
+                    .attr("value",value)
+                    .text(value));
+        });
+        var selectRelationType = $('<select class="form-control input-sm table-relation-type">');
+        $.each(["optional", "mandatory"], function(key, value) {
+            selectRelationType
+                .append($("<option></option>")
+                    .attr("value",value)
+                    .text(value));
+        });
+        var tdTableName = $("<td style='width:7em;'></td>").append(selectTableHtml);
+        var tdRelation = $("<td style='width:5em;'></td>").append(selectRelationHtml);
+        var tdRelationType = $("<td></td>").append(selectRelationType);
+        var tdAction = $("<td></td>").append('<button type="button" class="btn btn-xs btn-danger btn-remove-relation"><i class="fa fa-trash"></i></button>');
+
+        if(this.selectedRelationship){
+            $(this.input.relationshipName).val(this.selectedRelationship.name);
+            $(this.input.relationshipType).val(this.selectedRelationship.type);
+        }else if(!$(this.input.relationshipName).val()){
+            $(this.input.relationshipName).val('');
+            $(this.input.relationshipType).val('');
+        }
+        var tempEdge = new vis.DataSet(this.edges.get());
+        for(var i = 0; i < Math.max(this.tableRelationCount, this.connectedTable.length); i++){
+            var trBody = $("<tr></tr>").append(tdTableName.clone()).append(tdRelation.clone()).append(tdRelationType.clone());
+            if(i < this.connectedTable.length){
+                $(trBody.find('.table-name')).val(this.connectedTable[i].name);
+                var edge = tempEdge.where('from', this.connectedTable[i].id).where('to', this.selectedRelationship.id).get()[0];
+                if(edge){
+                    $(trBody.find('.table-relation')).val(edge.label);
+                    $(trBody.find('.table-relation-type')).val(edge.type);
+                    tempEdge.remove(edge.id);
+                }
+            }
+            if(i > 1){
+                trBody.append(tdAction.clone());
+            }else{
+                trBody.append($("<td></td>"));
+            }
+            relationTable.append(trBody);
+        }
+        if(this.selectedTable){
+            $(this.menu.relationshipTable).find('.table-name').val(this.selectedTable.name);
+        }
+        var that = this;
+        $(this.menu.relationship).find('.btn-remove-relation').click(function () {
+            that.tableRelationCount -= 1;
+            $(this).parent().parent().remove();
+        });
+    }
+
+    destroy(){
+        document.removeEventListener('webkitfullscreenchange', this.exitFullScreenHandler, false);
+        document.removeEventListener('mozfullscreenchange', this.exitFullScreenHandler, false);
+        document.removeEventListener('fullscreenchange', this.exitFullScreenHandler, false);
+        document.removeEventListener('MSFullscreenChange', this.exitFullScreenHandler, false);
+        try{
+            this.network.destroy();
+            this.network = null;
+        }catch(e) {}
+        $(this.diagramSelector).find("*").off();
+    }
+    
+    setGraph(data, logger= false){
+        this.nodes = new vis.DataSet(data.nodes);
+        this.edges = new vis.DataSet(data.edges);
+        var saveStatus = this.shouldSave;
+        this.shouldSave = false;
+        var that = this;
+        this.nodes.forEach(function (item) {
+            if(item.type.indexOf('attribute') === -1 && item.type.indexOf('relationship') === -1 && item.type.indexOf('entity') === -1 && item.type.indexOf('subtype') === -1){
+                var all_attribute_type = ['attribute-normal', 'attribute-primary', 'attribute-partial', 'attribute-derived', 'attribute-multivalue']
+                if(all_attribute_type.indexOf('attribute-'+item.type) !== -1){
+                    item.type = ('attribute-'+item.type).toLowerCase();
+                }else{
+                    item.type = 'attribute-normal';
+                }
+
+                that.nodes.update(item);
+            }
+            if(item.type === 'relationship'){
+                item.type = 'relationship-normal';
+                that.nodes.update(item);
+            }
+            if(item.shape == 'ellipse' && item.type.indexOf('attribute-') === -1){
+                that.nodes.update({id: item.id, type: 'attribute-normal', name: item.label});
+            }
+        });
+        if(logger === true){
+            if(!data.logger){
+                data.logger = [];
+            }
+            if(!this.logger){
+                this.logger = [];
+            }
+            let temp = data.logger.concat(this.logger);
+            temp = [...new Set(temp)]
+            this.logger = temp;
+        }
+        this.shouldSave = saveStatus;
+        if (this.network !== null) {
+            this.network.destroy();
+        }
+        this.draw();
+        this.imageData(function () {
+            
+        });
+    }
+
+    retrieveScripURL(filename) {
+        var scripts = document.getElementsByTagName('script');
+        if (scripts && scripts.length > 0) {
+            for (var i in scripts) {
+                if(scripts[i].src.indexOf('/'+filename+'.js') > -1){
+                    return scripts[i].src.split('?')[0].split('/').slice(0, -1).join('/')+'/';
+                }
+            }
+        }
+    }
+
+    exitFullScreen() {
+        if (this.resizing == false) {
+            $(this.button.toggleFullScreen).html('<i class="fa fa-expand"></i>');
+            $(this.diagramSelector).css('width', '100%');
+            $(this.diagramSelector).css('height', this.previousSize.height);
+            this.fullscreen = false;
+        }
+    }
+
+    toggleFullScreen(){
+        this.resizing = true;
+        if(this.fullscreen){
+            this.resizing = false;
+            this.fullscreen = false;
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+            this.exitFullScreen();
+        }else{
+            this.resizing = true;
+            this.fullscreen = true;
+            $(this.diagramSelector).css('width', screen.width);
+            $(this.diagramSelector).css('height', screen.height);
+            var elem = $(this.diagramSelector)[0];
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            }
+            $(this.button.toggleFullScreen).html('<i class="fa fa-compress"></i>');
+            var that = this;
+            setTimeout(function() {
+                that.resizing = false;
+            }, 100);
+        }
+    }
+
+    removeOrphanEdge(){
+        var that = this;
+        this.edges.forEach(function (item) {
+            if(!that.nodes.get(item.from)){
+                console.log('Remove orphan edges',item);
+                that.edges.remove(item.id)
+            }
+            if(!that.nodes.get(item.to)){
+                console.log('Remove orphan edge',item);
+                that.edges.remove(item.id)
+            }
+        });
+    }
+    removeOrphanAttribute(){
+        var that = this;
+        var attributeNodes = this.nodes.get({
+            filter: function (item) {
+                return item.type.indexOf('entity') === -1 && item.type.indexOf('relationship') === -1;
+            }
+        });
+        attributeNodes.forEach(function (item) {
+            if(that.edges.where('from', item.id).length === 0 && that.edges.where('to', item.id).length === 0){
+                console.log('Remove orphan attribute',item);
+                that.nodes.remove(item.id)
+            }
+        });
+    }
+
+    saveRevision(){
+        if(this.shouldSave){
+            this.revision.splice(this.revisionIndex+1, this.revision.length);
+            var saveObject = this.graphData;
+            saveObject.date = new Date();
+            var diff = DeepDiff.diff;
+            var differences = diff(this.revision[this.revision.length-1], saveObject);
+            try {
+                if(differences.length === 1 && (differences[0].path == "date" || differences[0].path === "logger")){
+                    return;
+                }
+            }catch ($e){
+                return;
+            }
+            this.revision.push(saveObject);
+            if(this.revision.length > 100){
+                this.revision = this.revision.splice(this.revision.length-100, this.revision.length);
+            }
+            this.revisionIndex = this.revision.length-1;
+        }
+    }
+
+    saveGraph(option){
+        var that = this;
+        var data = {nodes: that.nodes.get(), edges: that.edges.get(), logger: this.logger};
+        try{
+            that.download();
+            var status = that.saveCallback(JSON.stringify(data, null,4));
+            if(option && option['exit'] && status === true){
+                window.close();
+            }
+        }catch(err) {
+            alert("Can't find parent tab!");
+        }
+    }
+
+    undo(){
+        this.saveRevision();
+        this.revisionIndex = Math.max(0, this.revisionIndex-1);
+        this.shouldSave = false;
+        this.setGraph(this.revision[this.revisionIndex]);
+    }
+
+    redo(){
+        if(this.revisionIndex !== this.revision.length-1){
+            this.revisionIndex = Math.min(this.revisionIndex+1, this.revision.length-1);
+            this.setGraph(this.revision[this.revisionIndex]);
+        }
+    }
+
+    download(){
+        var saveObject = {nodes: this.nodes.get(), edges: this.edges.get(), date: new Date(), logger: this.logger};
+        var link = document.createElement('a');
+        link.download = 'conceptual.json';
+        link.href = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(saveObject));
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    upload(e){
+        var that = this;
+        this.shouldSave = true;
+        this.saveRevision();
+        this.readFile(e, function (contents) {
+            try {
+                contents = JSON.parse(contents);
+                if(contents.table){
+                    alert('Please select conceptual er file!');
+                    return;
+                }
+                that.setGraph(contents, true);
+                that.saveRevision();
+            } catch(e) {
+                alert(e);
+            }
+        });
+    }
+
+    readFile(e, callback) {
+        var file = e.target.files[0];
+        if (!file) {
+            return;
+        }
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var contents = e.target.result;
+            callback(contents);
+        };
+        reader.readAsText(file);
+    }
+
+
+    get schemaStructure(){
+        return {};
+    }
+}
+
+vis.DataSet.prototype.where = function(key, value){
+    var items = this.get({
+        filter: function (item) {
+            return item[key] === value;
+        }
+    });
+    items = new vis.DataSet(items);
+    return items;
+};
+
+vis.DataSet.prototype.whereIn = function(key, array){
+    var items = this.get({
+        filter: function (item) {
+            return array.indexOf(item[key]) > -1 ;
+        }
+    });
+    items = new vis.DataSet(items);
+    return items;
+};
+vis.DataSet.prototype.whereArray = function(key, array){
+    var items = this.get({
+        filter: function (item) {
+            return $(item[key]).not(array).length === 0 && $(array).not(item[key]).length === 0;
+        }
+    });
+    items = new vis.DataSet(items);
+    return items;
+};

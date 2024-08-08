@@ -1,0 +1,133 @@
+class CustomColor {
+    constructor(options) {
+    }
+
+    adjustColour(r, g, b)
+    {
+        var triplet = [r, g, b];
+        var newtriplet = [];
+        // black or white:
+        var total = 0; for (var i=0; i<triplet.length; i++) { total += triplet[i]; }
+        if(total > (3*256/2)) {
+            newtriplet = [0,0,0];
+        } else {
+            newtriplet = [255,255,255];
+        }
+
+        return this.rgbToHex(newtriplet[0], newtriplet[1], newtriplet[2]);
+    }
+
+    generateColors(total)
+    {
+        var i = 360 / (total - 1); // distribute the colors evenly on the hue range
+        var r = []; // hold the generated colors
+        for (var x=0; x<total; x++)
+        {
+            r.push(this.hsvToRgb(i * x, 100, 100)); // you can also alternate the saturation and value for even more contrast between the colors
+        }
+        return r;
+    }
+
+    rgbToHex(r, g, b) {
+        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    }
+
+    getContrastHex(hexcolor){
+        return (parseInt(hexcolor.replace('#',''), 16) > 0xffffff/2) ? 'black':'white';
+    }
+
+    rgbaToHex(red, green, blue, alpha) {
+        red = this.getTintValue( red, 255, alpha);
+        green = this.getTintValue( green, 255, alpha);
+        blue = this.getTintValue( blue, 255, alpha);
+        return this.rgbToHex(red, green, blue);
+    }
+
+    getTintValue(tint, bgTint, alpha) {
+        var tmp = Math.floor((1 - alpha ) * bgTint + alpha * tint);
+        if( tmp > 255 ) {
+            return 255;
+        }
+        return tmp;
+    }
+
+    hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null;
+    }
+
+    hsvToRgb(h, s, v) {
+        var r, g, b;
+        var i;
+        var f, p, q, t;
+
+        // Make sure our arguments stay in-range
+        h = Math.max(0, Math.min(360, h));
+        s = Math.max(0, Math.min(100, s));
+        v = Math.max(0, Math.min(100, v));
+
+        // We accept saturation and value arguments from 0 to 100 because that's
+        // how Photoshop represents those values. Internally, however, the
+        // saturation and value are calculated from a range of 0 to 1. We make
+        // That conversion here.
+        s /= 100;
+        v /= 100;
+
+        if (s == 0) {
+            // Achromatic (grey)
+            r = g = b = v;
+            return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+        }
+
+        h /= 60; // sector 0 to 5
+        i = Math.floor(h);
+        f = h - i; // factorial part of h
+        p = v * (1 - s);
+        q = v * (1 - s * f);
+        t = v * (1 - s * (1 - f));
+
+        switch (i) {
+            case 0:
+                r = v;
+                g = t;
+                b = p;
+                break;
+
+            case 1:
+                r = q;
+                g = v;
+                b = p;
+                break;
+
+            case 2:
+                r = p;
+                g = v;
+                b = t;
+                break;
+
+            case 3:
+                r = p;
+                g = q;
+                b = v;
+                break;
+
+            case 4:
+                r = t;
+                g = p;
+                b = v;
+                break;
+
+            default: // case 5:
+                r = v;
+                g = p;
+                b = q;
+        }
+
+        return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+    }
+}
+

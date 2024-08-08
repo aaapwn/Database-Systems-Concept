@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)https://dblearning.it.kmitl.ac.th/quiz/submission/85322 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <!-- Google font -->
+    <link href="./Lab05_files/css" rel="stylesheet" type="text/css">
+    <link href="./Lab05_files/css(1)" rel="stylesheet" type="text/css">
+    <!-- Css -->
+    <link rel="stylesheet" type="text/css" href="./Lab05_files/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./Lab05_files/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./Lab05_files/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="./Lab05_files/md-font.css">
+    <link rel="stylesheet" type="text/css" href="./Lab05_files/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="./Lab05_files/loading.css">
+    <link rel="stylesheet" type="text/css" href="./Lab05_files/style.css">
+
+        <link rel="stylesheet" href="./Lab05_files/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="./Lab05_files/vis.min.css">
+
+    <style>
+        .breadcrumb {
+            margin-bottom: 0px;
+            padding-top: 0px;
+        }
+        .breadcrumb > li > a {
+            margin-top: 1em;
+        }
+        .ps-container > .ps-scrollbar-x-rail > .ps-scrollbar-x,
+        .ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y  {   opacity: 1; }
+
+        .container{
+            width: 100%;
+        }
+    </style>
+        <style>
+        .erdiagram, .network, .col-xs-12{
+            height: 400px!important;
+        }
+        .answer_explanation{
+            border: 1px red solid;
+        }
+        .answer_explanation > th, .answer_explanation > td{
+            padding: 1em;
+        }
+        .answer_explanation > th{
+            background-color: red;
+            color: white;
+        }
+        p{color: black;}
+        h1{margin-top: 0;}
+        h4{color: black;}
+        .container{  width: 80%}
+        th {width: 10em;}
+        .panel{margin-bottom: 1em!important;}
+        table{width: 100%;}
+        .panel-warning{border-color: #f1c774}
+        .tooltip-inner {
+            white-space:nowrap;
+            max-width:none;
+        }
+        pre{
+            white-space: pre-wrap;       /* Since CSS 2.1 */
+            white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;
+        }
+        .monospace table, .error-code{
+            font-family: "Courier New", Courier, monospace!important;
+        }
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+    <title>
+                        Learning SQL -
+        
+    Quiz
+    </title>
+<style type="text/css" id="operaUserStyle"></style><style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
+<body id="page-top" style="" data-new-gr-c-s-check-loaded="14.1115.0" data-gr-ext-installed="">
+
+<!-- PAGE WRAP -->
+<div id="page-wrap">
+    <div class="overlayForm" style="display: none"></div>
+
+    <div class="top-nav">
+
+        <h4 class="sm black bold">    <ol class="breadcrumb">
+                    <li><a href="https://dblearning.it.kmitl.ac.th/class/70">DATABASE SYSTEM CONCEPT 2566</a></li>
+            <li><a href="https://dblearning.it.kmitl.ac.th/quiz/2283">Assignment: 2566-LAB05-SQL SELECT CONDITION</a></li>
+            <li><a href="https://dblearning.it.kmitl.ac.th/quiz/2283/submission?class=70">Submission</a></li>
+                <li class="active">#85322</li>
+    </ol>
+</h4>
+
+        <ul class="top-nav-list">
+            <li>
+                <a href="javascript:{}">
+                    <span id="clock">13:00:36</span>
+<script type="text/javascript">
+    var now = new Date(1690005595000);
+    function startInterval(){
+        setInterval('updateTime();', 1000);
+    }
+    startInterval();
+    function updateTime(){
+        var nowMS = now.getTime();
+        nowMS += 1000;
+        
+        now.setTime(nowMS);
+        var clock = document.getElementById('clock');
+        if(clock){
+            clock.innerHTML = now.toTimeString().split(" ",1);
+        }
+    }
+</script>                </a>
+            </li>
+                <li class="backpage">
+                    <a href="https://dblearning.it.kmitl.ac.th/quiz/2283/submission?class=70"><i class="icon md-close-1"></i></a>
+            </li>
+        </ul>
+
+    </div>
+
+        <section id="quiz-section" class="quiz-section" style="padding-top: 60px;">
+        <div class="container">
+            <br><br>
+            <div class="row">
+                <div class="col-md-6">
+                                        <div class="pull-right">
+                        <a class="btn btn-warning btn-comment-quiz" href="https://dblearning.it.kmitl.ac.th/quiz/submission/85322#" role="button">
+                            <i class="fa fa-comments"></i> Comment This Quiz
+                        </a>
+                    </div>
+                    
+                    <h1>Submission #85322</h1>
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>ID</th>
+                            <td>85322
+                                                        </td>
+                        </tr>
+                        <tr>
+                            <th>Quiz Name</th>
+                            <td>2566-LAB05-SQL SELECT CONDITION</td>
+                        </tr>
+                        <tr>
+                            <th>User</th>
+                            <td>it65070185 (นายภูวิศ นุ่นปาน)</td>
+                        </tr>
+                        <tr>
+                            <th>Score</th>
+                            <td>
+                                ???
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>
+                                ???
+
+                            </td>
+                        </tr>
+                                                <tr>
+                            <th>Started at</th>
+                            <td>2023-07-21 22:17:04</td>
+                        </tr>
+                        <tr>
+                            <th>Submitted at</th>
+                            <td>2023-07-22 10:21:50</td>
+                        </tr>
+                        
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="fill_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Fill In</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="choice_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Choice</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="matching_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Matching</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 ">
+                                <div class="box box-danger">
+                                    <div class="box-body"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                                        <canvas id="sql_chart" width="203" height="201" style="display: block; height: 149px; width: 151px;" class="chartjs-render-monitor"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">SQL</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="er_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Logical</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="design_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">Conceptual</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4 hidden">
+                                <div class="box box-danger">
+                                    <div class="box-body">
+                                        <canvas id="er_verification_chart" height="0" width="0" class="chartjs-render-monitor" style="display: block; height: 0px; width: 0px;"></canvas>
+                                    </div>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title text-center">ER Verification</h4>
+                                    </div>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div class="panel-group" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-success hidden">
+                    <a role="button" data-toggle="collapse" href="https://dblearning.it.kmitl.ac.th/quiz/submission/85322#collapseFill" aria-expanded="true" aria-controls="collapseFill">
+                        <div class="panel-heading" role="tab" id="headingFill">
+                            <h4 class="panel-title">
+                                <i class="fa fa-file-text-o"></i> Fill In
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseFill" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFill">
+                        <div class="panel-body">
+                                                       No Data
+                                          </div>
+               </div>
+           </div>
+           <div class="panel panel-info hidden">
+               <a class="collapsed" role="button" data-toggle="collapse" href="https://dblearning.it.kmitl.ac.th/quiz/submission/85322#collapseChoice" aria-expanded="false" aria-controls="collapseChoice">
+                   <div class="panel-heading" role="tab" id="headingChoice">
+                       <h4 class="panel-title">
+                           </h4><h3 class="panel-title"><i class="fa fa-check-circle-o"></i> Choice</h3>
+                       
+                   </div>
+               </a>
+
+               <div id="collapseChoice" class="panel-collapse collapse  in" role="tabpanel" aria-labelledby="headingChoice">
+                   <div class="panel-body">
+                                                       No Data
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-warning hidden">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/85322#collapseMatching" aria-expanded="false" aria-controls="collapseMatching">
+                        <div class="panel-heading" role="tab" id="headingMatching">
+                            <h4 class="panel-title">
+                                <i class="fa fa-link"></i> Matching
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseMatching" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingMatching">
+                        <div class="panel-body">
+                                                            No Data
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger ">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/85322#collapseSQL" aria-expanded="false" aria-controls="collapseSQL">
+                        <div class="panel-heading" role="tab" id="headingSQL">
+                            <h4 class="panel-title">
+                                <i class="fa fa-database"></i> SQL
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseSQL" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSQL">
+                        <div class="panel-body">
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            1694
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><p>จงแสดงชื่อจริง นามสกุล และเงินเดือนในรอบปีของพนักงาน โดยแสดงเฉพาะพนักงานที่มีเงินเดือนในรอบปีมีค่ามากกว่า 30000&nbsp; หมายเหตุเงินเดือนในรอบปีคำนวณจากเงินเดือนคูณ 12 และตั้งชื่อคอลัมน์ว่า Annual Salary<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างบางส่วนจากคำตอบ</strong></span></p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td><strong>&nbsp;first_name</strong></td>
+			<td><strong>&nbsp;last_name</strong></td>
+			<td><strong>&nbsp;Annual Salary</strong></td>
+		</tr>
+		<tr>
+			<td>&nbsp;Steven</td>
+			<td>&nbsp;King</td>
+			<td>&nbsp;288000.00</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Neena</td>
+			<td>&nbsp;Kochhar</td>
+			<td>&nbsp;204000.00</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Lex</td>
+			<td>&nbsp;De Haan</td>
+			<td>&nbsp;204000.00</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Alexander</td>
+			<td>&nbsp;Hunold</td>
+			<td>&nbsp;108000.00</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Bruce</td>
+			<td>&nbsp;Ernst</td>
+			<td>&nbsp;72000.00</td>
+		</tr>
+	</tbody>
+</table>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618354</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> first_name, last_name, salary*<span class="hljs-number">12</span> <span class="hljs-string">`Annual Salary`</span>
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> salary*<span class="hljs-number">12</span> &gt; <span class="hljs-number">30000</span></code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            1696
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><p>จงแสดงชื่อจริง นามสกุล และเงินเดือนของพนักงานที่ชื่อจริงขึ้นต้นด้วยอักษร S และเรียงผลลัพธ์ด้วยชื่อจริงจาก A-Z</p>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618430</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> first_name, last_name, salary
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> first_name <span class="hljs-keyword">like</span> <span class="hljs-string">'S%'</span>
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> first_name</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            1697
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><p>จงแสดงชื่อจริง นามสกุล และเงินเดือน ของพนักงานที่ไม่มีหัวหน้า<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างคำตอบ</strong></span><br>
+&nbsp;</p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td><strong>&nbsp;first_name</strong></td>
+			<td><strong>&nbsp;last_name</strong></td>
+			<td><strong>&nbsp;salary</strong></td>
+		</tr>
+		<tr>
+			<td>&nbsp;Steven</td>
+			<td>&nbsp;King</td>
+			<td>&nbsp;24000.00</td>
+		</tr>
+	</tbody>
+</table>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618418</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> first_name, last_name, salary
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> manager_id <span class="hljs-keyword">is</span> <span class="hljs-literal">null</span></code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            1698
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><p>จงแสดงชื่อประเทศ รหัสทวีป ของข้อมูลประเทศ โดยแสดงเฉพาะชื่อประเทศที่ขึ้นต้นด้วย United เท่านั้น และเรียงผลลัพธ์ตามรหัสทวีปจากมากไปน้อย</p>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618411</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> country_name, region_id
+<span class="hljs-keyword">from</span> countries
+<span class="hljs-keyword">where</span> country_name <span class="hljs-keyword">like</span> <span class="hljs-string">'United%'</span>
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> region_id <span class="hljs-keyword">desc</span></code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            1699
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><p>จงแสดงรหัสงาน รหัสแผนก ของประวัติการทำงานที่มีพนักงานที่สิ้นสุดการทำงานก่อนวันที่ 30 มกราคม 2541 โดยเรียงผลลัพธ์ตามเลขรหัสพนักงานจากน้อยไปมาก หมายเหตุให้แปลง พ.ศ. เป็น ค.ศ ตามข้อมูลที่อยู่ในฐานข้อมูล</p>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618399</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> job_id, department_id
+<span class="hljs-keyword">from</span> job_history
+<span class="hljs-keyword">where</span> end_date &lt; <span class="hljs-string">'1998-01-30'</span>
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> employee_id</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            1700
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><p>จงแสดงข้อมูลพนักงานทั้งหมด ที่มีรหัสงานขึ้นต้นด้วย SA_ หรือ&nbsp; IT_ (กำหนดให้ใช้ &amp;&nbsp;ในการอ่านอักขระพิเศษ)<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างบางส่วนจากคำตอบ</strong></span></p>
+
+<table border="1">
+	<tbody>
+		<tr>
+			<td style="text-align:center"><span style="font-size:12px">&nbsp;</span><span style="font-size:14px"><strong>employee_id&nbsp;</strong></span></td>
+			<td style="text-align:center"><span style="font-size:14px"><strong>&nbsp;first_name&nbsp;</strong></span></td>
+			<td style="text-align:center"><span style="font-size:14px"><strong>&nbsp;last_name&nbsp;</strong></span></td>
+			<td style="text-align:center"><span style="font-size:14px"><strong>&nbsp;email</strong></span></td>
+			<td style="text-align:center"><span style="font-size:14px"><strong>&nbsp;phone_number&nbsp;</strong></span></td>
+			<td style="text-align:center"><span style="font-size:14px"><strong>&nbsp;hire_date&nbsp;</strong></span></td>
+			<td style="text-align:center"><span style="font-size:14px"><strong>job_id</strong></span></td>
+			<td style="text-align:center"><span style="font-size:14px"><strong>salary</strong></span></td>
+			<td style="text-align:center"><span style="font-size:14px"><strong>&nbsp;commission_pct&nbsp;</strong></span></td>
+			<td style="text-align:center"><span style="font-size:14px"><strong>&nbsp;manager_id&nbsp;</strong></span></td>
+			<td style="text-align:center"><span style="font-size:14px"><strong>&nbsp;department_id&nbsp;</strong></span></td>
+		</tr>
+		<tr>
+			<td style="text-align:center"><span style="font-size:14px">103</span></td>
+			<td style="text-align:center"><span style="font-size:14px">Alexander</span></td>
+			<td style="text-align:center"><span style="font-size:14px">Hunold</span></td>
+			<td style="text-align:center"><span style="font-size:14px">AHUNOLD</span></td>
+			<td style="text-align:center"><span style="font-size:14px">590.423.4567</span></td>
+			<td style="text-align:center"><span style="font-size:14px">1990-01-03</span></td>
+			<td style="text-align:center"><span style="font-size:14px">IT_PROG</span></td>
+			<td style="text-align:center"><span style="font-size:14px">9000.00</span></td>
+			<td style="text-align:center"><span style="font-size:14px"><em>NULL</em></span></td>
+			<td style="text-align:center"><span style="font-size:14px">102</span></td>
+			<td style="text-align:center"><span style="font-size:14px">60</span></td>
+		</tr>
+		<tr>
+			<td style="text-align:center"><span style="font-size:14px">104</span></td>
+			<td style="text-align:center"><span style="font-size:14px">Bruce</span></td>
+			<td style="text-align:center"><span style="font-size:14px">Ernst</span></td>
+			<td style="text-align:center"><span style="font-size:14px">BERNST</span></td>
+			<td style="text-align:center"><span style="font-size:14px">590.423.4568</span></td>
+			<td style="text-align:center"><span style="font-size:14px">1991-05-21</span></td>
+			<td style="text-align:center"><span style="font-size:14px">IT_PROG</span></td>
+			<td style="text-align:center"><span style="font-size:14px">6000.00</span></td>
+			<td style="text-align:center"><span style="font-size:14px"><em>NULL</em></span></td>
+			<td style="text-align:center"><span style="font-size:14px">103</span></td>
+			<td style="text-align:center"><span style="font-size:14px">60</span></td>
+		</tr>
+		<tr>
+			<td style="text-align:center"><span style="font-size:14px">105</span></td>
+			<td style="text-align:center"><span style="font-size:14px">David</span></td>
+			<td style="text-align:center"><span style="font-size:14px">Austin</span></td>
+			<td style="text-align:center"><span style="font-size:14px">DAUSTIN</span></td>
+			<td style="text-align:center"><span style="font-size:14px">590.423.4569</span></td>
+			<td style="text-align:center"><span style="font-size:14px">1997-06-25</span></td>
+			<td style="text-align:center"><span style="font-size:14px">IT_PROG</span></td>
+			<td style="text-align:center"><span style="font-size:14px">4800.00</span></td>
+			<td style="text-align:center"><span style="font-size:14px"><em>NULL</em></span></td>
+			<td style="text-align:center"><span style="font-size:14px">103</span></td>
+			<td style="text-align:center"><span style="font-size:14px">60</span></td>
+		</tr>
+		<tr>
+			<td style="text-align:center"><span style="font-size:14px">106</span></td>
+			<td style="text-align:center"><span style="font-size:14px">Valli</span></td>
+			<td style="text-align:center"><span style="font-size:14px">Pataballa</span></td>
+			<td style="text-align:center"><span style="font-size:14px">VPATABAL</span></td>
+			<td style="text-align:center"><span style="font-size:14px">590.423.4560</span></td>
+			<td style="text-align:center"><span style="font-size:14px">1998-02-05</span></td>
+			<td style="text-align:center"><span style="font-size:14px">IT_PROG</span></td>
+			<td style="text-align:center"><span style="font-size:14px">4800.00</span></td>
+			<td style="text-align:center"><span style="font-size:14px"><em>NULL</em></span></td>
+			<td style="text-align:center"><span style="font-size:14px">103</span></td>
+			<td style="text-align:center"><span style="font-size:14px">60</span></td>
+		</tr>
+		<tr>
+			<td style="text-align:center"><span style="font-size:14px">107</span></td>
+			<td style="text-align:center"><span style="font-size:14px">Diana</span></td>
+			<td style="text-align:center"><span style="font-size:14px">Lorentz</span></td>
+			<td style="text-align:center"><span style="font-size:14px">DLORENTZ</span></td>
+			<td style="text-align:center"><span style="font-size:14px">590.423.5567</span></td>
+			<td style="text-align:center"><span style="font-size:14px">1999-02-07</span></td>
+			<td style="text-align:center"><span style="font-size:14px">IT_PROG</span></td>
+			<td style="text-align:center"><span style="font-size:14px">4200.00</span></td>
+			<td style="text-align:center"><span style="font-size:14px"><em>NULL</em></span></td>
+			<td style="text-align:center"><span style="font-size:14px">103</span></td>
+			<td style="text-align:center"><span style="font-size:14px">60</span></td>
+		</tr>
+	</tbody>
+</table>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618390</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> job_id <span class="hljs-keyword">like</span> <span class="hljs-string">'SA&amp;_%'</span> escape <span class="hljs-string">'&amp;'</span> <span class="hljs-keyword">or</span> job_id <span class="hljs-keyword">like</span> <span class="hljs-string">'IT&amp;_%'</span> escape <span class="hljs-string">'&amp;'</span></code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            1703
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><p>จงแสดงชื่อถนนและที่อยู่ ชื่อเมือง และรหัสไปรษณีย์ จากข้อมูลที่สถานที่ตั้งสำนักงาน โดยแสดงเฉพาะเมืองที่มีชื่อขึ้นต้นด้วย ตัว S ตามหลังด้วยตัวอักษรอีก 6 ตัวเท่านั้น และแสดงเฉพาะสถานที่ตั้งสำนักงานที่สามารถระบุ รัฐ/จังหวัดได้<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างคำตอบ</strong></span></p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td><strong>&nbsp;street_address</strong></td>
+			<td><strong>&nbsp;city</strong></td>
+			<td><strong>&nbsp;postal_code</strong></td>
+		</tr>
+		<tr>
+			<td>&nbsp;2004 Charade Rd</td>
+			<td>&nbsp;Seattle</td>
+			<td>&nbsp;98199</td>
+		</tr>
+	</tbody>
+</table>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618375</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> street_address, city, postal_code
+<span class="hljs-keyword">from</span> locations
+<span class="hljs-keyword">where</span> city <span class="hljs-keyword">like</span> <span class="hljs-string">'S______'</span> <span class="hljs-keyword">and</span> state_province <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span></code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            1704
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><p>จงแสดงชื่อถนนและที่อยู่&nbsp;และรหัสประเทศของสถานที่ตั้งสำนักงาน โดยแสดงเฉพาะสถานที่ตั้งสำนักงานที่มีรหัสไปรษณีย์ ขึ้นต้นด้วย 1 และลงท้ายด้วย 0<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างคำตอบ</strong></span></p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td><strong>&nbsp;street_address</strong></td>
+			<td><strong>&nbsp;country_id</strong></td>
+		</tr>
+		<tr>
+			<td>&nbsp;20 Rue des Corps-Saints</td>
+			<td>&nbsp;CH</td>
+		</tr>
+	</tbody>
+</table>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618363</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> street_address, country_id
+<span class="hljs-keyword">from</span> locations
+<span class="hljs-keyword">where</span> postal_code <span class="hljs-keyword">like</span> <span class="hljs-string">'1%0'</span></code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            1705
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><p>จงแสดงชื่อเต็ม และเบอร์โทรศัพท์ ของพนักงานที่สามารถระบุค่าคอมมิชชั่นได้และค่าคอมมิชชั่นที่ได้รับนั้นจะต้องมากกว่าศูนย์<br>
+หมายเหตุ ชื่อเต็มคือชื่อจริงและนามสกุลคั่นด้วย whitespace ตั้งชื่อคอลัมน์ว่า full name และเบอร์โทรศัพท์ ตั้งชื่อคอลัมน์ว่า phone<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างบางส่วนจากคำตอบ</strong></span></p>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td><strong>&nbsp;full name</strong></td>
+			<td><strong>&nbsp;phone</strong></td>
+		</tr>
+		<tr>
+			<td>&nbsp;John Russell</td>
+			<td>&nbsp;011.44.1344.429268</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Karen Partners</td>
+			<td>&nbsp;011.44.1344.467268</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Alberto Errazuriz</td>
+			<td>&nbsp;011.44.1344.429278</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Gerald Cambrault</td>
+			<td>&nbsp;011.44.1344.619268</td>
+		</tr>
+		<tr>
+			<td>&nbsp;Eleni Zlotkey</td>
+			<td>&nbsp;011.44.1344.429018</td>
+		</tr>
+	</tbody>
+</table>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618072</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> <span class="hljs-keyword">concat</span>(first_name, <span class="hljs-string">' '</span>, last_name) <span class="hljs-string">`full name`</span>, phone_number <span class="hljs-string">`phone`</span>
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> commission_pct <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>
+<span class="hljs-keyword">and</span> commission_pct &gt; <span class="hljs-number">0</span>;</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            1706
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td><p>จงแสดงชื่อจริง นามสกุล และเงินเดือนของพนักงาน&nbsp; แสดงเฉพาะรหัสงานที่ไม่ใช่&nbsp;IT_PROG, AD_VP, AD_PRES โดยเรียงด้วยรหัสงานจาก Z-A (กำหนดไม่ให้ใช้ OR)</p>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618348</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> first_name, last_name, salary
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> job_id <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span>(<span class="hljs-string">'IT_PROG'</span>, <span class="hljs-string">'AD_VP'</span>, <span class="hljs-string">'AD_PRES'</span>)
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> job_id <span class="hljs-keyword">desc</span></code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            2585
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>จงแสดงชื่อแผนกทั้งหมดที่มีคำว่า IT อยู่ตำแหน่งแรกสุดของชื่อแผนก<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างบางส่วนจากคำตอบ</strong></span><br>
+<img alt="" src="./Lab05_files/Capture.PNG" style="height:146px; width:167px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618331</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> department_name
+<span class="hljs-keyword">from</span> departments
+<span class="hljs-keyword">where</span> department_name <span class="hljs-keyword">like</span> <span class="hljs-string">'IT%'</span></code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            2587
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>จงแสดงชื่อจริง นามสกุลและเบอร์โทรศัพท์ของพนักงานที่มีเบอร์โทรศัพท์ขึ้นต้นด้วย 515 หรือ นามสกุลมีอักษร e เป็นตัวอักษรที่ 2 ของนามสกุล<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างบางส่วนจากคำตอบ</strong></span><br>
+<img alt="" src="./Lab05_files/Capture(1).PNG" style="height:223px; width:668px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618323</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> first_name, last_name, phone_number
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> phone_number <span class="hljs-keyword">like</span> <span class="hljs-string">'515%'</span> <span class="hljs-keyword">or</span> last_name <span class="hljs-keyword">like</span> <span class="hljs-string">'_e%'</span></code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            2588
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>จงแสดงรหัสพนักงาน วันสุดท้ายที่ทำงานในแผนก และรหัสงานที่มีประวัติทำงานในแผนกวันสุดท้ายก่อนปี 2000<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างบางส่วนจากคำตอบ</strong></span><br>
+<img alt="" src="./Lab05_files/Capture(2).PNG" style="height:224px; width:697px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618312</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> employee_id, end_date, job_id
+<span class="hljs-keyword">from</span> job_history
+<span class="hljs-keyword">where</span> end_date &lt; <span class="hljs-string">'2000-01-01'</span></code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            2589
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>จงแสดงรหัสพนักงาน ชื่อ นามสกุลของพนักงานและสัดส่วนค่านายหน้าเพิ่มขึ้นคนละ 0.5 ให้กับพนักงานที่ได้รับสัดส่วนค่านายหน้า (ตั้งชื่อคอลัมน์คือ New Commission) โดยแสดงเฉพาะพนักงานที่ได้รับการเพิ่มสัดส่วนค่านายหน้าเพิ่มมากกว่า 0.7 เรียงผลลัพธ์ด้วย New Commission จากมากไปน้อย<br>
+*ตัวอย่างบางส่วนจากคำตอบ
+<table border="1" cellpadding="1" cellspacing="1" style="width:500px">
+	<tbody>
+		<tr>
+			<td><strong>employee_id</strong></td>
+			<td><strong>first_name</strong></td>
+			<td><strong>last_name</strong></td>
+			<td><strong>New Commission</strong></td>
+		</tr>
+		<tr>
+			<td>145</td>
+			<td>John</td>
+			<td>Russell</td>
+			<td>0.90</td>
+		</tr>
+		<tr>
+			<td>158</td>
+			<td>Allan</td>
+			<td>McEwen</td>
+			<td>0.85</td>
+		</tr>
+	</tbody>
+</table>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618252</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> employee_id, first_name, last_name, commission_pct+<span class="hljs-number">0.5</span> <span class="hljs-keyword">as</span> <span class="hljs-string">`New Commission`</span>
+<span class="hljs-keyword">from</span> employees
+<span class="hljs-keyword">where</span> commission_pct+<span class="hljs-number">0.5</span> &gt; <span class="hljs-number">0.7</span>
+<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-string">`New Commission`</span> <span class="hljs-keyword">desc</span>;</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            2590
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>จงแสดง รหัสที่ตั้ง ชื่อถนนและที่อยู่ &nbsp;รัฐ/จังหวัด ของสถานที่ตั้งสำนักงาน ที่ตั้งอยู่ในประเทศที่มีรหัสไม่ใช่ CN และข้อมูล รัฐ/จังหวัด ต้องไม่เป็นค่าว่าง<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างบางส่วนจากคำตอบ</strong></span><br>
+<img alt="" src="./Lab05_files/Capture(3).PNG" style="height:228px; width:793px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618234</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> location_id, street_address, state_province
+<span class="hljs-keyword">from</span> locations
+<span class="hljs-keyword">where</span> country_id != <span class="hljs-string">'CN'</span> <span class="hljs-keyword">and</span> state_province <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>;</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            2591
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>จงแสดง ที่อยู่และเมือง(คั่นด้วย underscore เช่น 2017 Shinjuku-ku_Tokyo&nbsp; และตั้งชื่อใหม่ว่า Address) ของสถานที่ตั้งสำนักงาน ที่มีรหัสประเทศไม่ใช่ CA หรือ CN หรือ CH&nbsp; (ห้ามใช้ OR)<br>
+<span style="color:#FF0000"><strong>*ตัวอย่างบางส่วนจากคำตอบ</strong></span><br>
+<img alt="" src="./Lab05_files/Capture(4).PNG" style="height:227px; width:258px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618227</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> <span class="hljs-keyword">concat</span>(street_address, <span class="hljs-string">'_'</span>,  city) <span class="hljs-string">`Address`</span>
+<span class="hljs-keyword">from</span> locations
+<span class="hljs-keyword">where</span> country_id <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span>(<span class="hljs-string">'CA'</span>, <span class="hljs-string">'CN'</span>, <span class="hljs-string">'CH'</span>);</code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                            <table class="">
+                                    <tbody>
+                                    <tr>
+                                        <th colspan="2">Question #
+                                            2668
+                                                                                    </th>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Question Detail</th>
+                                        <td>เเสดงชื่อทางการค้าของยา เเละ เป็นยาสามัญหรือไม่ &nbsp;โดยแสดงเฉพาะชื่อทางการค้าของยาที่มีคำว่า 2.5% อยู่ท้ายสุดของชื่อ<br>
+<span style="color:#FF0000">หมายเหตุ กำหนดให้ใช้ escape identifier</span><br>
+<br>
+<span style="color:#FF0000"></span>ตาราง Medicine
+
+<table border="1" cellpadding="1" cellspacing="1" style="width:500px">
+	<tbody>
+		<tr>
+			<td><strong>Field</strong></td>
+			<td><strong>Description</strong></td>
+			<td><strong>Type</strong></td>
+			<td><strong>Key</strong></td>
+		</tr>
+		<tr>
+			<td>TradeName</td>
+			<td>ชื่อในทางการค้าของยา</td>
+			<td>varchar</td>
+			<td>PRI</td>
+		</tr>
+		<tr>
+			<td>UnitPrice</td>
+			<td>ราคาต่อหน่วย</td>
+			<td>int</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>GenericMark</td>
+			<td>เป็นยาสามัญหรือไม่</td>
+			<td>tinyint</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+</td>
+                                    </tr>
+                                    <tr>
+                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;User Answer #618218</th>
+                                        <td>
+                                            <pre><code class="sql hljs"><span class="hljs-keyword">select</span> TradeName, GenericMark
+<span class="hljs-keyword">from</span> medicine
+<span class="hljs-keyword">where</span> TradeName <span class="hljs-keyword">like</span> <span class="hljs-string">'%2.5$%'</span> escape <span class="hljs-string">'$'</span></code></pre>
+                                        </td>
+                                    </tr>
+                                                                                                            </tbody>
+                                </table>
+                                <hr>
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger hidden">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/85322#collapseER" aria-expanded="false" aria-controls="collapseER">
+                        <div class="panel-heading" role="tab" id="headingER">
+                            <h4 class="panel-title">
+                                <i class="fa fa-database"></i> ER Mapping
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseER" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingER">
+                        <div class="panel-body">
+                                                            No Data
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger hidden">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/85322#collapseDesign" aria-expanded="false" aria-controls="collapseDesign">
+                        <div class="panel-heading" role="tab" id="headingDesign">
+                            <h4 class="panel-title">
+                                <i class="fa fa-database"></i> ER Design
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseDesign" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingDesign">
+                        <div class="panel-body">
+                                                            No Data
+                                                    </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger hidden">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="https://dblearning.it.kmitl.ac.th/quiz/submission/85322#collapseDesign" aria-expanded="false" aria-controls="collapseDesign">
+                        <div class="panel-heading" role="tab" id="headingDesign">
+                            <h4 class="panel-title">
+                                <i class="fa fa-database"></i> ER Verification
+                            </h4>
+                        </div>
+                    </a>
+                    <div id="collapseDesign" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingDesign">
+                        <div class="panel-body">
+                                                            No Data
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- FORM COMMENT QUIZ -->
+    <div class="form-checkout" style="top: 277.5px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <ul id="bar">
+                        <li class="form-quiz-header">Comment This Quiz</li>
+                    </ul>
+                    <span class="closeForm"><i class="icon md-close-1"></i></span>
+                    <div class="form-body">
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form method="POST" action="https://dblearning.it.kmitl.ac.th/quiz/submission/85322/comment" accept-charset="UTF-8" class="form-horizontal form-quiz"><input name="_token" type="hidden" value="FiZDRmiIh4lITFJs4pCaeVBbZxCn4n4pZyjLakxB">
+                                <div class="form-group">
+                                    <div class="col-sm-offset-1 col-sm-10">
+                                        <textarea id="comment" name="comment"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12" style="text-align: center;">
+                                        <button type="submit" class="btn btn-success btn-save-quiz">
+                                            <i class="fa fa-paper-plane"></i> Send
+                                        </button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END / FORM COMMENT QUIZ -->
+        <div class="loading hidden">
+        <div class="cssload-tetrominos">
+            <div class="cssload-tetromino cssload-box1"></div>
+            <div class="cssload-tetromino cssload-box2"></div>
+            <div class="cssload-tetromino cssload-box3"></div>
+            <div class="cssload-tetromino cssload-box4"></div>
+        </div>
+    </div>
+
+</div>
+<!-- END / PAGE WRAP -->
+
+<!-- Load jQuery -->
+<script type="text/javascript" src="./Lab05_files/jquery-1.11.0.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab05_files/bootstrap.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab05_files/jquery.owl.carousel.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab05_files/jquery.appear.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab05_files/perfect-scrollbar.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab05_files/toastr.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab05_files/imagesloaded.pkgd.min.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab05_files/scripts.js.ดาวน์โหลด"></script>
+<script type="text/javascript" src="./Lab05_files/raven.min.js.ดาวน์โหลด" crossorigin="anonymous"></script>
+<script>
+    //SENTRY LOG
+    $(document).ready(function(){
+        Raven.config('https://9f1aa240bf7741128f6d9b6171e494f0@sentry.io/289929').install();
+        Raven.setUserContext({
+            username: 'it65070185',
+            name: 'นายภูวิศ นุ่นปาน'
+        });
+    });
+</script>
+
+    <script type="text/javascript" src="./Lab05_files/jquery.hotkeys.js.ดาวน์โหลด"></script>
+    <script src="./Lab05_files/datatables.min.js.ดาวน์โหลด"></script>
+    <script src="./Lab05_files/Chart.min.js.ดาวน์โหลด"></script>
+    <script src="./Lab05_files/highlight.pack.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab05_files/vis.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab05_files/deep-diff-0.3.4.min.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab05_files/jscolor.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab05_files/typo.js.ดาวน์โหลด"></script>
+    <script src="./Lab05_files/color.js.ดาวน์โหลด"></script>
+    <script src="./Lab05_files/EventHelpers.js.ดาวน์โหลด"></script>
+    <script src="./Lab05_files/DragDropHelpers.js.ดาวน์โหลด"></script>
+    <script src="./Lab05_files/permissionForm.js.ดาวน์โหลด"></script>
+    <script type="text/javascript" src="./Lab05_files/jsencrypt.min.js.ดาวน์โหลด"></script>
+    <script src="./Lab05_files/erdiagram.js.ดาวน์โหลด"></script>
+
+    <shoulddetectajax class="hidden">false</shoulddetectajax>
+    <script>
+        var child;
+        $('.open-er-logical').click(function () {
+            graph = $(this).attr('value');
+            child = window.open('https://dblearning.it.kmitl.ac.th/tool/logical_er');
+        });
+        $( document ).ready(function() {
+            $.each($('.erdiagram'), function (index, item) {
+                var enableExport = false;
+                if($(item).hasClass('erdiagram-enable-export')){
+                    enableExport = true;
+                }
+                var graph = JSON.parse($(item).html());
+                $(item).html('');
+                $(item).removeClass('hidden');
+                new ERDiagram('#'+$(item).attr('id'), {
+                    graph: graph,
+                    editable: false,
+                    isShowMenu: false,
+                    enableExport: enableExport,
+                });
+            });
+
+        });
+                $('.btn-comment-quiz').on('click', function() {
+            //editChapterOpen($(this).attr('quiz'));
+            $('.form-checkout, .overlayForm').fadeIn(400);
+            $(window).trigger('resize');
+            return false;
+        });
+        $('.closeForm').on('click', function() {
+            $('.form-checkout, .overlayForm').fadeOut(400);
+        });
+            </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+        $('[data-toggle="tooltip"]').tooltip();
+        var navbarHeight = $('.top-nav').outerHeight();
+        $('.quiz-section').css('padding-top', navbarHeight);
+        $(function () {
+            var chartIds = [
+                                'fill_chart',
+                                'choice_chart',
+                                'matching_chart',
+                                'sql_chart',
+                                'er_chart',
+                                'design_chart',
+                                'er_verification_chart',
+                            ];
+            var chartLabels = ["Fill In","Choice","Matching","SQL","Logical","Conceptual","ER Verification"];
+            var chartDatas = [
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 17],
+                                            [0, 0],
+                                            [0, 0],
+                                            [0, 0],
+                                    ];
+            var chartColors =  [
+                                        'rgba(255, 99, 132, 0.8)',
+                                        'rgba(54, 162, 235, 0.8)',
+                                        'rgba(255, 206, 86, 0.8)',
+                                        'rgba(75, 192, 192, 0.8)',
+                                        'rgba(194, 66, 244, 0.8)',
+                                        'rgba(247, 255, 17, 0.8)',
+                                        'rgba(77, 204, 38, 0.8)',
+                                    ];
+            var chartList = {};
+            for(var i = 0; i < chartIds.length; i++){
+                chartList[chartIds[i]] = new Chart($("#"+chartIds[i]), {
+                type: 'doughnut',
+                    data: {
+                        labels: [chartLabels[i], ""],
+                        datasets: [{
+                            label: '# of '+chartLabels[i],
+                            data: [chartDatas[i][0], chartDatas[i][1]-chartDatas[i][0]],
+                            backgroundColor: [
+                                chartColors[i],
+                                'rgba(169, 169, 169, 0)'
+                            ],
+                            borderColor: [
+                                chartColors[i],
+                                'rgba(169, 169, 169, 0.3)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        legend: {
+                            display: false
+                        },
+                        elements: {
+                            center: {
+                                // the longest text that could appear in the center
+                                maxText: '100%',
+                                text: (chartDatas[i][0] * 100 / chartDatas[i][1]).toFixed(1) + '%',
+                                fontColor: chartColors[i],
+                                fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                                fontStyle: 'normal',
+                                // fontSize: 12,
+                                // if a fontSize is NOT specified, we will scale (within the below limits) maxText to take up the maximum space in the center
+                                // if these are not specified either, we default to 1 and 256
+                                minFontSize: 1,
+                                maxFontSize: 15,
+                            }
+                        }}
+                });
+            }});
+        // write text plugin
+        Chart.pluginService.register({
+            afterUpdate: function (chart) {
+                if (chart.config.options.elements.center) {
+                    var helpers = Chart.helpers;
+                    var centerConfig = chart.config.options.elements.center;
+                    var globalConfig = Chart.defaults.global;
+                    var ctx = chart.chart.ctx;
+
+                    var fontStyle = helpers.getValueOrDefault(centerConfig.fontStyle, globalConfig.defaultFontStyle);
+                    var fontFamily = helpers.getValueOrDefault(centerConfig.fontFamily, globalConfig.defaultFontFamily);
+
+                    if (centerConfig.fontSize)
+                        var fontSize = centerConfig.fontSize;
+                    // figure out the best font size, if one is not specified
+                    else {
+                        ctx.save();
+                        var fontSize = helpers.getValueOrDefault(centerConfig.minFontSize, 1);
+                        var maxFontSize = helpers.getValueOrDefault(centerConfig.maxFontSize, 256);
+                        var maxText = helpers.getValueOrDefault(centerConfig.maxText, centerConfig.text);
+
+                        do {
+                            ctx.font = helpers.fontString(fontSize, fontStyle, fontFamily);
+                            var textWidth = ctx.measureText(maxText).width;
+
+                            // check if it fits, is within configured limits and that we are not simply toggling back and forth
+                            if (textWidth < chart.innerRadius * 2 && fontSize < maxFontSize)
+                                fontSize += 1;
+                            else {
+                                // reverse last step
+                                fontSize -= 1;
+                                break;
+                            }
+                        } while (true)
+                        ctx.restore();
+                    }
+
+                    // save properties
+                    chart.center = {
+                        font: helpers.fontString(fontSize, fontStyle, fontFamily),
+                        fillStyle: helpers.getValueOrDefault(centerConfig.fontColor, globalConfig.defaultFontColor)
+                    };
+                }
+            },
+            afterDraw: function (chart) {
+                if (chart.center) {
+                    var centerConfig = chart.config.options.elements.center;
+                    var ctx = chart.chart.ctx;
+
+                    ctx.save();
+                    ctx.font = chart.center.font;
+                    ctx.fillStyle = chart.center.fillStyle;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    var centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
+                    var centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
+                    ctx.fillText(centerConfig.text, centerX, centerY);
+                    ctx.restore();
+                }
+            }
+        });
+    </script>
+
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+  div.grammarly-desktop-integration {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+  }
+
+  div.grammarly-desktop-integration:before {
+    content: attr(data-content);
+  }
+</style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
